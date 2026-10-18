@@ -1,0 +1,37 @@
+# Zapatillas Duoc Analytics — dependencias regenerables por sistema
+node_modules/
+
+# Python virtualenv y locks derivados de herramientas
+**/.venv/
+
+# Variables de entorno (se conservan los .env.example)
+.env
+.env.*
+!.env.example
+
+# Salidas de compilación y empaquetado
+out/
+dist/
+release/
+build/output/
+*.tsbuildinfo
+
+# Registro y cachés de herramientas
+*.log
+npm-debug.log*
+.eslintcache
+coverage/
+.vite/
+
+# Artefactos de electron-builder
+*.exe
+*.exe.blockmap
+*.blockmap
+*.appx
+*.msi
+*.nsis.7z
+
+# Archivos del sistema
+Thumbs.db
+Desktop.ini
+.DS_Store
