@@ -415,6 +415,28 @@ RLS intacta. **Sin ML, sin inserts, sin migraciones, sin service_role.**
 - Pronósticos: historial real + proyección vacía (no se disfraza de
   predicción); Recomendaciones: vacío + estado "Requiere modelo".
 
+### Verificaciones reales contra Supabase (2026-10-18,Smoke conectado)
+
+Primera conexión REAL del servicio (después de corregir sintaxis REST:
+`order` con puntos sin espacios, conteos con HTTP 206, filtro embebido
+requiere el embed en `select`). Resultado con clave pública `anon` y RL:
+
+| Tabla | Filas legibles por anon | Lectura |
+|---|---|---|
+| `productos` | 12 | ✅ |
+| `stock` | 30 | ✅ |
+| `pedidos` (todas) | 13 | ✅ |
+| `pedidos` (estado exitoso) | 4 | ✅ |
+| `detalles_pedido` (todas / exitosas) | **0** | ⚠️ RLS filtra en silencio |
+
+**Bloqueo documentado:** no existe (o no aplica) política de SELECT para el
+rol `anon` en `detalles_pedido`; PostgREST devuelve 0 filas sin error.
+**No se modificarán políticas desde este proyecto** (regla etapa C): la
+habilitación de lectura anónima es decisión del dueño de la base.
+
+Mientras tanto la app ya sirve datos reales de catálogo/inventario
+(12 modelos × talla = 30 variantes) y muestra 0 ventas de forma honesta.
+
 ### Verificaciones ejecutadas (2026-10-18)
 
 | Verificación | Resultado |

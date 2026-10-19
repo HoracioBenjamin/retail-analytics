@@ -119,6 +119,15 @@ SELECT (SELECT COUNT(*) FROM productos)                              AS producto
 
 ---
 
+**Nota de la verificación real (ver sección Smoke conectado más abajo):**
+la lectura de `detalles_pedido` con el rol `anon` devolvió 0 filas sin
+error — PostgREST filtra por RLS en silencio cuando no existe política de
+SELECT para ese rol. Al validar permisos, probar SIEMPRE con datos reales
+(no basta que la consulta no falle): un 0 filas puede ser RLS y no
+"falta de datos". Distinción SQL Editor vs app sigue vigente abajo.
+
+---
+
 ## 3. ⚠️ Distinción importante: SQL Editor ≠ permisos reales de la app
 
 El **SQL Editor de Supabase ejecuta con el rol `postgres` (dueño)**, que pasa por

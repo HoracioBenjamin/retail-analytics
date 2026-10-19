@@ -91,9 +91,18 @@ class SupabaseRestRepository:
                     raise SupabaseConnectionError(
                         f"Supabase respondió HTTP {response.status_code} al leer '{path}'."
                     )
-                if response.status_code != 200:
+                if response.status_code not in (200, 206):  # 206 = rango paginado
+                    # PostgREST explica el problema en el cuerpo (p.ej. sintaxis
+                    # de embed/order). Solo se muestra ese mensaje técnico.
+                    detail = ""
+                    try:
+                        body = response.json()
+                        detail = str(body.get("message", ""))[:300] if isinstance(body, dict) else ""
+                    except Exception:  # noqa: BLE001 — el cuerpo puede no ser JSON
+                        detail = ""
                     raise SupabaseConnectionError(
                         f"HTTP {response.status_code} inesperado al leer '{path}'."
+                        + (f" Detalle Supabase: {detail}" if detail else "")
                     )
                 batch = response.json()
                 rows.extend(batch)
@@ -145,7 +154,9 @@ class SupabaseRestRepository:
 
     def lineas_venta(self) -> list[dict]:
         """Líneas de pedidos CONFIRMADOS (estado 'exitoso') con fecha (2.3).
-        Sin datos personales: solo producto/talla/cantidad/monto/fecha."""
+        Sin datos personales: solo producto/talla/cantidad/monto/fecha.
+        Sin ORDER por embebidos (sintaxis frágil en PostgREST): el orden lo
+        aplica Python al agregar."""
         return self._fetch_all(
             "/detalles_pedido",
             {
@@ -154,7 +165,6 @@ class SupabaseRestRepository:
                     "pedidos!inner(created_at,estado)"
                 ),
                 "pedidos.estado": "eq.exitoso",
-                "order": "pedidos.created_at asc",
             },
             max_rows=50_000,
         )
@@ -166,7 +176,7 @@ class SupabaseRestRepository:
             {
                 "select": "created_at",
                 "estado": "eq.exitoso",
-                "order": "created_at asc",
+                "order": "created_at.asc",
                 "limit": "1",
             },
         )
@@ -175,7 +185,7 @@ class SupabaseRestRepository:
             {
                 "select": "created_at",
                 "estado": "eq.exitoso",
-                "order": "created_at desc",
+                "order": "created_at.desc",
                 "limit": "1",
             },
         )
@@ -188,6 +198,13 @@ class SupabaseRestRepository:
             ("productos", "/productos", {}),
             ("stock", "/stock", {}),
             ("pedidos_exitosos", "/pedidos", {"estado": "eq.exitoso"}),
+            ("pedidos_todos", "/pedidos", {}),
+            ("lineas_venta_todas", "/detalles_pedido", {}),
+            (
+                "lineas_venta_exitosas",
+                "/detalles_pedido",
+                {"select": "pedidos!inner(estado)", "pedidos.estado": "eq.exitoso"},
+            ),
         ):
             with self._client() as client:
                 try:
@@ -202,7 +219,7 @@ class SupabaseRestRepository:
                         f"pública (HTTP {response.status_code}). "
                         "Ver docs/CONSULTAS_SUPABASE.md §3."
                     )
-                if response.status_code != 200:
+                if response.status_code not in (200, 206):  # 206 = rango con conteo
                     raise SupabaseConnectionError(
                         f"HTTP {response.status_code} al contar '{path}'."
                     )
