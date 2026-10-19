@@ -24,7 +24,7 @@ import { ErrorState } from '@/components/shared/ErrorState'
 import { LoadingState } from '@/components/shared/LoadingState'
 import { FilterBar } from '@/components/shared/FilterBar'
 import { StatusBadge } from '@/components/shared/StatusBadge'
-import { DemoChip } from '@/components/shared/DemoChip'
+import { DemoChip, ModelPendingNote } from '@/components/shared/DemoChip'
 import { VariantDetailSheet } from '@/components/shared/VariantDetailSheet'
 import { useRecommendations, useVariantRows } from '@/hooks/api'
 import { fmtCoverage, fmtNum } from '@/lib/format'
@@ -88,6 +88,8 @@ export function RecommendationsPage(): React.JSX.Element {
           description="Prioridades calculadas por la regla ilustrativa del plan (9.3) sobre el dataset de demostración. No es un motor de decisión definitivo."
           actions={<DemoChip />}
         />
+
+        <ModelPendingNote />
 
         <FilterBar>
           <Select

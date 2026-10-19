@@ -144,7 +144,9 @@ export const dataMetadataSchema = z.object({
   as_of: z.string().min(1).nullable(),
   historical_range: periodRangeSchema,
   forecast_range: periodRangeSchema,
-  forecast_method: z.enum(FORECAST_METHODS),
+  // null en modo connected: NO existe modelo entrenado aún (etapa de ML); la
+  // UI muestra el rótulo "Modelo predictivo pendiente".
+  forecast_method: z.enum(FORECAST_METHODS).nullable(),
   limitations: z.array(z.string()).min(1),
   dataset_version: z.string().min(1).nullable()
 })
@@ -174,9 +176,15 @@ export const responseMetaSchema = z.object({
 })
 export type ResponseMeta = z.infer<typeof responseMetaSchema>
 
-/** Error de contrato para el renderer (sección 9.4): código y mensaje estables. */
+/** Error de contrato para el renderer (sección 9.4 + etapa C): códigos estables. */
 export const apiErrorSchema = z.object({
-  code: z.enum(['NOT_FOUND', 'VALIDATION_ERROR', 'SERVICE_UNAVAILABLE', 'IPC_REJECTED']),
+  code: z.enum([
+    'NOT_FOUND',
+    'VALIDATION_ERROR',
+    'SERVICE_UNAVAILABLE',
+    'PERMISSION_DENIED',
+    'IPC_REJECTED'
+  ]),
   message: z.string().min(1)
 })
 export type ApiError = z.infer<typeof apiErrorSchema>

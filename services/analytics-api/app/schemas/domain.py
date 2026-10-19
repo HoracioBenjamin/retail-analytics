@@ -92,7 +92,9 @@ class DataMetadata(BaseModel):
     as_of: str | None = None
     historical_range: PeriodRange | None = None
     forecast_range: PeriodRange | None = None
-    forecast_method: ForecastMethod
+    # null en modo connected: NO existe modelo entrenado aún (etapa de ML);
+    # la UI muestra el rótulo "Modelo predictivo pendiente".
+    forecast_method: ForecastMethod | None = None
     limitations: list[str] = Field(min_length=1)
     dataset_version: str | None = None
 

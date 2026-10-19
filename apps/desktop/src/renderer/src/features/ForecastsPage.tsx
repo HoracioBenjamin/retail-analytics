@@ -15,7 +15,7 @@ import { SectionCard } from '@/components/shared/SectionCard'
 import { EmptyState } from '@/components/shared/EmptyState'
 import { ErrorState } from '@/components/shared/ErrorState'
 import { LoadingState } from '@/components/shared/LoadingState'
-import { DemoChip } from '@/components/shared/DemoChip'
+import { DemoChip, ModelPendingNote } from '@/components/shared/DemoChip'
 import {
   Select,
   SelectContent,
@@ -71,12 +71,18 @@ export function ForecastsPage(): React.JSX.Element {
           actions={<DemoChip />}
         />
 
+        <ModelPendingNote />
+
         <SectionCard
           title="Proyección por variante"
           description={
-            status.data?.metadata.historical_range
-              ? `Histórico de 12 semanas + 4 semanas futuras ilustrativas · corte ${longDate(status.data.metadata.as_of!)}`
-              : 'Esperando el dataset de demostración'
+            status.data?.metadata.forecast_method === null
+              ? status.data?.metadata.historical_range
+                ? `Historial real de ventas (modo conectado) · sin proyección: modelo predictivo pendiente`
+                : 'Esperando el estado de datos'
+              : status.data?.metadata.historical_range
+                ? `Histórico de 12 semanas + 4 semanas futuras ilustrativas · corte ${longDate(status.data.metadata.as_of!)}`
+                : 'Esperando el dataset de demostración'
           }
         >
           {rows.isPending ? (

@@ -14,19 +14,25 @@ from pydantic import BaseModel
 from app.repositories.fixture_repository import FixtureRepository, get_repository
 from app.schemas.domain import RiskLevel
 from app.services.analytics_service import AnalyticsService
+from app.services.analytics_service_connected import AnalyticsServiceConnected
 
 health_router = APIRouter()
 api_v1_router = APIRouter()
 
-# Meta estable en toda la base A+B (mismos modos del contrato del escritorio).
-DEMO_META: dict[str, str] = {"mode": "demo-api"}
+def response_meta() -> dict[str, str]:
+    """Etiqueta HONESTA del modo de datos de la respuesta:
+    demo→'demo-api' (fixture por HTTP), connected→'connected' (Supabase)."""
+    from app.core.config import get_settings
+
+    settings = get_settings()
+    return {"mode": "demo-api" if settings.app_mode == "demo" else "connected"}
 
 
 class Envelope(BaseModel):
     """Sobre de respuesta uniforme: data + meta; listados suman pagination."""
 
     data: Any
-    meta: dict[str, str] = DEMO_META
+    meta: dict[str, str] | None = None
     pagination: dict[str, int] | None = None
 
 
@@ -40,7 +46,11 @@ def _serialize(obj: Any) -> Any:
 
 
 def envelope(data: Any, pagination: Any | None = None) -> dict:
-    payload: dict[str, Any] = {"data": _serialize(data), "meta": DEMO_META}
+    payload: dict[str, Any] = {
+        "ok": True,  # mismo sobre tipado que el puente IPC del escritorio
+        "data": _serialize(data),
+        "meta": response_meta(),
+    }
     if pagination is not None:
         payload["pagination"] = _serialize(pagination)
     return payload
@@ -48,7 +58,19 @@ def envelope(data: Any, pagination: Any | None = None) -> dict:
 
 def _service(
     repo: FixtureRepository = Depends(get_repository),
-) -> AnalyticsService:
+) -> AnalyticsService | AnalyticsServiceConnected:
+    """Selecciona el servicio según APP_MODE del backend (demo|connected).
+
+    En connected el repo del fixture NO se carga: la rama no lo usa.
+    """
+    from app.core.config import get_settings
+
+    settings = get_settings()
+    if settings.app_mode == "connected":
+        from app.repositories.supabase_rest import get_connected_repo
+        from app.services.analytics_service_connected import AnalyticsServiceConnected
+
+        return AnalyticsServiceConnected(get_connected_repo())
     return AnalyticsService(repo)
 
 

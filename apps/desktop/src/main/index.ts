@@ -2,8 +2,9 @@ import { app, shell, BrowserWindow } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
-import { resolveDataMode } from './config/settings'
+import { resolveDataMode, API_BASE_URL } from './config/settings'
 import { DemoLocalProvider } from './services/demo-local'
+import { ApiHttpProvider } from './services/api-http-provider'
 import { registerAnalyticsIpc } from './ipc/bridge'
 
 let mainWindow: BrowserWindow | null = null
@@ -50,12 +51,11 @@ function createWindow(): void {
 function bootServices(): void {
   const mode = resolveDataMode()
   if (mode === 'demo-api' || mode === 'connected') {
-    // El plan exige que los modos no implementados fallen de forma explícita.
-    // demo-api se implementa en el Paso 7 (Entrega B); connected es etapa posterior.
-    throw new Error(
-      `El modo de datos "${mode}" no está implementado todavía. ` +
-        'Usa MAIN_VITE_DATA_MODE=demo-local (valores válidos: demo-local, demo-api [Paso 7], connected [etapa posterior]).'
-    )
+    // Etapa C: ambos modos van por HTTP a FastAPI; la fuente real (Supabase)
+    // se elige con APP_MODE del SERVICIO. Sin API corriendo, las pantallas
+    // muestran el error estable — NUNCA un fallback silencioso a demo-local.
+    registerAnalyticsIpc(new ApiHttpProvider(API_BASE_URL), () => mainWindow)
+    return
   }
   const provider = new DemoLocalProvider()
   registerAnalyticsIpc(provider, () => mainWindow)

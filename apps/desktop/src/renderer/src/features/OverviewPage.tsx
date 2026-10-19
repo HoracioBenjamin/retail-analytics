@@ -12,7 +12,7 @@ import { ErrorState } from '@/components/shared/ErrorState'
 import { LoadingState } from '@/components/shared/LoadingState'
 import { FilterBar } from '@/components/shared/FilterBar'
 import { StatusBadge } from '@/components/shared/StatusBadge'
-import { DemoChip } from '@/components/shared/DemoChip'
+import { DemoChip, ModelPendingNote } from '@/components/shared/DemoChip'
 import { HistoryForecastChart } from '@/components/shared/HistoryForecastChart'
 import { VariantDetailSheet } from '@/components/shared/VariantDetailSheet'
 import {
@@ -193,6 +193,7 @@ export function OverviewPage(): React.JSX.Element {
             </div>
 
             {/* Paneles de riesgo */}
+            <ModelPendingNote />
             <div className="grid gap-4 lg:grid-cols-2">
               <RiskPanel
                 title="Riesgo de agotamiento"

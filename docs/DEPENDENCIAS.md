@@ -363,6 +363,82 @@ el chip **"Datos de demostración"**.
 
 ---
 
+## Etapa C — Conexión real a Supabase, solo lectura (EN CURSO 🔧)
+
+**Fecha:** 2026-10-18. Ejecuta el plan acordado C0–C4: la app lee datos
+reales vía **Electron → FastAPI → Supabase REST** con la clave pública y
+RLS intacta. **Sin ML, sin inserts, sin migraciones, sin service_role.**
+
+### C0 — Diagnóstico (COMPLETADO ✅)
+
+- Esquema confirmado desde el CSV de Supabase (14 tablas, FKs verificadas).
+- Regla de negocio: **venta confirmada = `pedidos.estado = 'exitoso'`**
+  (webhook MercadoPago: exitoso/pendiente/erroneo); montos =
+  cantidad × precio_unitario (CLP); `stock` por producto × talla.
+- Faltantes declarados (no inventados): sin unidades en tránsito, sin
+  dimensión de talla, sin sistema de talla, sin costos/lead times.
+- Consultas mínimas sin datos personales; agregaciones en Python
+  (PostgREST no tiene GROUP BY agregable y no se crean vistas/funciones).
+
+### C1 — Configuración y consultas documentadas (COMPLETADO ✅)
+
+- `docs/CONSULTAS_SUPABASE.md`: cada SELECT con propósito, joins, columnas,
+  reglas y el aviso SQL Editor (rol postgres) ≠ accesos reales de la app
+  (rol anon + RLS). Incluye cómo validar con `SET LOCAL ROLE anon`.
+- `services/analytics-api/.env` y `apps/desktop/.env` creados con
+  placeholders (los rellena el usuario; el servicio nunca imprime valores).
+
+### C2 — Proveedor connected + puente HTTP (COMPLETADO ✅, conexión real PENDIENTE de credenciales del usuario)
+
+- **FastAPI**: `SupabaseRestRepository` (httpx → PostgREST, paginación por
+  `Content-Range`, TTL 60 s) + `AnalyticsServiceConnected` con el MISMO
+  contrato `data-status: {data_source: supabase, forecast_method: null}`,
+  Reglas: todo se deriva de `pedidos/stock/productos`; sin recomendaciones
+  ni pronósticos (listas vacías honestas, rótulo "Modelo predictivo
+  pendiente"). `horizon_weeks` → 422 VALIDATION_ERROR en connected.
+- Errores nuevos: `SERVICE_UNAVAILABLE` (503, red/HTTP 5xx) y
+  `PERMISSION_DENIED` (403, RLS bloquea al rol anon — nunca se bypasea).
+- `httpx` pasó a dependencia principal; lock regenerado con pip-tools.
+- **Electron**: `ApiHttpProvider` (main) → `http://127.0.0.1:8000`
+  (`MAIN_VITE_ANALYTICS_API_URL`), timeouts 20 s, mapeo de errores;
+  `main/index.ts` ya conmuta `demo-api`/`connected` — **nunca** fallback
+  silencioso a demo-local.
+- Contratos: `forecast_method` nullable (zod + pydantic) y código
+  `PERMISSION_DENIED` agregado al sobre; `meta.mode` por APP_MODE real.
+
+### C3 — Pantallas (COMPLETADO ✅ para render, verificación real pendiente de conexión)
+
+- `DemoChip` consciente del modo: «Datos de demostración» ↔ «Datos en
+  vivo · solo lectura» (verde) según `metadata.data_mode`.
+- Banner compartido `ModelPendingNote` en Pronósticos, Recomendaciones y
+  paneles de riesgo del Resumen (solo en connected).
+- Pronósticos: historial real + proyección vacía (no se disfraza de
+  predicción); Recomendaciones: vacío + estado "Requiere modelo".
+
+### Verificaciones ejecutadas (2026-10-18)
+
+| Verificación | Resultado |
+|---|---|
+| `ruff check app tests` (FastAPI) | 0 errores |
+| `pytest tests -q` | **28/28** (16 demo + 12 connected con Supabase simulado: httpx.MockTransport) |
+| `typecheck` (main+web) | ✅ |
+| `lint` (Electron) | ✅ 0 problemas |
+| `vitest` | 10/10 |
+| Cadena demo-api por CDP | React→IPC→ApiHttpProvider→FastAPI: overview con números idénticos al demo-local (2 240 uds · $177 272 600 · 40 variantes) |
+| Regla anti-silencio por CDP | API apagada → `{ok:false, code:SERVICE_UNAVAILABLE}` visible, sin fallback a demo |
+
+### Pendiente (bloqueado por configuración, no por código)
+
+1. Usuario completa en `services/analytics-api/.env`:
+   `APP_MODE=connected`, `SUPABASE_URL`, `SUPABASE_PUBLISHABLE_KEY`.
+2. Smoke real de lectura: `/health`, conteos y rango de fechas — sin
+   exponer datos personales.
+3. Capturas en modo connected + verificación visual del usuario.
+4. Si RLS no permite SELECT al anon: documentar bloqueo y decidir
+   políticas con el equipo (NO se modifican desde aquí).
+
+---
+
 ## Paso 6 — Backend FastAPI demo (COMPLETADO ✅, Entrega B parte 1)
 
 **Fecha:** 2026-10-17/18. **Estado:** `services/analytics-api/` operativo:

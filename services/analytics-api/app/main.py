@@ -20,7 +20,13 @@ from starlette.status import HTTP_422_UNPROCESSABLE_CONTENT
 
 from app.api.v1.router import api_v1_router, health_router
 from app.core.config import validate_settings_or_fail
-from app.services.exceptions import BusinessValidationError, NotFoundVariantError
+from app.services.exceptions import (
+    BusinessValidationError,
+    NotFoundVariantError,
+    ProviderUnavailableError,
+    SupabaseConnectionError,
+    SupabasePermissionError,
+)
 
 logger = logging.getLogger("analytics-api")
 
@@ -71,6 +77,28 @@ def create_app() -> FastAPI:
         return JSONResponse(
             status_code=HTTP_422_UNPROCESSABLE_CONTENT,
             content={"error": {"code": "VALIDATION_ERROR", "message": message}},
+        )
+
+    @app.exception_handler(SupabasePermissionError)
+    async def supabase_permissions(request: Request, exc: SupabasePermissionError) -> JSONResponse:
+        # RLS bloqueó la lectura con la clave pública: NO se omiten políticas.
+        return JSONResponse(
+            status_code=403,
+            content={"error": {"code": "PERMISSION_DENIED", "message": str(exc)}},
+        )
+
+    @app.exception_handler(SupabaseConnectionError)
+    async def supabase_connection(request: Request, exc: SupabaseConnectionError) -> JSONResponse:
+        return JSONResponse(
+            status_code=503,
+            content={"error": {"code": "SERVICE_UNAVAILABLE", "message": str(exc)}},
+        )
+
+    @app.exception_handler(ProviderUnavailableError)
+    async def provider_unavailable(request: Request, exc: ProviderUnavailableError) -> JSONResponse:
+        return JSONResponse(
+            status_code=503,
+            content={"error": {"code": "SERVICE_UNAVAILABLE", "message": str(exc)}},
         )
 
     # La instancia guarda settings PARA LA COMPOSICIÓN de /health.

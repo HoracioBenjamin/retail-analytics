@@ -12,13 +12,15 @@ export interface DataProvider extends AnalyticsApi {
 }
 
 /**
- * Error de dominio con código estable (plan 9.4). El bridge lo convierte
- * en sobre { ok:false, error } sin perder el código al cruzar el canal.
+ * Error de dominio con código estable (plan 9.4 + etapa C). El bridge lo
+ * convierte en sobre { ok:false, error } sin perder el código al cruzar el
+ * canal. PERMISSION_DENIED = RLS bloqueó la lectura (nunca se bypasea).
  */
 export class ProviderValidationError extends Error {
   constructor(
     message: string,
-    public readonly code: 'VALIDATION_ERROR' | 'NOT_FOUND'
+    public readonly code:
+      'VALIDATION_ERROR' | 'NOT_FOUND' | 'SERVICE_UNAVAILABLE' | 'PERMISSION_DENIED'
   ) {
     super(message)
   }
