@@ -28,7 +28,7 @@ import { FilterBar } from '@/components/shared/FilterBar'
 import { StatusBadge } from '@/components/shared/StatusBadge'
 import { DemoChip } from '@/components/shared/DemoChip'
 import { VariantDetailSheet } from '@/components/shared/VariantDetailSheet'
-import { useFiltersAvailability, useVariantRows } from '@/hooks/api'
+import { useDatasetMetadata, useFiltersAvailability, useVariantRows } from '@/hooks/api'
 import { fmtCoverage, fmtNum } from '@/lib/format'
 import { cn } from '@/lib/utils'
 
@@ -109,6 +109,8 @@ export function VariantsPage(): React.JSX.Element {
     })
   }, [filtered, sortKey, sortAsc])
 
+  const conectado = useDatasetMetadata()?.data_mode === 'connected'
+
   const totalPages = Math.max(1, Math.ceil(sorted.length / PAGE_SIZE))
   const current = Math.min(page, totalPages)
   const pageRows = sorted.slice((current - 1) * PAGE_SIZE, current * PAGE_SIZE)
@@ -127,7 +129,11 @@ export function VariantsPage(): React.JSX.Element {
       <div className="space-y-6">
         <PageHeader
           title="Variantes e inventario"
-          description="Variante = modelo + color + talla. Los datos provienen del dataset de demostración (corte incluido en la cabecera)."
+          description={
+            conectado
+              ? 'Variante = modelo + color + talla. Datos en vivo de Supabase, solo lectura (el corte de datos está en la cabecera).'
+              : 'Variante = modelo + color + talla. Los datos provienen del dataset de demostración (corte incluido en la cabecera).'
+          }
           actions={<DemoChip />}
         />
 

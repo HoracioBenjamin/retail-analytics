@@ -17,6 +17,7 @@ import { HistoryForecastChart } from '@/components/shared/HistoryForecastChart'
 import { VariantDetailSheet } from '@/components/shared/VariantDetailSheet'
 import {
   useDataStatus,
+  useDatasetMetadata,
   useFiltersAvailability,
   useForecastSeries,
   useOverview,
@@ -42,6 +43,7 @@ export function OverviewPage(): React.JSX.Element {
 
   // Para computar el rango de fecha del preset necesitamos el corte del dataset.
   const status = useDataStatus()
+  const conectado = useDatasetMetadata()?.data_mode === 'connected'
   const histEnd = status.data?.metadata.historical_range?.end ?? null
   const effectiveFilters = useMemo(() => {
     const dateRange = buildDateRange(periodo, histEnd)
@@ -176,7 +178,11 @@ export function OverviewPage(): React.JSX.Element {
                 label="Importe de ventas (CLP)"
                 icon={Wallet}
                 value={fmtCLP(overview.data.sales_amount_clp)}
-                hint="Unidades × precio efectivo, líneas del fixture"
+                hint={
+                  conectado
+                    ? 'Unidades × precio real (pedidos confirmados)'
+                    : 'Unidades × precio efectivo, líneas del fixture'
+                }
               />
               <KpiCard
                 label="Variantes con riesgo de faltante"

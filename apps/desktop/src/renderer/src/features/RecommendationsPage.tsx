@@ -26,7 +26,7 @@ import { FilterBar } from '@/components/shared/FilterBar'
 import { StatusBadge } from '@/components/shared/StatusBadge'
 import { DemoChip, ModelPendingNote } from '@/components/shared/DemoChip'
 import { VariantDetailSheet } from '@/components/shared/VariantDetailSheet'
-import { useRecommendations, useVariantRows } from '@/hooks/api'
+import { useDatasetMetadata, useRecommendations, useVariantRows } from '@/hooks/api'
 import { fmtCoverage, fmtNum } from '@/lib/format'
 import { cn } from '@/lib/utils'
 
@@ -80,12 +80,18 @@ export function RecommendationsPage(): React.JSX.Element {
     return map
   }, [recs.data])
 
+  const conectado = useDatasetMetadata()?.data_mode === 'connected'
+
   return (
     <>
       <div className="space-y-6">
         <PageHeader
           title="Recomendaciones"
-          description="Prioridades calculadas por la regla ilustrativa del plan (9.3) sobre el dataset de demostración. No es un motor de decisión definitivo."
+          description={
+            conectado
+              ? 'Vacías por diseño en modo conectado: las prioridades requieren el modelo predictivo que su equipo construirá en la etapa siguiente. No se inventan recomendaciones.'
+              : 'Prioridades calculadas por la regla ilustrativa del plan (9.3) sobre el dataset de demostración. No es un motor de decisión definitivo.'
+          }
           actions={<DemoChip />}
         />
 

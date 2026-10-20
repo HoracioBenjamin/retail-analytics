@@ -449,7 +449,26 @@ Mientras tanto la app ya sirve datos reales de catálogo/inventario
 | Cadena demo-api por CDP | React→IPC→ApiHttpProvider→FastAPI: overview con números idénticos al demo-local (2 240 uds · $177 272 600 · 40 variantes) |
 | Regla anti-silencio por CDP | API apagada → `{ok:false, code:SERVICE_UNAVAILABLE}` visible, sin fallback a demo |
 
-### Pendiente (bloqueado por configuración, no por código)
+### Verificación REAL completa (2026-10-19, con compras de prueba insertadas por el usuario)
+
+El usuario ejecutó `Downloads/ventas-prueba.sql` (3 ventas confirmadas
+con productos/precios reales de la tienda + 1 pedido `pendiente` para
+probar la exclusión). Resultado verificado de punta a punta:
+
+| Validación | Resultado |
+|---|---|
+| `overview` real | **8 unidades · $899.960 CLP** · período 2026-10-09 → 2026-10-17 |
+| Regla de negocio | Las 2 uds del pedido `pendiente` NO suman (exclusión correcta) |
+| Mín/máx | `pedidos.created_at` 10-09 → 10-17 (25 días de historia real disponible pronto) |
+| Equivalencia montos | SUM(cantidad×precio_unitario) = $899.960 = suma de `pedidos.total` de los exitosos |
+| Capturas | `docs/capturas/etapaC/c3-{overview,variantes,pronosticos,recomendaciones}-connected.png` (chip verde "Datos en vivo · solo lectura", banner ámbar "Modelo predictivo pendiente") |
+| Textos por modo | Variantes/Pronósticos/Recomendaciones/Resumen ahora describen la fuente real en connected (ya no dicen "fixture/demostración") |
+
+Estado etapa C: **COMPLETADA en código + verificación real**. Lo único
+declarado como pendiente por diseño: el MODELO PREDICTIVO (etapa del
+equipo, sin datos inventados) y la captura/ajuste si RLS cambia.
+
+### Pendiente de la etapa C (cerrada salvo modelo ML)
 
 1. Usuario completa en `services/analytics-api/.env`:
    `APP_MODE=connected`, `SUPABASE_URL`, `SUPABASE_PUBLISHABLE_KEY`.

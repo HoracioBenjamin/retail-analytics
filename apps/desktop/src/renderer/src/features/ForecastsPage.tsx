@@ -23,7 +23,7 @@ import {
   SelectTrigger,
   SelectValue
 } from '@/components/ui/select'
-import { useDataStatus, useForecastSeries, useVariantRows } from '@/hooks/api'
+import { useDataStatus, useDatasetMetadata, useForecastSeries, useVariantRows } from '@/hooks/api'
 import { longDate, weekLabel } from '@/lib/format'
 
 /**
@@ -35,6 +35,7 @@ import { longDate, weekLabel } from '@/lib/format'
 export function ForecastsPage(): React.JSX.Element {
   const rows = useVariantRows()
   const status = useDataStatus()
+  const conectado = useDatasetMetadata()?.data_mode === 'connected'
   const defaultVariantId = rows.data?.at(0)?.variant_id ?? null
   const [chosen, setChosen] = useState<string | null>(null)
   const selectedId = chosen ?? defaultVariantId
@@ -67,7 +68,11 @@ export function ForecastsPage(): React.JSX.Element {
       <div className="space-y-6">
         <PageHeader
           title="Pronósticos"
-          description="Valores futuros de ejemplo del dataset (method 'fixture', model_version null). No hay modelo entrenado en esta base."
+          description={
+            conectado
+              ? 'Historial real de ventas por variante. La proyección futura requiere el modelo predictivo (etapa de su equipo): no se muestra nada inventado.'
+              : "Valores futuros de ejemplo del dataset (method 'fixture', model_version null). No hay modelo entrenado en esta base."
+          }
           actions={<DemoChip />}
         />
 
