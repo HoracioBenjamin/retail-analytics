@@ -9,9 +9,16 @@ fixtures/demo-v1.json (semilla 20260928, demo-v1.0.0):
 - Horizonte máximo de pronóstico: 4 semanas
 """
 
+# La suite DEMO exige el servicio en modo fixture, independiente del .env
+# local del usuario (que en la etapa C queda en APP_MODE=connected).
+# Una variable de entorno tiene precedencia sobre el .env en pydantic-settings.
 from __future__ import annotations
 
-from fastapi.testclient import TestClient
+import os
+
+os.environ.setdefault("APP_MODE", "demo")
+
+from fastapi.testclient import TestClient  # noqa: E402
 
 # ── /health ─────────────────────────────────────────────────────────────
 

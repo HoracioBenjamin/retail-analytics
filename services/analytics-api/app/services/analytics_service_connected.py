@@ -94,7 +94,10 @@ class AnalyticsServiceConnected:
             # en Python por seguridad (nunca sumar ventas no confirmadas).
             if str(ped.get("estado")) != "exitoso":
                 continue
-            day = _date(ped.get("created_at"))
+            # Fecha de venta = pago real si la tienda la registró
+            # (pedidos.fecha_pago, columna agregada 2026-10); si es NULL
+            # (webhook antiguo/test), fallback honesto a created_at.
+            day = _date(ped.get("fecha_pago") or ped.get("created_at"))
             if not day:
                 continue  # pedido sin fecha: fila ignorada, cota documentada
             variant_id = f"p{line['producto_id']}-{str(line.get('talla','')).strip()}"

@@ -97,8 +97,9 @@ class SupabaseRestRepository:
                     detail = ""
                     try:
                         body = response.json()
-                        detail = str(body.get("message", ""))[:300] if isinstance(body, dict) else ""
-                    except Exception:  # noqa: BLE001 — el cuerpo puede no ser JSON
+                        detail = (str(body.get("message", ""))[:300]
+                            if isinstance(body, dict) else "")
+                    except Exception:  # noqa: BLE001 — puede no ser JSON
                         detail = ""
                     raise SupabaseConnectionError(
                         f"HTTP {response.status_code} inesperado al leer '{path}'."
@@ -162,7 +163,7 @@ class SupabaseRestRepository:
             {
                 "select": (
                     "producto_id,talla,cantidad,precio_unitario,"
-                    "pedidos!inner(created_at,estado)"
+                    "pedidos!inner(created_at,fecha_pago,estado)"
                 ),
                 "pedidos.estado": "eq.exitoso",
             },

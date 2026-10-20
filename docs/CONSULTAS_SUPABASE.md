@@ -21,6 +21,7 @@ están definidas — no se desactivan ni se usan credenciales privilegiadas.
 | **Inventario en bodega** | `stock.cantidad`, nivel `producto × talla` (UNIQUE `(producto_id, talla)`) | Esquema confirmado |
 | **Moneda** | Montos en CLP (enteros): `SUM(cantidad × precio_unitario)` | `precio_unitario bigint` en `detalles_pedido` |
 | **Período de venta** | Fecha del pedido: `pedidos.created_at` (única fecha real disponible) | No existe fecha separada de pago/despacho |
+| **Fecha de pago real** | Columna `pedidos.fecha_pago` (agregada por el usuario el 2026-10-19 vía SQL Editor). El repositorio lee `pedidos!inner(created_at,fecha_pago,estado)` y la fecha de venta es `COALESCE(fecha_pago, created_at)`. Para compras futuras, el webhook debe escribirla (cambio del equipo en la tienda). | Age: `alter table pedidos add column if not exists fecha_pago timestamptz` |
 | **Unidades en camino** | **No existen en el esquema** → 0; documentado como dato faltante para reglas de reposición cuando llegue el modelo | No hay tabla de compras/órdenes de proveedor |
 
 **Relaciones confirmadas por el esquema (ninguna inventada):**
