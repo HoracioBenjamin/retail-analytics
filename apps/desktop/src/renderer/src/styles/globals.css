@@ -2,6 +2,7 @@
 @import 'tw-animate-css';
 /* Tokens de identidad del proyecto (plan, sección 7.1) — después de tailwind. */
 @import './tokens.css';
+@import './one-layout.css';
 
 @custom-variant dark (&:is(.dark *));
 

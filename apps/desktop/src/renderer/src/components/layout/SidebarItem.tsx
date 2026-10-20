@@ -31,17 +31,17 @@ export function SidebarItem({
       onClick={() => onSelect?.(entry)}
       aria-current={active ? 'page' : undefined}
       className={cn(
-        'group relative h-10 w-full justify-start gap-3 rounded-md px-3 text-sm',
+        'one-nav-item group relative h-11 w-full justify-start gap-3 rounded-lg px-3 text-sm',
         collapsed && 'justify-center px-0',
         active
-          ? 'bg-surface-sidebar-hover font-medium text-surface-sidebar-text-active'
+          ? 'one-nav-item-active font-medium'
           : 'text-surface-sidebar-text hover:bg-surface-sidebar-hover hover:text-surface-sidebar-text-active'
       )}
     >
       {active && (
-        <span className="absolute left-0 h-5 w-1 rounded-r-full bg-brand" aria-hidden="true" />
+        <span className="absolute left-0 h-5 w-0.5 rounded-r-full bg-brand" aria-hidden="true" />
       )}
-      <Icon className={cn('size-4 shrink-0', active && 'text-brand')} />
+      <Icon className={cn('size-[18px] shrink-0', active && 'text-red-400')} />
       {!collapsed && <span className="truncate">{entry.label}</span>}
     </Button>
   )

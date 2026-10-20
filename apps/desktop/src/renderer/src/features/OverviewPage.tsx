@@ -12,7 +12,7 @@ import { ErrorState } from '@/components/shared/ErrorState'
 import { LoadingState } from '@/components/shared/LoadingState'
 import { FilterBar } from '@/components/shared/FilterBar'
 import { StatusBadge } from '@/components/shared/StatusBadge'
-import { DemoChip, ModelPendingNote } from '@/components/shared/DemoChip'
+import { DemoChip } from '@/components/shared/DemoChip'
 import { HistoryForecastChart } from '@/components/shared/HistoryForecastChart'
 import { VariantDetailSheet } from '@/components/shared/VariantDetailSheet'
 import {
@@ -24,7 +24,7 @@ import {
   useRecommendations,
   useVariantRows
 } from '@/hooks/api'
-import { fmtCLP, fmtCoverage, fmtNum, rangeLabel, weekLabel, longDate } from '@/lib/format'
+import { fmtCLP, fmtCoverage, fmtNum, rangeLabel, weekLabel } from '@/lib/format'
 import { PERIOD_LABELS, buildDateRange, type Periodo } from './periodRange'
 
 /**
@@ -113,8 +113,8 @@ export function OverviewPage(): React.JSX.Element {
           title="Resumen de ventas e inventario"
           description={
             status.data?.metadata.historical_range
-              ? `Historial ${rangeLabel(status.data.metadata.historical_range.start, status.data.metadata.historical_range.end)} · corte ${longDate(status.data.metadata.as_of!)}`
-              : 'Historial y corte pendientes del dataset'
+              ? `Historial ${rangeLabel(status.data.metadata.historical_range.start, status.data.metadata.historical_range.end)}`
+              : 'Historial pendiente del dataset'
           }
           actions={
             <>
@@ -199,7 +199,6 @@ export function OverviewPage(): React.JSX.Element {
             </div>
 
             {/* Paneles de riesgo */}
-            <ModelPendingNote />
             <div className="grid gap-4 lg:grid-cols-2">
               <RiskPanel
                 title="Riesgo de agotamiento"
@@ -224,7 +223,7 @@ export function OverviewPage(): React.JSX.Element {
               <SectionCard
                 className="lg:col-span-2"
                 title="Ventas históricas y pronóstico de ejemplo"
-                description="Separados por la fecha de corte: la línea roja punteada es un valor de ejemplo, no una predicción de modelo."
+                description="La línea discontinua es un valor de ejemplo, no una predicción de modelo."
               >
                 <VariantChartBlock
                   chartVariantId={chartVariantId}
@@ -540,7 +539,7 @@ function ColorSelect({
 }): React.JSX.Element {
   return (
     <Select value={value || 'all'} onValueChange={onChange}>
-      <SelectTrigger className="w-36 text-xs">
+      <SelectTrigger className="w-40 text-xs">
         <SelectValue placeholder="Todos los colores" />
       </SelectTrigger>
       <SelectContent>
@@ -568,7 +567,7 @@ function SizeSelect({
 }): React.JSX.Element {
   return (
     <Select value={value || 'all'} onValueChange={onChange}>
-      <SelectTrigger className="w-32 text-xs">
+      <SelectTrigger className="w-40 text-xs">
         <SelectValue placeholder="Todas las tallas" />
       </SelectTrigger>
       <SelectContent>

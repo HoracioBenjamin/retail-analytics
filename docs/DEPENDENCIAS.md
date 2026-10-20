@@ -1,5 +1,41 @@
 # Dependencias y entorno — Zapatillas Duoc Analytics
 
+## Revisión visual ONE — 20/10/2026
+
+Se ajustó la interfaz compartida para aproximar la composición de ONE a partir
+de los componentes locales de referencia de `procesos_automaticos` (solo
+lectura). Cambios: cabecera con selector de módulo y menú de espacio de trabajo,
+sidebar agrupado y plegable, breadcrumb, encabezados de página, indicadores con
+icono, paneles plegables y corrección de márgenes/espaciados. Detalle en
+`docs/DESIGN.md`, sección 7, y `styles/one-layout.css`.
+
+No se añadieron dependencias, no se modificaron los proveedores de datos ni el
+backend y no se inspeccionaron archivos `.env` ni credenciales. Para la revisión
+se ejecutó una instancia aislada de Electron con `MAIN_VITE_DATA_MODE=demo-local`
+establecido en el proceso y un perfil temporal separado. No se consultó Supabase.
+
+Verificaciones realizadas con Node **de Windows**, sin compartir ni reinstalar
+`node_modules` desde WSL:
+
+- Prettier sobre los archivos de interfaz modificados: correcto.
+- TypeScript renderer (`tsc --noEmit -p tsconfig.web.json --composite false`): correcto.
+- ESLint sobre los componentes de layout, tarjetas/filtros modificados y
+  `OverviewPage.tsx`: correcto.
+- Compilación con electron-vite, en demo: main, preload y renderer correctos.
+- Revisión CDP sobre la aplicación Electron compilada: seis rutas en tema
+  claro/oscuro, sin excepciones ni errores de consola detectados.
+- Interacciones verificadas: plegado de sidebar y paneles, apertura del menú
+  central y navegación a Variantes, apertura del menú del espacio y navegación
+  a Ajustes. Viewport 1366 × 768 sin desborde horizontal del contenido principal.
+- `git diff --check`: correcto.
+
+Evidencia: **16 capturas PNG** y `validation.json` en
+`docs/screenshots/one-refresh/`. Las capturas corresponden a datos demo, no a una
+verificación de la conexión real. No se creó un instalador ni se ejecutaron las
+pruebas del backend, que no fue modificado.
+
+---
+
 Fecha de registro: 17 de octubre de 2026 (Paso 0 del `PLAN_BASE_SOFTWARE_PREDICTIVO.md`).
 
 Este documento registra la plataforma, las herramientas verificadas y las decisiones de gestión de dependencias para la construcción de la base del aplicativo predictivo de escritorio.
@@ -363,11 +399,22 @@ el chip **"Datos de demostración"**.
 
 ---
 
-## Etapa C — Conexión real a Supabase, solo lectura (EN CURSO 🔧)
+## Etapa C — Conexión real a Supabase, solo lectura (COMPLETADA ✅ · modelo ML pendiente por diseño)
 
 **Fecha:** 2026-10-18. Ejecuta el plan acordado C0–C4: la app lee datos
 reales vía **Electron → FastAPI → Supabase REST** con la clave pública y
 RLS intacta. **Sin ML, sin inserts, sin migraciones, sin service_role.**
+
+### Ajustes de presentación a pedido del usuario (2026-10-20)
+
+- Banner ámbar "Modelo predictivo pendiente" retirado de las 3 pantallas
+  que lo mostraban (Resumen, Pronósticos, Recomendaciones).
+- Toda mención visible de "corte" oculta del frontend por ahora (chip de
+  cabecera, subtítulos, gráfico, Estado de datos y Ajustes). El dato
+  sigue disponible en la API (`as_of`, `forecast_method`) para cuando se
+  quiera volver a mostrar.
+- Re-verificado tras el cambio: lint ✅, typecheck 0 errores ✅,
+  vitest 10/10 ✅, capturas regeneradas en `docs/capturas/etapaC/`.
 
 ### C0 — Diagnóstico (COMPLETADO ✅)
 

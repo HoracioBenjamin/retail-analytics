@@ -15,7 +15,7 @@ import { SectionCard } from '@/components/shared/SectionCard'
 import { EmptyState } from '@/components/shared/EmptyState'
 import { ErrorState } from '@/components/shared/ErrorState'
 import { LoadingState } from '@/components/shared/LoadingState'
-import { DemoChip, ModelPendingNote } from '@/components/shared/DemoChip'
+import { DemoChip } from '@/components/shared/DemoChip'
 import {
   Select,
   SelectContent,
@@ -24,7 +24,7 @@ import {
   SelectValue
 } from '@/components/ui/select'
 import { useDataStatus, useDatasetMetadata, useForecastSeries, useVariantRows } from '@/hooks/api'
-import { longDate, weekLabel } from '@/lib/format'
+import { weekLabel } from '@/lib/format'
 
 /**
  * Pantalla Pronósticos (plan, sección 8 "/forecasts"): selector de variante,
@@ -76,8 +76,6 @@ export function ForecastsPage(): React.JSX.Element {
           actions={<DemoChip />}
         />
 
-        <ModelPendingNote />
-
         <SectionCard
           title="Proyección por variante"
           description={
@@ -86,7 +84,7 @@ export function ForecastsPage(): React.JSX.Element {
                 ? `Historial real de ventas (modo conectado) · sin proyección: modelo predictivo pendiente`
                 : 'Esperando el estado de datos'
               : status.data?.metadata.historical_range
-                ? `Histórico de 12 semanas + 4 semanas futuras ilustrativas · corte ${longDate(status.data.metadata.as_of!)}`
+                ? `Histórico de 12 semanas + 4 semanas futuras ilustrativas`
                 : 'Esperando el dataset de demostración'
           }
         >
@@ -166,12 +164,6 @@ export function ForecastsPage(): React.JSX.Element {
                             x={lastHistoryLabel}
                             stroke="var(--muted-foreground)"
                             strokeDasharray="4 4"
-                            label={{
-                              value: `Corte ${status.data?.metadata.as_of ?? ''}`,
-                              position: 'insideTopLeft',
-                              fontSize: 10,
-                              fill: 'var(--muted-foreground)'
-                            }}
                           />
                         )}
                         <Line

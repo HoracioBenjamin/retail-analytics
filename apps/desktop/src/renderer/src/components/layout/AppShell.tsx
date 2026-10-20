@@ -1,8 +1,11 @@
-import { useState } from 'react'
+import { useState, type CSSProperties } from 'react'
+import { ChevronRight, LayoutGrid } from 'lucide-react'
 import { AppHeader } from './AppHeader'
 import { AppSidebar } from './AppSidebar'
 import { TooltipProvider } from '@/components/ui/tooltip'
 import type { SidebarEntry } from './SidebarItem'
+import { SIDEBAR_ENTRIES } from './sidebarEntries'
+import { DemoChip } from '@/components/shared/DemoChip'
 
 const SIDEBAR_STORAGE_KEY = 'retail-analytics-sidebar'
 
@@ -30,6 +33,7 @@ export function AppShell({
   children: React.ReactNode
 }): React.JSX.Element {
   const [collapsed, setCollapsed] = useState<boolean>(readInitialCollapsed)
+  const sectionLabel = SIDEBAR_ENTRIES.find((entry) => entry.id === activeId)?.label ?? 'Resumen'
 
   const toggleCollapsed = (): void => {
     const next = !collapsed
@@ -43,24 +47,35 @@ export function AppShell({
 
   return (
     <TooltipProvider delayDuration={100}>
-      {/* BFC: contiene el margen del <main> (sin colapso) para que el
-          documento no desborde 100vh y solo exista el scroll interno. */}
-      <div className="h-screen overflow-hidden">
-        <AppHeader />
+      <div
+        className="one-app-shell"
+        data-sidebar={collapsed ? 'collapsed' : 'expanded'}
+        style={{ '--sidebar-width': collapsed ? '64px' : '240px' } as CSSProperties}
+      >
+        <AppHeader activeId={activeId} onSelect={onSelect} />
         <AppSidebar
           activeId={activeId}
           collapsed={collapsed}
           onToggleCollapsed={toggleCollapsed}
           onSelect={onSelect}
         />
-        <main
-          className={`
-            mt-16 h-[calc(100vh-4rem)] overflow-y-auto p-6 transition-[padding]
-            duration-200
-            ${collapsed ? 'pl-16' : 'md:pl-[240px] pl-16'}
-          `}
-        >
-          {children}
+        <main className="one-main" id="main-content">
+          <div className="one-content">
+            <div className="one-context-bar">
+              <nav aria-label="Ruta de navegación" className="one-breadcrumb">
+                <LayoutGrid className="size-3.5" aria-hidden="true" />
+                <button type="button" onClick={() => onSelect(SIDEBAR_ENTRIES[0])}>
+                  Retail Analytics
+                </button>
+                <ChevronRight className="size-3" aria-hidden="true" />
+                <span aria-current="page">{sectionLabel}</span>
+              </nav>
+              <div className="one-context-meta">
+                <DemoChip />
+              </div>
+            </div>
+            {children}
+          </div>
         </main>
       </div>
     </TooltipProvider>

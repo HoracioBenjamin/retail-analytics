@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-20",
+  "mode": "demo-local",
+  "checks": [
+    "Modo demo-local confirmado; sin consultas reales",
+    "overview light: render y dimensiones correctos",
+    "variants light: render y dimensiones correctos",
+    "forecasts light: render y dimensiones correctos",
+    "recommendations light: render y dimensiones correctos",
+    "data-status light: render y dimensiones correctos",
+    "settings light: render y dimensiones correctos",
+    "overview dark: render y dimensiones correctos",
+    "variants dark: render y dimensiones correctos",
+    "forecasts dark: render y dimensiones correctos",
+    "recommendations dark: render y dimensiones correctos",
+    "data-status dark: render y dimensiones correctos",
+    "settings dark: render y dimensiones correctos",
+    "Paneles plegables: cerrar/abrir correcto",
+    "Sidebar: plegar/desplegar correcto",
+    "Menú central: apertura y navegación correctas",
+    "Menú de espacio: apertura y preferencias correctas",
+    "Viewport 1366x768: sin desborde horizontal",
+    "Sin excepciones ni errores de consola en las seis pantallas"
+  ],
+  "errors": []
+}

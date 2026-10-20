@@ -131,8 +131,8 @@ export function VariantsPage(): React.JSX.Element {
           title="Variantes e inventario"
           description={
             conectado
-              ? 'Variante = modelo + color + talla. Datos en vivo de Supabase, solo lectura (el corte de datos está en la cabecera).'
-              : 'Variante = modelo + color + talla. Los datos provienen del dataset de demostración (corte incluido en la cabecera).'
+              ? 'Variante = modelo + color + talla. Datos en vivo de Supabase, solo lectura.'
+              : 'Variante = modelo + color + talla. Los datos provienen del dataset de demostración.'
           }
           actions={<DemoChip />}
         />

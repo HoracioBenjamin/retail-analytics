@@ -90,8 +90,7 @@ export function SettingsPage(): React.JSX.Element {
             <ul className="list-disc space-y-1.5 pl-4 text-xs text-muted-foreground">
               <li>
                 Los datos provienen EXCLUSIVAMENTE de{' '}
-                <span className="font-mono">fixtures/demo-v1.json</span> (determinista, con fecha de
-                corte fija).
+                <span className="font-mono">fixtures/demo-v1.json</span> (dataset determinista).
               </li>
               <li>
                 El pronóstico es un ejemplo del dataset (method «fixture», model_version null): no

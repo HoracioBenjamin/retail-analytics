@@ -1,11 +1,11 @@
-import { CheckCircle2, Clock, Wrench } from 'lucide-react'
+import { CheckCircle2, Wrench } from 'lucide-react'
 import { PageHeader } from '@/components/layout/PageHeader'
 import { SectionCard } from '@/components/shared/SectionCard'
 import { ErrorState } from '@/components/shared/ErrorState'
 import { LoadingState } from '@/components/shared/LoadingState'
 import { DemoChip } from '@/components/shared/DemoChip'
 import { useDataStatus } from '@/hooks/api'
-import { fmtNum, longDate, rangeLabel } from '@/lib/format'
+import { fmtNum, rangeLabel } from '@/lib/format'
 
 /**
  * Pantalla Estado de datos (plan, sección 8 "/data-status"): fuente y modo,
@@ -55,31 +55,13 @@ export function DataStatusPage(): React.JSX.Element {
               </dl>
             </SectionCard>
 
-            <SectionCard
-              title="Actualización y versión"
-              description="Fecha de corte fija del dataset determinista."
-            >
+            <SectionCard title="Actualización y versión">
               <dl className="space-y-2 text-xs">
-                <StatusLine
-                  label="Fecha de corte (as_of)"
-                  value={
-                    status.data.metadata.as_of
-                      ? longDate(status.data.metadata.as_of)
-                      : 'No disponible'
-                  }
-                />
                 <StatusLine
                   label="Versión del dataset"
                   value={status.data.metadata.dataset_version ?? 'No disponible'}
                   mono
                 />
-                <div>
-                  <p className="text-muted-foreground">
-                    <Clock className="mr-1 inline size-3" aria-hidden="true" />
-                    El corte no cambia al abrir la app: el dataset es determinista por diseño
-                    (semilla fija).
-                  </p>
-                </div>
               </dl>
             </SectionCard>
 

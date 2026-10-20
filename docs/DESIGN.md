@@ -15,11 +15,11 @@
 | Superficie de app | `#F5F5F5` claro / `#0D0D12` oscuro |
 | Tarjetas | `#FFFFFF` / `#202028`, radio **12 px** (`--radius: 0.75rem`) |
 | Borde | `#E5E7EB` claro / `rgba(255,255,255,0.08)` oscuro |
-| Cabecera | 64 px, `rgba(13,13,18,0.90)` + blur (oscura en ambos temas) |
-| Sidebar | 240 px desplegado / **64 px plegado**, `rgba(18,18,24,0.95)` (oscuro en ambos temas) |
-| Actividad en sidebar | barra roja a la izquierda + texto blanco + icono rojo |
+| Cabecera | 64 px, `rgba(13,13,18,0.97)` + blur; marca propia, selector de módulo y menú del espacio de trabajo |
+| Sidebar | 240 px desplegado / **64 px plegado**, `#121218` (oscuro en ambos temas); control de plegado superior |
+| Actividad en sidebar | borde rojo izquierdo + fondo rojo suave + texto/icono coral |
 | Sombras | `--shadow-card` 0 1px 3px rgba(0,0,0,.08) · `--shadow-card-lg` 0 4px 12px rgba(0,0,0,.1) |
-| Padding de página | 24 px (escala 4–32px para el resto) |
+| Padding de página | 24 px horizontales, independientes del ancho del sidebar; breadcrumb superior y scroll principal único |
 
 ## 2. Estados de riesgo (siempre texto + icono)
 
@@ -71,13 +71,45 @@ los componentes de `src/renderer/src/components/ui/**` funcionan sin cambios.
 
 ## 6. Estructura de pantalla tipo (AppShell)
 
-```
-┌─ AppHeader (64 px, fijo, oscuro) ─ marca · contexto central · tema · usuario demo ─┐
+```text
+┌─ AppHeader (64 px, fijo, oscuro) ─ marca · selector de módulo · tema · espacio de trabajo ─┐
 ├─ AppSidebar (izq, oscuro) ──┬─ contenido (margen 24 px, scroll único) ─────────────┤
-│ Resumen                     │  PageHeader (borde rojo izq., título 24 px, acciones) │
+│ Resumen                     │  PageHeader (borde rojo izq., título 20 px, acciones) │
 │ Variantes e inventario      │  FilterBar                                            │
 │ Pronósticos                 │  KpiCards (grid 4)                                    │
 │ Recomendaciones             │  SectionCards (paneles, gráficas, tablas)             │
 │ Estado de datos / Ajustes   │  VariantDetailSheet en hoja lateral derecha           │
-└─ [Plegar] ──────────────────┴───────────────────────────────────────────────────────┘
+└─ Contexto ──────────────────┴───────────────────────────────────────────────────────┘
 ```
+
+## 7. Ajuste de fidelidad a ONE — 20/10/2026
+
+Se contrastaron los componentes locales de `procesos_automaticos`: `HeaderBar`,
+`MenuHeader`, `UserCard`, `NavBar`, `HeaderPage` y los paneles del dashboard. La
+adaptación conserva la identidad Zapatillas Duoc y los servicios actuales; no
+incorpora autenticación, logotipos ni dependencias corporativas.
+
+- Cabecera con marca textual **DUOC analytics**, selector funcional de pantallas
+  y bloque de espacio de trabajo. El bloque muestra el modo de datos conocido,
+  sin atribuir una identidad o sesión de usuario que no existe.
+- Menús oscuros con navegación, cambio de tema, estado de datos y preferencias.
+- Sidebar con grupos **Análisis comercial** y **Espacio de trabajo**, botón de
+  plegado superior, estado activo rojo suave y tarjeta de contexto inferior.
+- Breadcrumb y fecha de corte bajo la cabecera. El origen de datos conserva su
+  rótulo, tanto en modo demo como conectado.
+- `PageHeader` ahora es una superficie con borde, radio de 10 px, acento rojo y
+  título de 20 px, siguiendo la composición de la referencia.
+- `SectionCard` usa encabezado compacto con separador y control accesible para
+  plegar/desplegar el contenido. Se quitaron el padding vertical y gap extra del
+  Card genérico que duplicaban el espacio interior.
+- KPIs con iconos en recuadros suaves y valores en una fila propia para evitar
+  que los importes largos se superpongan al icono.
+- El ancho del sidebar se comparte mediante `--sidebar-width`; el contenido
+  comienza después de ese ancho y conserva su padding horizontal de 24 px.
+- Los estilos de composición se concentran en `styles/one-layout.css`; los
+  colores semánticos siguen en `tokens.css`.
+
+Las capturas de esta revisión se guardan en `docs/screenshots/one-refresh/`.
+La verificación visual usa una instancia aislada de Electron con fixture
+`demo-local`, sin consultar Supabase ni modificar preferencias de la sesión
+habitual. No equivale a validar datos reales ni a probar un instalador.

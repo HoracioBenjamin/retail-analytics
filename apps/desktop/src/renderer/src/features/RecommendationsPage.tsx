@@ -24,7 +24,7 @@ import { ErrorState } from '@/components/shared/ErrorState'
 import { LoadingState } from '@/components/shared/LoadingState'
 import { FilterBar } from '@/components/shared/FilterBar'
 import { StatusBadge } from '@/components/shared/StatusBadge'
-import { DemoChip, ModelPendingNote } from '@/components/shared/DemoChip'
+import { DemoChip } from '@/components/shared/DemoChip'
 import { VariantDetailSheet } from '@/components/shared/VariantDetailSheet'
 import { useDatasetMetadata, useRecommendations, useVariantRows } from '@/hooks/api'
 import { fmtCoverage, fmtNum } from '@/lib/format'
@@ -94,8 +94,6 @@ export function RecommendationsPage(): React.JSX.Element {
           }
           actions={<DemoChip />}
         />
-
-        <ModelPendingNote />
 
         <FilterBar>
           <Select

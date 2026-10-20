@@ -25,18 +25,28 @@ export function KpiCard({
   return (
     <div
       className={cn(
-        'flex flex-col gap-1 rounded-xl border bg-card p-5 shadow-[var(--shadow-card)]',
+        'one-kpi-card flex flex-col rounded-xl border bg-card p-5 shadow-[var(--shadow-card)]',
         className
       )}
     >
-      <div className="flex items-center gap-2 text-xs font-medium text-muted-foreground">
-        {Icon && <Icon className="size-3.5" aria-hidden="true" />}
-        {label}
+      <div className="flex items-start justify-between gap-3">
+        <div className="min-w-0">
+          <p className="text-xs font-medium leading-5 text-muted-foreground">{label}</p>
+        </div>
+        {Icon && (
+          <span className="one-kpi-icon">
+            <Icon className="size-[18px]" aria-hidden="true" />
+          </span>
+        )}
       </div>
-      <div className="text-2xl font-semibold tracking-tight text-foreground">
+      <div className="mt-3 text-[clamp(1.125rem,2vw,1.625rem)] leading-tight font-semibold tracking-tight text-foreground tabular-nums">
         {loading ? '…' : value === undefined || value === null ? '—' : String(value)}
       </div>
-      {hint && <div className="text-xs text-muted-foreground">{hint}</div>}
+      {hint && (
+        <div className="mt-4 border-t pt-3 text-[11px] leading-relaxed text-muted-foreground">
+          {hint}
+        </div>
+      )}
     </div>
   )
 }

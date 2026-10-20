@@ -1,64 +1,120 @@
-import { Moon, Sun } from 'lucide-react'
-import { Button } from '@/components/ui/button'
+import { Check, ChevronDown, LayoutGrid, Moon, Settings, Sun, Database, Store } from 'lucide-react'
 import { useTheme } from '@/app/useTheme'
 import { useDataStatus } from '@/hooks/api'
-import { DemoChip } from '@/components/shared/DemoChip'
-import { longDate } from '@/lib/format'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger
+} from '@/components/ui/dropdown-menu'
+import { SIDEBAR_ENTRIES } from './sidebarEntries'
+import type { SidebarEntry } from './SidebarItem'
 
-/**
- * Cabecera de aplicación 64 px, fondo oscuro translúcido permanente
- * (plan 7.1): marca, contexto central (indicador demo + corte), tema y
- * usuario demo (la autenticación es etapa posterior).
- */
-export function AppHeader(): React.JSX.Element {
+/** Cabecera inspirada en ONE: marca, selector de módulo y espacio de usuario. */
+export function AppHeader({
+  activeId,
+  onSelect
+}: {
+  activeId: string
+  onSelect: (entry: SidebarEntry) => void
+}): React.JSX.Element {
   const { theme, toggleTheme } = useTheme()
   const status = useDataStatus()
+  const connected = status.data?.metadata.data_mode === 'connected'
+  const modeLabel = status.isError
+    ? 'Origen no disponible'
+    : !status.data
+      ? 'Consultando origen…'
+      : connected
+        ? 'Datos conectados · solo lectura'
+        : 'Espacio de demostración'
 
   return (
-    <header className="fixed inset-x-0 top-0 z-20 flex h-16 items-center justify-between gap-4 border-b bg-surface-header px-4 text-surface-sidebar-text backdrop-blur-sm">
-      {/* Marca */}
-      <div className="flex items-center gap-2">
-        <span className="inline-block size-2.5 shrink-0 rounded-full bg-brand" aria-hidden="true" />
-        <span className="text-sm font-semibold text-surface-sidebar-text-active">
-          Zapatillas Duoc Analytics
+    <header className="one-topbar">
+      <button
+        type="button"
+        className="one-wordmark"
+        aria-label="Zapatillas Duoc Analytics — ir al resumen"
+        onClick={() => onSelect(SIDEBAR_ENTRIES[0])}
+      >
+        <span className="one-brand-mark" aria-hidden="true">
+          <span />
+          <span />
+          <span />
         </span>
+        <span className="one-wordmark-copy">
+          <span className="one-wordmark-name">
+            DUOC<span>analytics</span>
+          </span>
+          <span className="one-wordmark-caption">VENTAS E INVENTARIO</span>
+        </span>
+      </button>
+      <div className="one-topbar-center">
+        <DropdownMenu>
+          <DropdownMenuTrigger className="one-module-trigger">
+            <LayoutGrid className="size-4" aria-hidden="true" />
+            <span>Retail Analytics</span>
+            <ChevronDown className="size-3.5 opacity-50" aria-hidden="true" />
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="center" sideOffset={14} className="one-dark-menu w-64">
+            <DropdownMenuLabel>ANÁLISIS COMERCIAL</DropdownMenuLabel>
+            {SIDEBAR_ENTRIES.map((entry) => (
+              <DropdownMenuItem key={entry.id} onSelect={() => onSelect(entry)}>
+                <entry.icon className="size-4" />
+                {entry.label}
+                {activeId === entry.id && <Check className="ml-auto size-3.5 text-red-400" />}
+              </DropdownMenuItem>
+            ))}
+          </DropdownMenuContent>
+        </DropdownMenu>
+        <span className="one-topbar-divider" />
+        <span className="one-topbar-context">Zapatillas Duoc</span>
       </div>
-
-      {/* Contexto central: modo demo + corte del dataset */}
-      <div className="hidden flex-1 justify-center md:flex">
-        <div className="flex items-center gap-2">
-          <DemoChip />
-          {status.data?.metadata.as_of && (
-            <span className="text-xs text-surface-sidebar-text">
-              corte {longDate(status.data.metadata.as_of)}
-            </span>
-          )}
-        </div>
-      </div>
-
-      {/* Tema + usuario demo */}
-      <div className="flex items-center gap-1">
-        <Button
-          variant="ghost"
-          size="icon"
+      <div className="one-topbar-user">
+        <button
+          type="button"
           onClick={toggleTheme}
+          className="one-theme-button"
           aria-label={theme === 'light' ? 'Cambiar a tema oscuro' : 'Cambiar a tema claro'}
-          className="text-surface-sidebar-text hover:text-surface-sidebar-text-active hover:bg-surface-sidebar-hover"
+          title={theme === 'light' ? 'Cambiar a tema oscuro' : 'Cambiar a tema claro'}
         >
           {theme === 'light' ? <Moon className="size-4" /> : <Sun className="size-4" />}
-        </Button>
-        <div
-          className="flex items-center gap-2 rounded-full px-2 py-1 text-xs text-surface-sidebar-text"
-          title="Sesión demo — la autenticación real es etapa posterior"
-        >
-          <span
-            className="flex size-6 items-center justify-center rounded-full bg-brand-soft-strong text-xs font-semibold text-brand-strong"
-            aria-hidden="true"
-          >
-            D
-          </span>
-          <span className="hidden lg:inline">Usuario demo</span>
-        </div>
+        </button>
+        <DropdownMenu>
+          <DropdownMenuTrigger className="one-profile-trigger">
+            <span className="one-profile-avatar" aria-hidden="true">
+              <Store className="size-4" />
+            </span>
+            <span className="one-profile-copy">
+              <span>Panel de análisis</span>
+              <span>{modeLabel}</span>
+            </span>
+            <ChevronDown className="size-3.5 opacity-50" aria-hidden="true" />
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end" sideOffset={12} className="one-dark-menu w-64">
+            <DropdownMenuLabel>ESPACIO DE TRABAJO</DropdownMenuLabel>
+            <p className="px-2 pb-3 text-xs text-neutral-400">{modeLabel}</p>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem onSelect={toggleTheme}>
+              {theme === 'light' ? <Moon /> : <Sun />}
+              {theme === 'light' ? 'Modo oscuro' : 'Modo claro'}
+            </DropdownMenuItem>
+            <DropdownMenuItem
+              onSelect={() => onSelect(SIDEBAR_ENTRIES.find((e) => e.id === 'data-status')!)}
+            >
+              <Database />
+              Estado de datos
+            </DropdownMenuItem>
+            <DropdownMenuItem
+              onSelect={() => onSelect(SIDEBAR_ENTRIES.find((e) => e.id === 'settings')!)}
+            >
+              <Settings />
+              Preferencias
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
     </header>
   )
