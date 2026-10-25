@@ -621,3 +621,74 @@ cd services/analytics-api
 - [ ] Al apagar la API aparece un error claro sin cambiar silenciosamente de
       modo (Paso 7).
 - [x] Ninguna ruta afirma modelo entrenado, conexión real o autenticación.
+
+## Incidente 1 — modo `connected` sin cadena de datos (RESUELTO, 24/10/2026)
+
+**Síntoma reportado por el usuario:** "la app no carga la DB" — todas las
+pantallas mostraban sobre de error `SERVICE_UNAVAILABLE`, y tras restaurar
+el backend "no se ve que consuma los datos de la BD".
+
+**Causa (configuración + defecto de tooling, no de dominio):** tres factores.
+
+1. `apps/desktop/.env` estaba en `MAIN_VITE_DATA_MODE=connected`, pero el
+   backend FastAPI no estaba corriendo (puerto 8000 inactivo). Por diseño
+   (etapa C) no hay fallback silencioso a demo: el modo connected falla
+   explícitamente y las pantallas muestran el error estable — así funcionó.
+2. El usuario colocó las credenciales de Supabase en el `.env` del
+   **desktop** con nombres no leídos por la app (`VITE_SUPABASE_URL`,
+   `VITE_SUPABASE_ANON_KEY`). Arquitectura etapa C: el escritorio NUNCA
+   habla con Supabase; las claves viven en `services/analytics-api/.env`
+   con nombres `SUPABASE_URL` / `SUPABASE_PUBLISHABLE_KEY` (config.py).
+3. `apps/desktop/.env` restaurado, pero la app seguía en demo-local
+   (chip rojo "Datos de demostración", sin llamadas HTTP al backend):
+   **electron-vite 6.0.0 + vite 8.3.4 no exponen las variables `.env`
+   `MAIN_VITE_*` en el `process.env` del proceso main**, y las referencias
+   `process.env['X']` (acceso por corchete, forma usada en `settings.ts`
+   desde el Paso 3) no se reemplazan en el build SSR — la variable era
+   `undefined` en runtime y `resolveDataMode()` caía al default
+   `demo-local`. Verificado: `out/main/index.js` mantuvo la referencia
+   literal tras `electron-vite build`, con y sin notación de punto.
+
+**Corrección aplicada (24/10/2026):**
+
+- `apps/desktop/.env` restaurado a la forma de etapa C:
+  `MAIN_VITE_DATA_MODE=connected` + `MAIN_VITE_ANALYTICS_API_URL=http://127.0.0.1:8000`
+  (solo esas dos líneas; las credenciales NO pertenecen aquí).
+- Creado `services/analytics-api/.env` (antes no existía): `APP_ENV=development`,
+  `APP_MODE=connected`, `DEMO_DATASET_PATH=../../fixtures/demo-v1.json`,
+  `SUPABASE_URL` (URL del proyecto) y `SUPABASE_PUBLISHABLE_KEY`
+  (clave pública `sb_publishable_…`, compatible con headers
+  `apikey`/`Authorization: Bearer` de `supabase_rest.py`). Valores movidos
+  programáticamente; ningún secreto impreso.
+- **`src/main/config/settings.ts` corregido**: lectura en dos fuentes —
+  primero `process.env['MAIN_VITE_*']` (launch con variable en el shell)
+  y como objetivo `import.meta.env.MAIN_VITE_*`, que vite 8 incrusta en el
+  bundle del main al compilar (verificado: `"MAIN_VITE_DATA_MODE":
+  "connected"` quedó en `out/main/index.js`). `typecheck` OK.
+- Backend levantado con el `.venv` Linux existente (este WSL):
+  `./.venv/bin/python -m uvicorn app.main:app --host 127.0.0.1 --port 8000`.
+  Nota: el venv actual es de Linux (pyvenv.cfg → uv cpython-3.12 Linux),
+  distinto del camino Windows documentado en el Paso 6; decidir el camino
+  canónico (Windows vía `py`+pip o WSL) y anotarlo.
+- Escritorio relanzado (`npm run dev`).
+
+**Verificación end-to-end (24/10/2026):**
+
+- `/health` (desde Windows): `{"ok":true,"mode":"connected",
+  "upstream":"supabase-rest (clave pública, solo SELECT, RLS)",
+  "dataset_available":true,"conteos":{"productos":12,"stock":30,
+  "pedidos_todos":18,"lineas_venta_todas":8,…}}`.
+- Log de uvicorn con la app consumiendo en vivo: `data-status`, `overview`,
+  `filters`, `variants?page=1&page_size=200`, `recommendations`,
+  `forecasts?variant_id=p48-40` — todos 200.
+- Captura `docs/capturas/app-pantalla-1.png`: chip verde
+  **"Datos en vivo · solo lectura"** en Resumen; KPIs **9 unidades ·
+  $993.960 CLP** (09-oct → 17-oct), **30 variantes en el período** —
+  idéntico al overview servido por la API conectada a Supabase.
+
+**Estado:** cadena React→IPC→ApiHttpProvider→FastAPI→Supabase REST
+funcional y VERIFICADA VISUALMENTE en Resumen. La base real tiene poco
+historial → todo `insufficient_data`, paneles de riesgo vacíos con
+mensajes honestos (correcto: no hay modelo ML ni invento de datos).
+Pendiente del usuario: recorrido visual de las otras 5 pantallas en
+connected; capturas del recorrido para archivar en `docs/capturas/etapaC/`.
