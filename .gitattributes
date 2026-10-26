@@ -1,0 +1,12 @@
+# Normalizar finales de línea: evitar ruido CRLF/LF entre Windows y WSL
+* text=auto eol=lf
+
+# Binarios y recursos sin transformación
+*.png binary
+*.jpg binary
+*.ico binary
+*.icns binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.exe binary

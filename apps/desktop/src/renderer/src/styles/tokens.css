@@ -1,0 +1,116 @@
+/**
+ * Tokens de identidad — Zapatillas Duoc Analytics (plan, sección 7.1).
+ * Valores contrastados contra `procesos_automaticos/app/assets/css/main.css`
+ * (referencia visual, solo lectura). Sobrescriben el tema neutral de shadcn
+ * para cumplir la identidad pedida: fondo #F5F5F5, tarjetas blancas r=12px,
+ * acento rojo #FF0000, modo oscuro #0D0D12 con superficie #202028.
+ */
+
+:root {
+  /* ── Superficies — modo claro: exactos de la referencia ── */
+  --background: #f5f5f5;
+  --workspace-background: #f5f5f5;
+  --border-hover: #d1d5db;
+  --ring: #bd0003;
+  --foreground: #1a1a1a;
+  --card: #ffffff;
+  --card-foreground: #1a1a1a;
+  --border: #e5e7eb;
+  --input: #e5e7eb;
+  --secondary: #f0f0f0;
+  --secondary-foreground: #1a1a1a;
+  --muted: #f0f0f0;
+  --muted-foreground: #4b5563;
+  --accent: #f0f0f0;
+  --accent-foreground: #1a1a1a;
+  --primary: #1f1f1f;
+  --primary-foreground: #ffffff;
+  --popover: #ffffff;
+  --popover-foreground: #1a1a1a;
+
+  /* ── Acento de la marca (rojo principal) ── */
+  --brand: #ff0000;
+  /* Variante oscura del acento para texto pequeño/botones con poco contraste */
+  --brand-strong: #bd0003;
+  /* Fondo suave del acento: chips, sellos, resaltes */
+  --brand-soft: rgba(255, 0, 0, 0.08);
+  --brand-soft-strong: rgba(255, 0, 0, 0.14);
+
+  /* ── Superficies fijas (navegación oscura en cualquier tema) ── */
+  --surface-header: rgba(13, 13, 18, 0.97);
+  --surface-sidebar: #121218;
+  --surface-header-border: rgba(255, 255, 255, 0.06);
+  --surface-sidebar-border: rgba(255, 255, 255, 0.04);
+  --surface-sidebar-text: #c6c6c6;
+  --surface-sidebar-text-active: #ffffff;
+  --surface-sidebar-hover: rgba(255, 255, 255, 0.06);
+
+  /* ── Estados de riesgo (plan 7.1: siempre con texto + icono) ── */
+  --status-stockout: #dc2626;
+  --status-excess: #d97706;
+  --status-balanced: #16a34a;
+  --status-insufficient: #6b7280;
+
+  /* ── Sombras discretas ── */
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-card-lg: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.dark {
+  /* ── Superficies — modo oscuro ── */
+  --background: #0d0d12;
+  --workspace-background: radial-gradient(ellipse at 85% 0%, #ff443305, transparent 50%), #0d0d12;
+  --border-hover: rgba(255, 255, 255, 0.16);
+  --ring: #ff7160;
+  --foreground: #ffffff;
+  --card: #202028;
+  --card-foreground: #ffffff;
+  --border: rgba(255, 255, 255, 0.08);
+  --input: rgba(255, 255, 255, 0.15);
+  --secondary: #202028;
+  --secondary-foreground: #ffffff;
+  --muted: #2a2a35;
+  --muted-foreground: #a0a0ab;
+  --accent: #202028;
+  --accent-foreground: #ffffff;
+  --primary: #ffffff;
+  --primary-foreground: #202028;
+  --popover: #202028;
+  --popover-foreground: #ffffff;
+
+  /* Acento: tinte más claro en oscuro para contraste de texto pequeño */
+  --brand: #ff4433;
+  --brand-strong: #ff7160;
+  --brand-soft: rgba(255, 68, 51, 0.12);
+  --brand-soft-strong: rgba(255, 68, 51, 0.2);
+
+  /* Estados de riego: tintes más luminosos en oscuro */
+  --status-stockout: #f87171;
+  --status-excess: #fbbf24;
+  --status-balanced: #4ade80;
+  --status-insufficient: #9ca3af;
+
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-card-lg: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* ── Mapa para utilidades de Tailwind v4 ── */
+@theme inline {
+  --color-brand: var(--brand);
+  --color-brand-strong: var(--brand-strong);
+  --color-brand-soft: var(--brand-soft);
+  --color-brand-soft-strong: var(--brand-soft-strong);
+  --color-surface-header: var(--surface-header);
+  --color-surface-sidebar: var(--surface-sidebar);
+  --color-surface-header-border: var(--surface-header-border);
+  --color-surface-sidebar-border: var(--surface-sidebar-border);
+  --color-surface-sidebar-text: var(--surface-sidebar-text);
+  --color-surface-sidebar-text-active: var(--surface-sidebar-text-active);
+  --color-surface-sidebar-hover: var(--surface-sidebar-hover);
+  --color-status-stockout: var(--status-stockout);
+  --color-status-excess: var(--status-excess);
+  --color-status-balanced: var(--status-balanced);
+  --color-status-insufficient: var(--status-insufficient);
+  --shadow-card: var(--shadow-card);
+  --shadow-card-lg: var(--shadow-card-lg);
+}

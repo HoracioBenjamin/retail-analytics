@@ -1,0 +1,19 @@
+# Python del servicio (no compartir con WSL; se regenera con el lock)
+.venv/
+
+# Configuración local con secretos si algún día existiera (la base A/B no
+# usa secretos; .env.example de referencia sí se conserva)
+.env
+
+# Artefactos de Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
+generated_ml_demo_data/
+
+# logs de servidor de desarrollo
+*.log

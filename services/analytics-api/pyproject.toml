@@ -1,0 +1,38 @@
+[project]
+name = "analytics-api"
+version = "0.1.0"
+description = "API demo de la base del aplicativo predictivo (Entrega B). Sirve el fixture canónico fixtures/demo-v1.json sin credenciales ni base de datos."
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi",
+    "uvicorn[standard]",
+    "pydantic",
+    "pydantic-settings",
+    "httpx",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "httpx",
+    "ruff",
+    "pip-tools",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B"]
+# extend-immutable-calls: Depends/Query en defaults ES el patrón canónico de
+# FastAPI (docs fastapi.tiangolo.com); no son mutación de estado.
+[tool.ruff.lint.flake8-bugbear]
+extend-immutable-calls = ["fastapi.Depends", "fastapi.Query"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"

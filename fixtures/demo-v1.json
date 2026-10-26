@@ -1,0 +1,6296 @@
+{
+  "dataset_version": "demo-v1.0.0",
+  "generated": "2026-09-28T09:00:00-03:00",
+  "as_of": "2026-09-28",
+  "historical_weeks": 12,
+  "forecast_weeks": 4,
+  "base_currency": "CLP",
+  "variants": [
+    {
+      "variant_id": "aurora-negro-38",
+      "product_id": "p-aurora",
+      "sku": "TA-AURO-NEG-38",
+      "model": "Aurora Running",
+      "brand": "Travesía Andina",
+      "color": "Negro",
+      "size": "38",
+      "size_system": "EU",
+      "stock_on_hand": 26
+    },
+    {
+      "variant_id": "aurora-negro-40",
+      "product_id": "p-aurora",
+      "sku": "TA-AURO-NEG-40",
+      "model": "Aurora Running",
+      "brand": "Travesía Andina",
+      "color": "Negro",
+      "size": "40",
+      "size_system": "EU",
+      "stock_on_hand": 6
+    },
+    {
+      "variant_id": "aurora-negro-42",
+      "product_id": "p-aurora",
+      "sku": "TA-AURO-NEG-42",
+      "model": "Aurora Running",
+      "brand": "Travesía Andina",
+      "color": "Negro",
+      "size": "42",
+      "size_system": "EU",
+      "stock_on_hand": 8
+    },
+    {
+      "variant_id": "aurora-negro-44",
+      "product_id": "p-aurora",
+      "sku": "TA-AURO-NEG-44",
+      "model": "Aurora Running",
+      "brand": "Travesía Andina",
+      "color": "Negro",
+      "size": "44",
+      "size_system": "EU",
+      "stock_on_hand": 40
+    },
+    {
+      "variant_id": "aurora-negro-46",
+      "product_id": "p-aurora",
+      "sku": "TA-AURO-NEG-46",
+      "model": "Aurora Running",
+      "brand": "Travesía Andina",
+      "color": "Negro",
+      "size": "46",
+      "size_system": "EU",
+      "stock_on_hand": 18
+    },
+    {
+      "variant_id": "aurora-blanco-38",
+      "product_id": "p-aurora",
+      "sku": "TA-AURO-BLA-38",
+      "model": "Aurora Running",
+      "brand": "Travesía Andina",
+      "color": "Blanco",
+      "size": "38",
+      "size_system": "EU",
+      "stock_on_hand": 12
+    },
+    {
+      "variant_id": "aurora-blanco-40",
+      "product_id": "p-aurora",
+      "sku": "TA-AURO-BLA-40",
+      "model": "Aurora Running",
+      "brand": "Travesía Andina",
+      "color": "Blanco",
+      "size": "40",
+      "size_system": "EU",
+      "stock_on_hand": 4
+    },
+    {
+      "variant_id": "aurora-blanco-42",
+      "product_id": "p-aurora",
+      "sku": "TA-AURO-BLA-42",
+      "model": "Aurora Running",
+      "brand": "Travesía Andina",
+      "color": "Blanco",
+      "size": "42",
+      "size_system": "EU",
+      "stock_on_hand": 45
+    },
+    {
+      "variant_id": "aurora-blanco-44",
+      "product_id": "p-aurora",
+      "sku": "TA-AURO-BLA-44",
+      "model": "Aurora Running",
+      "brand": "Travesía Andina",
+      "color": "Blanco",
+      "size": "44",
+      "size_system": "EU",
+      "stock_on_hand": 70
+    },
+    {
+      "variant_id": "aurora-blanco-46",
+      "product_id": "p-aurora",
+      "sku": "TA-AURO-BLA-46",
+      "model": "Aurora Running",
+      "brand": "Travesía Andina",
+      "color": "Blanco",
+      "size": "46",
+      "size_system": "EU",
+      "stock_on_hand": 14
+    },
+    {
+      "variant_id": "cordoba-negro-38",
+      "product_id": "p-cordoba",
+      "sku": "TA-CORD-NEG-38",
+      "model": "Córdoba Court",
+      "brand": "Travesía Andina",
+      "color": "Negro",
+      "size": "38",
+      "size_system": "EU",
+      "stock_on_hand": 22
+    },
+    {
+      "variant_id": "cordoba-negro-40",
+      "product_id": "p-cordoba",
+      "sku": "TA-CORD-NEG-40",
+      "model": "Córdoba Court",
+      "brand": "Travesía Andina",
+      "color": "Negro",
+      "size": "40",
+      "size_system": "EU",
+      "stock_on_hand": 55
+    },
+    {
+      "variant_id": "cordoba-negro-42",
+      "product_id": "p-cordoba",
+      "sku": "TA-CORD-NEG-42",
+      "model": "Córdoba Court",
+      "brand": "Travesía Andina",
+      "color": "Negro",
+      "size": "42",
+      "size_system": "EU",
+      "stock_on_hand": 70
+    },
+    {
+      "variant_id": "cordoba-negro-44",
+      "product_id": "p-cordoba",
+      "sku": "TA-CORD-NEG-44",
+      "model": "Córdoba Court",
+      "brand": "Travesía Andina",
+      "color": "Negro",
+      "size": "44",
+      "size_system": "EU",
+      "stock_on_hand": 60
+    },
+    {
+      "variant_id": "cordoba-negro-46",
+      "product_id": "p-cordoba",
+      "sku": "TA-CORD-NEG-46",
+      "model": "Córdoba Court",
+      "brand": "Travesía Andina",
+      "color": "Negro",
+      "size": "46",
+      "size_system": "EU",
+      "stock_on_hand": 35
+    },
+    {
+      "variant_id": "cordoba-blanco-38",
+      "product_id": "p-cordoba",
+      "sku": "TA-CORD-BLA-38",
+      "model": "Córdoba Court",
+      "brand": "Travesía Andina",
+      "color": "Blanco",
+      "size": "38",
+      "size_system": "EU",
+      "stock_on_hand": 18
+    },
+    {
+      "variant_id": "cordoba-blanco-40",
+      "product_id": "p-cordoba",
+      "sku": "TA-CORD-BLA-40",
+      "model": "Córdoba Court",
+      "brand": "Travesía Andina",
+      "color": "Blanco",
+      "size": "40",
+      "size_system": "EU",
+      "stock_on_hand": 48
+    },
+    {
+      "variant_id": "cordoba-blanco-42",
+      "product_id": "p-cordoba",
+      "sku": "TA-CORD-BLA-42",
+      "model": "Córdoba Court",
+      "brand": "Travesía Andina",
+      "color": "Blanco",
+      "size": "42",
+      "size_system": "EU",
+      "stock_on_hand": 62
+    },
+    {
+      "variant_id": "cordoba-blanco-44",
+      "product_id": "p-cordoba",
+      "sku": "TA-CORD-BLA-44",
+      "model": "Córdoba Court",
+      "brand": "Travesía Andina",
+      "color": "Blanco",
+      "size": "44",
+      "size_system": "EU",
+      "stock_on_hand": 44
+    },
+    {
+      "variant_id": "cordoba-blanco-46",
+      "product_id": "p-cordoba",
+      "sku": "TA-CORD-BLA-46",
+      "model": "Córdoba Court",
+      "brand": "Travesía Andina",
+      "color": "Blanco",
+      "size": "46",
+      "size_system": "EU",
+      "stock_on_hand": 28
+    },
+    {
+      "variant_id": "volcan-negro-38",
+      "product_id": "p-volcan",
+      "sku": "TA-VOLC-NEG-38",
+      "model": "Volcán Trail",
+      "brand": "Travesía Andina",
+      "color": "Negro",
+      "size": "38",
+      "size_system": "EU",
+      "stock_on_hand": 12
+    },
+    {
+      "variant_id": "volcan-negro-40",
+      "product_id": "p-volcan",
+      "sku": "TA-VOLC-NEG-40",
+      "model": "Volcán Trail",
+      "brand": "Travesía Andina",
+      "color": "Negro",
+      "size": "40",
+      "size_system": "EU",
+      "stock_on_hand": 22
+    },
+    {
+      "variant_id": "volcan-negro-42",
+      "product_id": "p-volcan",
+      "sku": "TA-VOLC-NEG-42",
+      "model": "Volcán Trail",
+      "brand": "Travesía Andina",
+      "color": "Negro",
+      "size": "42",
+      "size_system": "EU",
+      "stock_on_hand": 30
+    },
+    {
+      "variant_id": "volcan-negro-44",
+      "product_id": "p-volcan",
+      "sku": "TA-VOLC-NEG-44",
+      "model": "Volcán Trail",
+      "brand": "Travesía Andina",
+      "color": "Negro",
+      "size": "44",
+      "size_system": "EU",
+      "stock_on_hand": 18
+    },
+    {
+      "variant_id": "volcan-negro-46",
+      "product_id": "p-volcan",
+      "sku": "TA-VOLC-NEG-46",
+      "model": "Volcán Trail",
+      "brand": "Travesía Andina",
+      "color": "Negro",
+      "size": "46",
+      "size_system": "EU",
+      "stock_on_hand": 10
+    },
+    {
+      "variant_id": "volcan-blanco-38",
+      "product_id": "p-volcan",
+      "sku": "TA-VOLC-BLA-38",
+      "model": "Volcán Trail",
+      "brand": "Travesía Andina",
+      "color": "Blanco",
+      "size": "38",
+      "size_system": "EU",
+      "stock_on_hand": 11
+    },
+    {
+      "variant_id": "volcan-blanco-40",
+      "product_id": "p-volcan",
+      "sku": "TA-VOLC-BLA-40",
+      "model": "Volcán Trail",
+      "brand": "Travesía Andina",
+      "color": "Blanco",
+      "size": "40",
+      "size_system": "EU",
+      "stock_on_hand": 20
+    },
+    {
+      "variant_id": "volcan-blanco-42",
+      "product_id": "p-volcan",
+      "sku": "TA-VOLC-BLA-42",
+      "model": "Volcán Trail",
+      "brand": "Travesía Andina",
+      "color": "Blanco",
+      "size": "42",
+      "size_system": "EU",
+      "stock_on_hand": 27
+    },
+    {
+      "variant_id": "volcan-blanco-44",
+      "product_id": "p-volcan",
+      "sku": "TA-VOLC-BLA-44",
+      "model": "Volcán Trail",
+      "brand": "Travesía Andina",
+      "color": "Blanco",
+      "size": "44",
+      "size_system": "EU",
+      "stock_on_hand": 16
+    },
+    {
+      "variant_id": "volcan-blanco-46",
+      "product_id": "p-volcan",
+      "sku": "TA-VOLC-BLA-46",
+      "model": "Volcán Trail",
+      "brand": "Travesía Andina",
+      "color": "Blanco",
+      "size": "46",
+      "size_system": "EU",
+      "stock_on_hand": 9
+    },
+    {
+      "variant_id": "insignia-negro-38",
+      "product_id": "p-insignia",
+      "sku": "TA-INSI-NEG-38",
+      "model": "Insignia Urbana",
+      "brand": "Travesía Andina",
+      "color": "Negro",
+      "size": "38",
+      "size_system": "EU",
+      "stock_on_hand": 0
+    },
+    {
+      "variant_id": "insignia-negro-40",
+      "product_id": "p-insignia",
+      "sku": "TA-INSI-NEG-40",
+      "model": "Insignia Urbana",
+      "brand": "Travesía Andina",
+      "color": "Negro",
+      "size": "40",
+      "size_system": "EU",
+      "stock_on_hand": 0
+    },
+    {
+      "variant_id": "insignia-negro-42",
+      "product_id": "p-insignia",
+      "sku": "TA-INSI-NEG-42",
+      "model": "Insignia Urbana",
+      "brand": "Travesía Andina",
+      "color": "Negro",
+      "size": "42",
+      "size_system": "EU",
+      "stock_on_hand": 0
+    },
+    {
+      "variant_id": "insignia-negro-44",
+      "product_id": "p-insignia",
+      "sku": "TA-INSI-NEG-44",
+      "model": "Insignia Urbana",
+      "brand": "Travesía Andina",
+      "color": "Negro",
+      "size": "44",
+      "size_system": "EU",
+      "stock_on_hand": 0
+    },
+    {
+      "variant_id": "insignia-negro-46",
+      "product_id": "p-insignia",
+      "sku": "TA-INSI-NEG-46",
+      "model": "Insignia Urbana",
+      "brand": "Travesía Andina",
+      "color": "Negro",
+      "size": "46",
+      "size_system": "EU",
+      "stock_on_hand": 0
+    },
+    {
+      "variant_id": "insignia-blanco-38",
+      "product_id": "p-insignia",
+      "sku": "TA-INSI-BLA-38",
+      "model": "Insignia Urbana",
+      "brand": "Travesía Andina",
+      "color": "Blanco",
+      "size": "38",
+      "size_system": "EU",
+      "stock_on_hand": 0
+    },
+    {
+      "variant_id": "insignia-blanco-40",
+      "product_id": "p-insignia",
+      "sku": "TA-INSI-BLA-40",
+      "model": "Insignia Urbana",
+      "brand": "Travesía Andina",
+      "color": "Blanco",
+      "size": "40",
+      "size_system": "EU",
+      "stock_on_hand": 0
+    },
+    {
+      "variant_id": "insignia-blanco-42",
+      "product_id": "p-insignia",
+      "sku": "TA-INSI-BLA-42",
+      "model": "Insignia Urbana",
+      "brand": "Travesía Andina",
+      "color": "Blanco",
+      "size": "42",
+      "size_system": "EU",
+      "stock_on_hand": 0
+    },
+    {
+      "variant_id": "insignia-blanco-44",
+      "product_id": "p-insignia",
+      "sku": "TA-INSI-BLA-44",
+      "model": "Insignia Urbana",
+      "brand": "Travesía Andina",
+      "color": "Blanco",
+      "size": "44",
+      "size_system": "EU",
+      "stock_on_hand": 0
+    },
+    {
+      "variant_id": "insignia-blanco-46",
+      "product_id": "p-insignia",
+      "sku": "TA-INSI-BLA-46",
+      "model": "Insignia Urbana",
+      "brand": "Travesía Andina",
+      "color": "Blanco",
+      "size": "46",
+      "size_system": "EU",
+      "stock_on_hand": 0
+    }
+  ],
+  "sales_history": [
+    {
+      "variant_id": "aurora-negro-38",
+      "period_start": "2026-07-06",
+      "period_end": "2026-07-12",
+      "units_sold": 8,
+      "sales_amount_clp": 639920,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-negro-38",
+      "period_start": "2026-07-13",
+      "period_end": "2026-07-19",
+      "units_sold": 6,
+      "sales_amount_clp": 479940,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-negro-38",
+      "period_start": "2026-07-20",
+      "period_end": "2026-07-26",
+      "units_sold": 7,
+      "sales_amount_clp": 559930,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-negro-38",
+      "period_start": "2026-07-27",
+      "period_end": "2026-08-02",
+      "units_sold": 6,
+      "sales_amount_clp": 479940,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-negro-38",
+      "period_start": "2026-08-03",
+      "period_end": "2026-08-09",
+      "units_sold": 6,
+      "sales_amount_clp": 479940,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-negro-38",
+      "period_start": "2026-08-10",
+      "period_end": "2026-08-16",
+      "units_sold": 6,
+      "sales_amount_clp": 479940,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-negro-38",
+      "period_start": "2026-08-17",
+      "period_end": "2026-08-23",
+      "units_sold": 8,
+      "sales_amount_clp": 639920,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-negro-38",
+      "period_start": "2026-08-24",
+      "period_end": "2026-08-30",
+      "units_sold": 7,
+      "sales_amount_clp": 559930,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-negro-38",
+      "period_start": "2026-08-31",
+      "period_end": "2026-09-06",
+      "units_sold": 7,
+      "sales_amount_clp": 559930,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-negro-38",
+      "period_start": "2026-09-07",
+      "period_end": "2026-09-13",
+      "units_sold": 5,
+      "sales_amount_clp": 399950,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-negro-38",
+      "period_start": "2026-09-14",
+      "period_end": "2026-09-20",
+      "units_sold": 7,
+      "sales_amount_clp": 559930,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-negro-38",
+      "period_start": "2026-09-21",
+      "period_end": "2026-09-27",
+      "units_sold": 8,
+      "sales_amount_clp": 639920,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-negro-40",
+      "period_start": "2026-07-06",
+      "period_end": "2026-07-12",
+      "units_sold": 17,
+      "sales_amount_clp": 1359830,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-negro-40",
+      "period_start": "2026-07-13",
+      "period_end": "2026-07-19",
+      "units_sold": 14,
+      "sales_amount_clp": 1119860,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-negro-40",
+      "period_start": "2026-07-20",
+      "period_end": "2026-07-26",
+      "units_sold": 16,
+      "sales_amount_clp": 1279840,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-negro-40",
+      "period_start": "2026-07-27",
+      "period_end": "2026-08-02",
+      "units_sold": 17,
+      "sales_amount_clp": 1359830,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-negro-40",
+      "period_start": "2026-08-03",
+      "period_end": "2026-08-09",
+      "units_sold": 21,
+      "sales_amount_clp": 1679790,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-negro-40",
+      "period_start": "2026-08-10",
+      "period_end": "2026-08-16",
+      "units_sold": 22,
+      "sales_amount_clp": 1759780,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-negro-40",
+      "period_start": "2026-08-17",
+      "period_end": "2026-08-23",
+      "units_sold": 21,
+      "sales_amount_clp": 1679790,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-negro-40",
+      "period_start": "2026-08-24",
+      "period_end": "2026-08-30",
+      "units_sold": 18,
+      "sales_amount_clp": 1439820,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-negro-40",
+      "period_start": "2026-08-31",
+      "period_end": "2026-09-06",
+      "units_sold": 17,
+      "sales_amount_clp": 1359830,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-negro-40",
+      "period_start": "2026-09-07",
+      "period_end": "2026-09-13",
+      "units_sold": 18,
+      "sales_amount_clp": 1439820,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-negro-40",
+      "period_start": "2026-09-14",
+      "period_end": "2026-09-20",
+      "units_sold": 21,
+      "sales_amount_clp": 1679790,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-negro-40",
+      "period_start": "2026-09-21",
+      "period_end": "2026-09-27",
+      "units_sold": 17,
+      "sales_amount_clp": 1359830,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-negro-42",
+      "period_start": "2026-07-06",
+      "period_end": "2026-07-12",
+      "units_sold": 18,
+      "sales_amount_clp": 1439820,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-negro-42",
+      "period_start": "2026-07-13",
+      "period_end": "2026-07-19",
+      "units_sold": 15,
+      "sales_amount_clp": 1199850,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-negro-42",
+      "period_start": "2026-07-20",
+      "period_end": "2026-07-26",
+      "units_sold": 14,
+      "sales_amount_clp": 1119860,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-negro-42",
+      "period_start": "2026-07-27",
+      "period_end": "2026-08-02",
+      "units_sold": 14,
+      "sales_amount_clp": 1119860,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-negro-42",
+      "period_start": "2026-08-03",
+      "period_end": "2026-08-09",
+      "units_sold": 16,
+      "sales_amount_clp": 1279840,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-negro-42",
+      "period_start": "2026-08-10",
+      "period_end": "2026-08-16",
+      "units_sold": 14,
+      "sales_amount_clp": 1119860,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-negro-42",
+      "period_start": "2026-08-17",
+      "period_end": "2026-08-23",
+      "units_sold": 15,
+      "sales_amount_clp": 1199850,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-negro-42",
+      "period_start": "2026-08-24",
+      "period_end": "2026-08-30",
+      "units_sold": 17,
+      "sales_amount_clp": 1359830,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-negro-42",
+      "period_start": "2026-08-31",
+      "period_end": "2026-09-06",
+      "units_sold": 14,
+      "sales_amount_clp": 1119860,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-negro-42",
+      "period_start": "2026-09-07",
+      "period_end": "2026-09-13",
+      "units_sold": 16,
+      "sales_amount_clp": 1279840,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-negro-42",
+      "period_start": "2026-09-14",
+      "period_end": "2026-09-20",
+      "units_sold": 19,
+      "sales_amount_clp": 1519810,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-negro-42",
+      "period_start": "2026-09-21",
+      "period_end": "2026-09-27",
+      "units_sold": 14,
+      "sales_amount_clp": 1119860,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-negro-44",
+      "period_start": "2026-07-06",
+      "period_end": "2026-07-12",
+      "units_sold": 9,
+      "sales_amount_clp": 719910,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-negro-44",
+      "period_start": "2026-07-13",
+      "period_end": "2026-07-19",
+      "units_sold": 12,
+      "sales_amount_clp": 959880,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-negro-44",
+      "period_start": "2026-07-20",
+      "period_end": "2026-07-26",
+      "units_sold": 10,
+      "sales_amount_clp": 799900,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-negro-44",
+      "period_start": "2026-07-27",
+      "period_end": "2026-08-02",
+      "units_sold": 12,
+      "sales_amount_clp": 959880,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-negro-44",
+      "period_start": "2026-08-03",
+      "period_end": "2026-08-09",
+      "units_sold": 10,
+      "sales_amount_clp": 799900,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-negro-44",
+      "period_start": "2026-08-10",
+      "period_end": "2026-08-16",
+      "units_sold": 12,
+      "sales_amount_clp": 959880,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-negro-44",
+      "period_start": "2026-08-17",
+      "period_end": "2026-08-23",
+      "units_sold": 8,
+      "sales_amount_clp": 639920,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-negro-44",
+      "period_start": "2026-08-24",
+      "period_end": "2026-08-30",
+      "units_sold": 11,
+      "sales_amount_clp": 879890,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-negro-44",
+      "period_start": "2026-08-31",
+      "period_end": "2026-09-06",
+      "units_sold": 12,
+      "sales_amount_clp": 959880,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-negro-44",
+      "period_start": "2026-09-07",
+      "period_end": "2026-09-13",
+      "units_sold": 11,
+      "sales_amount_clp": 879890,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-negro-44",
+      "period_start": "2026-09-14",
+      "period_end": "2026-09-20",
+      "units_sold": 12,
+      "sales_amount_clp": 959880,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-negro-44",
+      "period_start": "2026-09-21",
+      "period_end": "2026-09-27",
+      "units_sold": 11,
+      "sales_amount_clp": 879890,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-negro-46",
+      "period_start": "2026-07-06",
+      "period_end": "2026-07-12",
+      "units_sold": 7,
+      "sales_amount_clp": 559930,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-negro-46",
+      "period_start": "2026-07-13",
+      "period_end": "2026-07-19",
+      "units_sold": 6,
+      "sales_amount_clp": 479940,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-negro-46",
+      "period_start": "2026-07-20",
+      "period_end": "2026-07-26",
+      "units_sold": 7,
+      "sales_amount_clp": 559930,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-negro-46",
+      "period_start": "2026-07-27",
+      "period_end": "2026-08-02",
+      "units_sold": 4,
+      "sales_amount_clp": 319960,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-negro-46",
+      "period_start": "2026-08-03",
+      "period_end": "2026-08-09",
+      "units_sold": 5,
+      "sales_amount_clp": 399950,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-negro-46",
+      "period_start": "2026-08-10",
+      "period_end": "2026-08-16",
+      "units_sold": 4,
+      "sales_amount_clp": 319960,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-negro-46",
+      "period_start": "2026-08-17",
+      "period_end": "2026-08-23",
+      "units_sold": 5,
+      "sales_amount_clp": 399950,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-negro-46",
+      "period_start": "2026-08-24",
+      "period_end": "2026-08-30",
+      "units_sold": 6,
+      "sales_amount_clp": 479940,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-negro-46",
+      "period_start": "2026-08-31",
+      "period_end": "2026-09-06",
+      "units_sold": 6,
+      "sales_amount_clp": 479940,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-negro-46",
+      "period_start": "2026-09-07",
+      "period_end": "2026-09-13",
+      "units_sold": 5,
+      "sales_amount_clp": 399950,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-negro-46",
+      "period_start": "2026-09-14",
+      "period_end": "2026-09-20",
+      "units_sold": 6,
+      "sales_amount_clp": 479940,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-negro-46",
+      "period_start": "2026-09-21",
+      "period_end": "2026-09-27",
+      "units_sold": 6,
+      "sales_amount_clp": 479940,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-blanco-38",
+      "period_start": "2026-07-06",
+      "period_end": "2026-07-12",
+      "units_sold": 6,
+      "sales_amount_clp": 479940,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-blanco-38",
+      "period_start": "2026-07-13",
+      "period_end": "2026-07-19",
+      "units_sold": 6,
+      "sales_amount_clp": 479940,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-blanco-38",
+      "period_start": "2026-07-20",
+      "period_end": "2026-07-26",
+      "units_sold": 6,
+      "sales_amount_clp": 479940,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-blanco-38",
+      "period_start": "2026-07-27",
+      "period_end": "2026-08-02",
+      "units_sold": 5,
+      "sales_amount_clp": 399950,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-blanco-38",
+      "period_start": "2026-08-03",
+      "period_end": "2026-08-09",
+      "units_sold": 4,
+      "sales_amount_clp": 319960,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-blanco-38",
+      "period_start": "2026-08-10",
+      "period_end": "2026-08-16",
+      "units_sold": 4,
+      "sales_amount_clp": 319960,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-blanco-38",
+      "period_start": "2026-08-17",
+      "period_end": "2026-08-23",
+      "units_sold": 6,
+      "sales_amount_clp": 479940,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-blanco-38",
+      "period_start": "2026-08-24",
+      "period_end": "2026-08-30",
+      "units_sold": 5,
+      "sales_amount_clp": 399950,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-blanco-38",
+      "period_start": "2026-08-31",
+      "period_end": "2026-09-06",
+      "units_sold": 6,
+      "sales_amount_clp": 479940,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-blanco-38",
+      "period_start": "2026-09-07",
+      "period_end": "2026-09-13",
+      "units_sold": 6,
+      "sales_amount_clp": 479940,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-blanco-38",
+      "period_start": "2026-09-14",
+      "period_end": "2026-09-20",
+      "units_sold": 5,
+      "sales_amount_clp": 399950,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-blanco-38",
+      "period_start": "2026-09-21",
+      "period_end": "2026-09-27",
+      "units_sold": 6,
+      "sales_amount_clp": 479940,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-blanco-40",
+      "period_start": "2026-07-06",
+      "period_end": "2026-07-12",
+      "units_sold": 15,
+      "sales_amount_clp": 1199850,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-blanco-40",
+      "period_start": "2026-07-13",
+      "period_end": "2026-07-19",
+      "units_sold": 18,
+      "sales_amount_clp": 1439820,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-blanco-40",
+      "period_start": "2026-07-20",
+      "period_end": "2026-07-26",
+      "units_sold": 15,
+      "sales_amount_clp": 1199850,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-blanco-40",
+      "period_start": "2026-07-27",
+      "period_end": "2026-08-02",
+      "units_sold": 16,
+      "sales_amount_clp": 1279840,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-blanco-40",
+      "period_start": "2026-08-03",
+      "period_end": "2026-08-09",
+      "units_sold": 13,
+      "sales_amount_clp": 1039870,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-blanco-40",
+      "period_start": "2026-08-10",
+      "period_end": "2026-08-16",
+      "units_sold": 15,
+      "sales_amount_clp": 1199850,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-blanco-40",
+      "period_start": "2026-08-17",
+      "period_end": "2026-08-23",
+      "units_sold": 14,
+      "sales_amount_clp": 1119860,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-blanco-40",
+      "period_start": "2026-08-24",
+      "period_end": "2026-08-30",
+      "units_sold": 16,
+      "sales_amount_clp": 1279840,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-blanco-40",
+      "period_start": "2026-08-31",
+      "period_end": "2026-09-06",
+      "units_sold": 15,
+      "sales_amount_clp": 1199850,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-blanco-40",
+      "period_start": "2026-09-07",
+      "period_end": "2026-09-13",
+      "units_sold": 15,
+      "sales_amount_clp": 1199850,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-blanco-40",
+      "period_start": "2026-09-14",
+      "period_end": "2026-09-20",
+      "units_sold": 12,
+      "sales_amount_clp": 959880,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-blanco-40",
+      "period_start": "2026-09-21",
+      "period_end": "2026-09-27",
+      "units_sold": 11,
+      "sales_amount_clp": 879890,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-blanco-42",
+      "period_start": "2026-07-06",
+      "period_end": "2026-07-12",
+      "units_sold": 17,
+      "sales_amount_clp": 1359830,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-blanco-42",
+      "period_start": "2026-07-13",
+      "period_end": "2026-07-19",
+      "units_sold": 12,
+      "sales_amount_clp": 959880,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-blanco-42",
+      "period_start": "2026-07-20",
+      "period_end": "2026-07-26",
+      "units_sold": 17,
+      "sales_amount_clp": 1359830,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-blanco-42",
+      "period_start": "2026-07-27",
+      "period_end": "2026-08-02",
+      "units_sold": 11,
+      "sales_amount_clp": 879890,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-blanco-42",
+      "period_start": "2026-08-03",
+      "period_end": "2026-08-09",
+      "units_sold": 11,
+      "sales_amount_clp": 879890,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-blanco-42",
+      "period_start": "2026-08-10",
+      "period_end": "2026-08-16",
+      "units_sold": 17,
+      "sales_amount_clp": 1359830,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-blanco-42",
+      "period_start": "2026-08-17",
+      "period_end": "2026-08-23",
+      "units_sold": 13,
+      "sales_amount_clp": 1039870,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-blanco-42",
+      "period_start": "2026-08-24",
+      "period_end": "2026-08-30",
+      "units_sold": 16,
+      "sales_amount_clp": 1279840,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-blanco-42",
+      "period_start": "2026-08-31",
+      "period_end": "2026-09-06",
+      "units_sold": 14,
+      "sales_amount_clp": 1119860,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-blanco-42",
+      "period_start": "2026-09-07",
+      "period_end": "2026-09-13",
+      "units_sold": 12,
+      "sales_amount_clp": 959880,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-blanco-42",
+      "period_start": "2026-09-14",
+      "period_end": "2026-09-20",
+      "units_sold": 15,
+      "sales_amount_clp": 1199850,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-blanco-42",
+      "period_start": "2026-09-21",
+      "period_end": "2026-09-27",
+      "units_sold": 13,
+      "sales_amount_clp": 1039870,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-blanco-44",
+      "period_start": "2026-07-06",
+      "period_end": "2026-07-12",
+      "units_sold": 10,
+      "sales_amount_clp": 799900,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-blanco-44",
+      "period_start": "2026-07-13",
+      "period_end": "2026-07-19",
+      "units_sold": 10,
+      "sales_amount_clp": 799900,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-blanco-44",
+      "period_start": "2026-07-20",
+      "period_end": "2026-07-26",
+      "units_sold": 7,
+      "sales_amount_clp": 559930,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-blanco-44",
+      "period_start": "2026-07-27",
+      "period_end": "2026-08-02",
+      "units_sold": 9,
+      "sales_amount_clp": 719910,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-blanco-44",
+      "period_start": "2026-08-03",
+      "period_end": "2026-08-09",
+      "units_sold": 7,
+      "sales_amount_clp": 559930,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-blanco-44",
+      "period_start": "2026-08-10",
+      "period_end": "2026-08-16",
+      "units_sold": 8,
+      "sales_amount_clp": 639920,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-blanco-44",
+      "period_start": "2026-08-17",
+      "period_end": "2026-08-23",
+      "units_sold": 10,
+      "sales_amount_clp": 799900,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-blanco-44",
+      "period_start": "2026-08-24",
+      "period_end": "2026-08-30",
+      "units_sold": 9,
+      "sales_amount_clp": 719910,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-blanco-44",
+      "period_start": "2026-08-31",
+      "period_end": "2026-09-06",
+      "units_sold": 10,
+      "sales_amount_clp": 799900,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-blanco-44",
+      "period_start": "2026-09-07",
+      "period_end": "2026-09-13",
+      "units_sold": 10,
+      "sales_amount_clp": 799900,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-blanco-44",
+      "period_start": "2026-09-14",
+      "period_end": "2026-09-20",
+      "units_sold": 6,
+      "sales_amount_clp": 479940,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-blanco-44",
+      "period_start": "2026-09-21",
+      "period_end": "2026-09-27",
+      "units_sold": 8,
+      "sales_amount_clp": 639920,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-blanco-46",
+      "period_start": "2026-07-06",
+      "period_end": "2026-07-12",
+      "units_sold": 5,
+      "sales_amount_clp": 399950,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-blanco-46",
+      "period_start": "2026-07-13",
+      "period_end": "2026-07-19",
+      "units_sold": 4,
+      "sales_amount_clp": 319960,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-blanco-46",
+      "period_start": "2026-07-20",
+      "period_end": "2026-07-26",
+      "units_sold": 4,
+      "sales_amount_clp": 319960,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-blanco-46",
+      "period_start": "2026-07-27",
+      "period_end": "2026-08-02",
+      "units_sold": 4,
+      "sales_amount_clp": 319960,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-blanco-46",
+      "period_start": "2026-08-03",
+      "period_end": "2026-08-09",
+      "units_sold": 5,
+      "sales_amount_clp": 399950,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-blanco-46",
+      "period_start": "2026-08-10",
+      "period_end": "2026-08-16",
+      "units_sold": 5,
+      "sales_amount_clp": 399950,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-blanco-46",
+      "period_start": "2026-08-17",
+      "period_end": "2026-08-23",
+      "units_sold": 3,
+      "sales_amount_clp": 239970,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-blanco-46",
+      "period_start": "2026-08-24",
+      "period_end": "2026-08-30",
+      "units_sold": 4,
+      "sales_amount_clp": 319960,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-blanco-46",
+      "period_start": "2026-08-31",
+      "period_end": "2026-09-06",
+      "units_sold": 5,
+      "sales_amount_clp": 399950,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-blanco-46",
+      "period_start": "2026-09-07",
+      "period_end": "2026-09-13",
+      "units_sold": 4,
+      "sales_amount_clp": 319960,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-blanco-46",
+      "period_start": "2026-09-14",
+      "period_end": "2026-09-20",
+      "units_sold": 5,
+      "sales_amount_clp": 399950,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "aurora-blanco-46",
+      "period_start": "2026-09-21",
+      "period_end": "2026-09-27",
+      "units_sold": 5,
+      "sales_amount_clp": 399950,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-negro-38",
+      "period_start": "2026-07-06",
+      "period_end": "2026-07-12",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-negro-38",
+      "period_start": "2026-07-13",
+      "period_end": "2026-07-19",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-negro-38",
+      "period_start": "2026-07-20",
+      "period_end": "2026-07-26",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-negro-38",
+      "period_start": "2026-07-27",
+      "period_end": "2026-08-02",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-negro-38",
+      "period_start": "2026-08-03",
+      "period_end": "2026-08-09",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-negro-38",
+      "period_start": "2026-08-10",
+      "period_end": "2026-08-16",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-negro-38",
+      "period_start": "2026-08-17",
+      "period_end": "2026-08-23",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-negro-38",
+      "period_start": "2026-08-24",
+      "period_end": "2026-08-30",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-negro-38",
+      "period_start": "2026-08-31",
+      "period_end": "2026-09-06",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-negro-38",
+      "period_start": "2026-09-07",
+      "period_end": "2026-09-13",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-negro-38",
+      "period_start": "2026-09-14",
+      "period_end": "2026-09-20",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-negro-38",
+      "period_start": "2026-09-21",
+      "period_end": "2026-09-27",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-negro-40",
+      "period_start": "2026-07-06",
+      "period_end": "2026-07-12",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-negro-40",
+      "period_start": "2026-07-13",
+      "period_end": "2026-07-19",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-negro-40",
+      "period_start": "2026-07-20",
+      "period_end": "2026-07-26",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-negro-40",
+      "period_start": "2026-07-27",
+      "period_end": "2026-08-02",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-negro-40",
+      "period_start": "2026-08-03",
+      "period_end": "2026-08-09",
+      "units_sold": 2,
+      "sales_amount_clp": 139980,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-negro-40",
+      "period_start": "2026-08-10",
+      "period_end": "2026-08-16",
+      "units_sold": 2,
+      "sales_amount_clp": 139980,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-negro-40",
+      "period_start": "2026-08-17",
+      "period_end": "2026-08-23",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-negro-40",
+      "period_start": "2026-08-24",
+      "period_end": "2026-08-30",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-negro-40",
+      "period_start": "2026-08-31",
+      "period_end": "2026-09-06",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-negro-40",
+      "period_start": "2026-09-07",
+      "period_end": "2026-09-13",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-negro-40",
+      "period_start": "2026-09-14",
+      "period_end": "2026-09-20",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-negro-40",
+      "period_start": "2026-09-21",
+      "period_end": "2026-09-27",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-negro-42",
+      "period_start": "2026-07-06",
+      "period_end": "2026-07-12",
+      "units_sold": 3,
+      "sales_amount_clp": 209970,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-negro-42",
+      "period_start": "2026-07-13",
+      "period_end": "2026-07-19",
+      "units_sold": 3,
+      "sales_amount_clp": 209970,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-negro-42",
+      "period_start": "2026-07-20",
+      "period_end": "2026-07-26",
+      "units_sold": 2,
+      "sales_amount_clp": 139980,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-negro-42",
+      "period_start": "2026-07-27",
+      "period_end": "2026-08-02",
+      "units_sold": 2,
+      "sales_amount_clp": 139980,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-negro-42",
+      "period_start": "2026-08-03",
+      "period_end": "2026-08-09",
+      "units_sold": 3,
+      "sales_amount_clp": 209970,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-negro-42",
+      "period_start": "2026-08-10",
+      "period_end": "2026-08-16",
+      "units_sold": 3,
+      "sales_amount_clp": 209970,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-negro-42",
+      "period_start": "2026-08-17",
+      "period_end": "2026-08-23",
+      "units_sold": 3,
+      "sales_amount_clp": 209970,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-negro-42",
+      "period_start": "2026-08-24",
+      "period_end": "2026-08-30",
+      "units_sold": 2,
+      "sales_amount_clp": 139980,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-negro-42",
+      "period_start": "2026-08-31",
+      "period_end": "2026-09-06",
+      "units_sold": 3,
+      "sales_amount_clp": 209970,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-negro-42",
+      "period_start": "2026-09-07",
+      "period_end": "2026-09-13",
+      "units_sold": 3,
+      "sales_amount_clp": 209970,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-negro-42",
+      "period_start": "2026-09-14",
+      "period_end": "2026-09-20",
+      "units_sold": 3,
+      "sales_amount_clp": 209970,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-negro-42",
+      "period_start": "2026-09-21",
+      "period_end": "2026-09-27",
+      "units_sold": 2,
+      "sales_amount_clp": 139980,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-negro-44",
+      "period_start": "2026-07-06",
+      "period_end": "2026-07-12",
+      "units_sold": 2,
+      "sales_amount_clp": 139980,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-negro-44",
+      "period_start": "2026-07-13",
+      "period_end": "2026-07-19",
+      "units_sold": 2,
+      "sales_amount_clp": 139980,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-negro-44",
+      "period_start": "2026-07-20",
+      "period_end": "2026-07-26",
+      "units_sold": 2,
+      "sales_amount_clp": 139980,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-negro-44",
+      "period_start": "2026-07-27",
+      "period_end": "2026-08-02",
+      "units_sold": 2,
+      "sales_amount_clp": 139980,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-negro-44",
+      "period_start": "2026-08-03",
+      "period_end": "2026-08-09",
+      "units_sold": 2,
+      "sales_amount_clp": 139980,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-negro-44",
+      "period_start": "2026-08-10",
+      "period_end": "2026-08-16",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-negro-44",
+      "period_start": "2026-08-17",
+      "period_end": "2026-08-23",
+      "units_sold": 2,
+      "sales_amount_clp": 139980,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-negro-44",
+      "period_start": "2026-08-24",
+      "period_end": "2026-08-30",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-negro-44",
+      "period_start": "2026-08-31",
+      "period_end": "2026-09-06",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-negro-44",
+      "period_start": "2026-09-07",
+      "period_end": "2026-09-13",
+      "units_sold": 2,
+      "sales_amount_clp": 139980,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-negro-44",
+      "period_start": "2026-09-14",
+      "period_end": "2026-09-20",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-negro-44",
+      "period_start": "2026-09-21",
+      "period_end": "2026-09-27",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-negro-46",
+      "period_start": "2026-07-06",
+      "period_end": "2026-07-12",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-negro-46",
+      "period_start": "2026-07-13",
+      "period_end": "2026-07-19",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-negro-46",
+      "period_start": "2026-07-20",
+      "period_end": "2026-07-26",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-negro-46",
+      "period_start": "2026-07-27",
+      "period_end": "2026-08-02",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-negro-46",
+      "period_start": "2026-08-03",
+      "period_end": "2026-08-09",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-negro-46",
+      "period_start": "2026-08-10",
+      "period_end": "2026-08-16",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-negro-46",
+      "period_start": "2026-08-17",
+      "period_end": "2026-08-23",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-negro-46",
+      "period_start": "2026-08-24",
+      "period_end": "2026-08-30",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-negro-46",
+      "period_start": "2026-08-31",
+      "period_end": "2026-09-06",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-negro-46",
+      "period_start": "2026-09-07",
+      "period_end": "2026-09-13",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-negro-46",
+      "period_start": "2026-09-14",
+      "period_end": "2026-09-20",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-negro-46",
+      "period_start": "2026-09-21",
+      "period_end": "2026-09-27",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-blanco-38",
+      "period_start": "2026-07-06",
+      "period_end": "2026-07-12",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-blanco-38",
+      "period_start": "2026-07-13",
+      "period_end": "2026-07-19",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-blanco-38",
+      "period_start": "2026-07-20",
+      "period_end": "2026-07-26",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-blanco-38",
+      "period_start": "2026-07-27",
+      "period_end": "2026-08-02",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-blanco-38",
+      "period_start": "2026-08-03",
+      "period_end": "2026-08-09",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-blanco-38",
+      "period_start": "2026-08-10",
+      "period_end": "2026-08-16",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-blanco-38",
+      "period_start": "2026-08-17",
+      "period_end": "2026-08-23",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-blanco-38",
+      "period_start": "2026-08-24",
+      "period_end": "2026-08-30",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-blanco-38",
+      "period_start": "2026-08-31",
+      "period_end": "2026-09-06",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-blanco-38",
+      "period_start": "2026-09-07",
+      "period_end": "2026-09-13",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-blanco-38",
+      "period_start": "2026-09-14",
+      "period_end": "2026-09-20",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-blanco-38",
+      "period_start": "2026-09-21",
+      "period_end": "2026-09-27",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-blanco-40",
+      "period_start": "2026-07-06",
+      "period_end": "2026-07-12",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-blanco-40",
+      "period_start": "2026-07-13",
+      "period_end": "2026-07-19",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-blanco-40",
+      "period_start": "2026-07-20",
+      "period_end": "2026-07-26",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-blanco-40",
+      "period_start": "2026-07-27",
+      "period_end": "2026-08-02",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-blanco-40",
+      "period_start": "2026-08-03",
+      "period_end": "2026-08-09",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-blanco-40",
+      "period_start": "2026-08-10",
+      "period_end": "2026-08-16",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-blanco-40",
+      "period_start": "2026-08-17",
+      "period_end": "2026-08-23",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-blanco-40",
+      "period_start": "2026-08-24",
+      "period_end": "2026-08-30",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-blanco-40",
+      "period_start": "2026-08-31",
+      "period_end": "2026-09-06",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-blanco-40",
+      "period_start": "2026-09-07",
+      "period_end": "2026-09-13",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-blanco-40",
+      "period_start": "2026-09-14",
+      "period_end": "2026-09-20",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-blanco-40",
+      "period_start": "2026-09-21",
+      "period_end": "2026-09-27",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-blanco-42",
+      "period_start": "2026-07-06",
+      "period_end": "2026-07-12",
+      "units_sold": 2,
+      "sales_amount_clp": 139980,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-blanco-42",
+      "period_start": "2026-07-13",
+      "period_end": "2026-07-19",
+      "units_sold": 2,
+      "sales_amount_clp": 139980,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-blanco-42",
+      "period_start": "2026-07-20",
+      "period_end": "2026-07-26",
+      "units_sold": 2,
+      "sales_amount_clp": 139980,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-blanco-42",
+      "period_start": "2026-07-27",
+      "period_end": "2026-08-02",
+      "units_sold": 2,
+      "sales_amount_clp": 139980,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-blanco-42",
+      "period_start": "2026-08-03",
+      "period_end": "2026-08-09",
+      "units_sold": 2,
+      "sales_amount_clp": 139980,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-blanco-42",
+      "period_start": "2026-08-10",
+      "period_end": "2026-08-16",
+      "units_sold": 2,
+      "sales_amount_clp": 139980,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-blanco-42",
+      "period_start": "2026-08-17",
+      "period_end": "2026-08-23",
+      "units_sold": 2,
+      "sales_amount_clp": 139980,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-blanco-42",
+      "period_start": "2026-08-24",
+      "period_end": "2026-08-30",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-blanco-42",
+      "period_start": "2026-08-31",
+      "period_end": "2026-09-06",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-blanco-42",
+      "period_start": "2026-09-07",
+      "period_end": "2026-09-13",
+      "units_sold": 2,
+      "sales_amount_clp": 139980,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-blanco-42",
+      "period_start": "2026-09-14",
+      "period_end": "2026-09-20",
+      "units_sold": 2,
+      "sales_amount_clp": 139980,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-blanco-42",
+      "period_start": "2026-09-21",
+      "period_end": "2026-09-27",
+      "units_sold": 2,
+      "sales_amount_clp": 139980,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-blanco-44",
+      "period_start": "2026-07-06",
+      "period_end": "2026-07-12",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-blanco-44",
+      "period_start": "2026-07-13",
+      "period_end": "2026-07-19",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-blanco-44",
+      "period_start": "2026-07-20",
+      "period_end": "2026-07-26",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-blanco-44",
+      "period_start": "2026-07-27",
+      "period_end": "2026-08-02",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-blanco-44",
+      "period_start": "2026-08-03",
+      "period_end": "2026-08-09",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-blanco-44",
+      "period_start": "2026-08-10",
+      "period_end": "2026-08-16",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-blanco-44",
+      "period_start": "2026-08-17",
+      "period_end": "2026-08-23",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-blanco-44",
+      "period_start": "2026-08-24",
+      "period_end": "2026-08-30",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-blanco-44",
+      "period_start": "2026-08-31",
+      "period_end": "2026-09-06",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-blanco-44",
+      "period_start": "2026-09-07",
+      "period_end": "2026-09-13",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-blanco-44",
+      "period_start": "2026-09-14",
+      "period_end": "2026-09-20",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-blanco-44",
+      "period_start": "2026-09-21",
+      "period_end": "2026-09-27",
+      "units_sold": 2,
+      "sales_amount_clp": 139980,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-blanco-46",
+      "period_start": "2026-07-06",
+      "period_end": "2026-07-12",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-blanco-46",
+      "period_start": "2026-07-13",
+      "period_end": "2026-07-19",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-blanco-46",
+      "period_start": "2026-07-20",
+      "period_end": "2026-07-26",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-blanco-46",
+      "period_start": "2026-07-27",
+      "period_end": "2026-08-02",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-blanco-46",
+      "period_start": "2026-08-03",
+      "period_end": "2026-08-09",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-blanco-46",
+      "period_start": "2026-08-10",
+      "period_end": "2026-08-16",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-blanco-46",
+      "period_start": "2026-08-17",
+      "period_end": "2026-08-23",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-blanco-46",
+      "period_start": "2026-08-24",
+      "period_end": "2026-08-30",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-blanco-46",
+      "period_start": "2026-08-31",
+      "period_end": "2026-09-06",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-blanco-46",
+      "period_start": "2026-09-07",
+      "period_end": "2026-09-13",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-blanco-46",
+      "period_start": "2026-09-14",
+      "period_end": "2026-09-20",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "cordoba-blanco-46",
+      "period_start": "2026-09-21",
+      "period_end": "2026-09-27",
+      "units_sold": 1,
+      "sales_amount_clp": 69990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-negro-38",
+      "period_start": "2026-07-06",
+      "period_end": "2026-07-12",
+      "units_sold": 5,
+      "sales_amount_clp": 424950,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-negro-38",
+      "period_start": "2026-07-13",
+      "period_end": "2026-07-19",
+      "units_sold": 4,
+      "sales_amount_clp": 339960,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-negro-38",
+      "period_start": "2026-07-20",
+      "period_end": "2026-07-26",
+      "units_sold": 3,
+      "sales_amount_clp": 254970,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-negro-38",
+      "period_start": "2026-07-27",
+      "period_end": "2026-08-02",
+      "units_sold": 4,
+      "sales_amount_clp": 339960,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-negro-38",
+      "period_start": "2026-08-03",
+      "period_end": "2026-08-09",
+      "units_sold": 3,
+      "sales_amount_clp": 254970,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-negro-38",
+      "period_start": "2026-08-10",
+      "period_end": "2026-08-16",
+      "units_sold": 4,
+      "sales_amount_clp": 339960,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-negro-38",
+      "period_start": "2026-08-17",
+      "period_end": "2026-08-23",
+      "units_sold": 4,
+      "sales_amount_clp": 339960,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-negro-38",
+      "period_start": "2026-08-24",
+      "period_end": "2026-08-30",
+      "units_sold": 4,
+      "sales_amount_clp": 339960,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-negro-38",
+      "period_start": "2026-08-31",
+      "period_end": "2026-09-06",
+      "units_sold": 4,
+      "sales_amount_clp": 339960,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-negro-38",
+      "period_start": "2026-09-07",
+      "period_end": "2026-09-13",
+      "units_sold": 4,
+      "sales_amount_clp": 339960,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-negro-38",
+      "period_start": "2026-09-14",
+      "period_end": "2026-09-20",
+      "units_sold": 4,
+      "sales_amount_clp": 339960,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-negro-38",
+      "period_start": "2026-09-21",
+      "period_end": "2026-09-27",
+      "units_sold": 5,
+      "sales_amount_clp": 424950,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-negro-40",
+      "period_start": "2026-07-06",
+      "period_end": "2026-07-12",
+      "units_sold": 10,
+      "sales_amount_clp": 849900,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-negro-40",
+      "period_start": "2026-07-13",
+      "period_end": "2026-07-19",
+      "units_sold": 6,
+      "sales_amount_clp": 509940,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-negro-40",
+      "period_start": "2026-07-20",
+      "period_end": "2026-07-26",
+      "units_sold": 9,
+      "sales_amount_clp": 764910,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-negro-40",
+      "period_start": "2026-07-27",
+      "period_end": "2026-08-02",
+      "units_sold": 9,
+      "sales_amount_clp": 764910,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-negro-40",
+      "period_start": "2026-08-03",
+      "period_end": "2026-08-09",
+      "units_sold": 7,
+      "sales_amount_clp": 594930,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-negro-40",
+      "period_start": "2026-08-10",
+      "period_end": "2026-08-16",
+      "units_sold": 8,
+      "sales_amount_clp": 679920,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-negro-40",
+      "period_start": "2026-08-17",
+      "period_end": "2026-08-23",
+      "units_sold": 6,
+      "sales_amount_clp": 509940,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-negro-40",
+      "period_start": "2026-08-24",
+      "period_end": "2026-08-30",
+      "units_sold": 6,
+      "sales_amount_clp": 509940,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-negro-40",
+      "period_start": "2026-08-31",
+      "period_end": "2026-09-06",
+      "units_sold": 7,
+      "sales_amount_clp": 594930,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-negro-40",
+      "period_start": "2026-09-07",
+      "period_end": "2026-09-13",
+      "units_sold": 7,
+      "sales_amount_clp": 594930,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-negro-40",
+      "period_start": "2026-09-14",
+      "period_end": "2026-09-20",
+      "units_sold": 6,
+      "sales_amount_clp": 509940,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-negro-40",
+      "period_start": "2026-09-21",
+      "period_end": "2026-09-27",
+      "units_sold": 8,
+      "sales_amount_clp": 679920,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-negro-42",
+      "period_start": "2026-07-06",
+      "period_end": "2026-07-12",
+      "units_sold": 8,
+      "sales_amount_clp": 679920,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-negro-42",
+      "period_start": "2026-07-13",
+      "period_end": "2026-07-19",
+      "units_sold": 10,
+      "sales_amount_clp": 849900,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-negro-42",
+      "period_start": "2026-07-20",
+      "period_end": "2026-07-26",
+      "units_sold": 12,
+      "sales_amount_clp": 1019880,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-negro-42",
+      "period_start": "2026-07-27",
+      "period_end": "2026-08-02",
+      "units_sold": 8,
+      "sales_amount_clp": 679920,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-negro-42",
+      "period_start": "2026-08-03",
+      "period_end": "2026-08-09",
+      "units_sold": 8,
+      "sales_amount_clp": 679920,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-negro-42",
+      "period_start": "2026-08-10",
+      "period_end": "2026-08-16",
+      "units_sold": 9,
+      "sales_amount_clp": 764910,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-negro-42",
+      "period_start": "2026-08-17",
+      "period_end": "2026-08-23",
+      "units_sold": 8,
+      "sales_amount_clp": 679920,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-negro-42",
+      "period_start": "2026-08-24",
+      "period_end": "2026-08-30",
+      "units_sold": 11,
+      "sales_amount_clp": 934890,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-negro-42",
+      "period_start": "2026-08-31",
+      "period_end": "2026-09-06",
+      "units_sold": 10,
+      "sales_amount_clp": 849900,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-negro-42",
+      "period_start": "2026-09-07",
+      "period_end": "2026-09-13",
+      "units_sold": 10,
+      "sales_amount_clp": 849900,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-negro-42",
+      "period_start": "2026-09-14",
+      "period_end": "2026-09-20",
+      "units_sold": 8,
+      "sales_amount_clp": 679920,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-negro-42",
+      "period_start": "2026-09-21",
+      "period_end": "2026-09-27",
+      "units_sold": 12,
+      "sales_amount_clp": 1019880,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-negro-44",
+      "period_start": "2026-07-06",
+      "period_end": "2026-07-12",
+      "units_sold": 7,
+      "sales_amount_clp": 594930,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-negro-44",
+      "period_start": "2026-07-13",
+      "period_end": "2026-07-19",
+      "units_sold": 8,
+      "sales_amount_clp": 679920,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-negro-44",
+      "period_start": "2026-07-20",
+      "period_end": "2026-07-26",
+      "units_sold": 6,
+      "sales_amount_clp": 509940,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-negro-44",
+      "period_start": "2026-07-27",
+      "period_end": "2026-08-02",
+      "units_sold": 6,
+      "sales_amount_clp": 509940,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-negro-44",
+      "period_start": "2026-08-03",
+      "period_end": "2026-08-09",
+      "units_sold": 7,
+      "sales_amount_clp": 594930,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-negro-44",
+      "period_start": "2026-08-10",
+      "period_end": "2026-08-16",
+      "units_sold": 8,
+      "sales_amount_clp": 679920,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-negro-44",
+      "period_start": "2026-08-17",
+      "period_end": "2026-08-23",
+      "units_sold": 5,
+      "sales_amount_clp": 424950,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-negro-44",
+      "period_start": "2026-08-24",
+      "period_end": "2026-08-30",
+      "units_sold": 6,
+      "sales_amount_clp": 509940,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-negro-44",
+      "period_start": "2026-08-31",
+      "period_end": "2026-09-06",
+      "units_sold": 7,
+      "sales_amount_clp": 594930,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-negro-44",
+      "period_start": "2026-09-07",
+      "period_end": "2026-09-13",
+      "units_sold": 6,
+      "sales_amount_clp": 509940,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-negro-44",
+      "period_start": "2026-09-14",
+      "period_end": "2026-09-20",
+      "units_sold": 6,
+      "sales_amount_clp": 509940,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-negro-44",
+      "period_start": "2026-09-21",
+      "period_end": "2026-09-27",
+      "units_sold": 8,
+      "sales_amount_clp": 679920,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-negro-46",
+      "period_start": "2026-07-06",
+      "period_end": "2026-07-12",
+      "units_sold": 3,
+      "sales_amount_clp": 254970,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-negro-46",
+      "period_start": "2026-07-13",
+      "period_end": "2026-07-19",
+      "units_sold": 4,
+      "sales_amount_clp": 339960,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-negro-46",
+      "period_start": "2026-07-20",
+      "period_end": "2026-07-26",
+      "units_sold": 4,
+      "sales_amount_clp": 339960,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-negro-46",
+      "period_start": "2026-07-27",
+      "period_end": "2026-08-02",
+      "units_sold": 4,
+      "sales_amount_clp": 339960,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-negro-46",
+      "period_start": "2026-08-03",
+      "period_end": "2026-08-09",
+      "units_sold": 3,
+      "sales_amount_clp": 254970,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-negro-46",
+      "period_start": "2026-08-10",
+      "period_end": "2026-08-16",
+      "units_sold": 4,
+      "sales_amount_clp": 339960,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-negro-46",
+      "period_start": "2026-08-17",
+      "period_end": "2026-08-23",
+      "units_sold": 3,
+      "sales_amount_clp": 254970,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-negro-46",
+      "period_start": "2026-08-24",
+      "period_end": "2026-08-30",
+      "units_sold": 4,
+      "sales_amount_clp": 339960,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-negro-46",
+      "period_start": "2026-08-31",
+      "period_end": "2026-09-06",
+      "units_sold": 2,
+      "sales_amount_clp": 169980,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-negro-46",
+      "period_start": "2026-09-07",
+      "period_end": "2026-09-13",
+      "units_sold": 3,
+      "sales_amount_clp": 254970,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-negro-46",
+      "period_start": "2026-09-14",
+      "period_end": "2026-09-20",
+      "units_sold": 3,
+      "sales_amount_clp": 254970,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-negro-46",
+      "period_start": "2026-09-21",
+      "period_end": "2026-09-27",
+      "units_sold": 3,
+      "sales_amount_clp": 254970,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-blanco-38",
+      "period_start": "2026-07-06",
+      "period_end": "2026-07-12",
+      "units_sold": 3,
+      "sales_amount_clp": 254970,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-blanco-38",
+      "period_start": "2026-07-13",
+      "period_end": "2026-07-19",
+      "units_sold": 3,
+      "sales_amount_clp": 254970,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-blanco-38",
+      "period_start": "2026-07-20",
+      "period_end": "2026-07-26",
+      "units_sold": 3,
+      "sales_amount_clp": 254970,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-blanco-38",
+      "period_start": "2026-07-27",
+      "period_end": "2026-08-02",
+      "units_sold": 3,
+      "sales_amount_clp": 254970,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-blanco-38",
+      "period_start": "2026-08-03",
+      "period_end": "2026-08-09",
+      "units_sold": 3,
+      "sales_amount_clp": 254970,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-blanco-38",
+      "period_start": "2026-08-10",
+      "period_end": "2026-08-16",
+      "units_sold": 4,
+      "sales_amount_clp": 339960,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-blanco-38",
+      "period_start": "2026-08-17",
+      "period_end": "2026-08-23",
+      "units_sold": 3,
+      "sales_amount_clp": 254970,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-blanco-38",
+      "period_start": "2026-08-24",
+      "period_end": "2026-08-30",
+      "units_sold": 3,
+      "sales_amount_clp": 254970,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-blanco-38",
+      "period_start": "2026-08-31",
+      "period_end": "2026-09-06",
+      "units_sold": 4,
+      "sales_amount_clp": 339960,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-blanco-38",
+      "period_start": "2026-09-07",
+      "period_end": "2026-09-13",
+      "units_sold": 3,
+      "sales_amount_clp": 254970,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-blanco-38",
+      "period_start": "2026-09-14",
+      "period_end": "2026-09-20",
+      "units_sold": 3,
+      "sales_amount_clp": 254970,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-blanco-38",
+      "period_start": "2026-09-21",
+      "period_end": "2026-09-27",
+      "units_sold": 3,
+      "sales_amount_clp": 254970,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-blanco-40",
+      "period_start": "2026-07-06",
+      "period_end": "2026-07-12",
+      "units_sold": 5,
+      "sales_amount_clp": 424950,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-blanco-40",
+      "period_start": "2026-07-13",
+      "period_end": "2026-07-19",
+      "units_sold": 6,
+      "sales_amount_clp": 509940,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-blanco-40",
+      "period_start": "2026-07-20",
+      "period_end": "2026-07-26",
+      "units_sold": 7,
+      "sales_amount_clp": 594930,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-blanco-40",
+      "period_start": "2026-07-27",
+      "period_end": "2026-08-02",
+      "units_sold": 5,
+      "sales_amount_clp": 424950,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-blanco-40",
+      "period_start": "2026-08-03",
+      "period_end": "2026-08-09",
+      "units_sold": 6,
+      "sales_amount_clp": 509940,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-blanco-40",
+      "period_start": "2026-08-10",
+      "period_end": "2026-08-16",
+      "units_sold": 7,
+      "sales_amount_clp": 594930,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-blanco-40",
+      "period_start": "2026-08-17",
+      "period_end": "2026-08-23",
+      "units_sold": 8,
+      "sales_amount_clp": 679920,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-blanco-40",
+      "period_start": "2026-08-24",
+      "period_end": "2026-08-30",
+      "units_sold": 6,
+      "sales_amount_clp": 509940,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-blanco-40",
+      "period_start": "2026-08-31",
+      "period_end": "2026-09-06",
+      "units_sold": 5,
+      "sales_amount_clp": 424950,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-blanco-40",
+      "period_start": "2026-09-07",
+      "period_end": "2026-09-13",
+      "units_sold": 7,
+      "sales_amount_clp": 594930,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-blanco-40",
+      "period_start": "2026-09-14",
+      "period_end": "2026-09-20",
+      "units_sold": 5,
+      "sales_amount_clp": 424950,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-blanco-40",
+      "period_start": "2026-09-21",
+      "period_end": "2026-09-27",
+      "units_sold": 6,
+      "sales_amount_clp": 509940,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-blanco-42",
+      "period_start": "2026-07-06",
+      "period_end": "2026-07-12",
+      "units_sold": 6,
+      "sales_amount_clp": 509940,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-blanco-42",
+      "period_start": "2026-07-13",
+      "period_end": "2026-07-19",
+      "units_sold": 8,
+      "sales_amount_clp": 679920,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-blanco-42",
+      "period_start": "2026-07-20",
+      "period_end": "2026-07-26",
+      "units_sold": 6,
+      "sales_amount_clp": 509940,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-blanco-42",
+      "period_start": "2026-07-27",
+      "period_end": "2026-08-02",
+      "units_sold": 9,
+      "sales_amount_clp": 764910,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-blanco-42",
+      "period_start": "2026-08-03",
+      "period_end": "2026-08-09",
+      "units_sold": 7,
+      "sales_amount_clp": 594930,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-blanco-42",
+      "period_start": "2026-08-10",
+      "period_end": "2026-08-16",
+      "units_sold": 7,
+      "sales_amount_clp": 594930,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-blanco-42",
+      "period_start": "2026-08-17",
+      "period_end": "2026-08-23",
+      "units_sold": 8,
+      "sales_amount_clp": 679920,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-blanco-42",
+      "period_start": "2026-08-24",
+      "period_end": "2026-08-30",
+      "units_sold": 6,
+      "sales_amount_clp": 509940,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-blanco-42",
+      "period_start": "2026-08-31",
+      "period_end": "2026-09-06",
+      "units_sold": 9,
+      "sales_amount_clp": 764910,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-blanco-42",
+      "period_start": "2026-09-07",
+      "period_end": "2026-09-13",
+      "units_sold": 7,
+      "sales_amount_clp": 594930,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-blanco-42",
+      "period_start": "2026-09-14",
+      "period_end": "2026-09-20",
+      "units_sold": 6,
+      "sales_amount_clp": 509940,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-blanco-42",
+      "period_start": "2026-09-21",
+      "period_end": "2026-09-27",
+      "units_sold": 8,
+      "sales_amount_clp": 679920,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-blanco-44",
+      "period_start": "2026-07-06",
+      "period_end": "2026-07-12",
+      "units_sold": 5,
+      "sales_amount_clp": 424950,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-blanco-44",
+      "period_start": "2026-07-13",
+      "period_end": "2026-07-19",
+      "units_sold": 5,
+      "sales_amount_clp": 424950,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-blanco-44",
+      "period_start": "2026-07-20",
+      "period_end": "2026-07-26",
+      "units_sold": 4,
+      "sales_amount_clp": 339960,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-blanco-44",
+      "period_start": "2026-07-27",
+      "period_end": "2026-08-02",
+      "units_sold": 5,
+      "sales_amount_clp": 424950,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-blanco-44",
+      "period_start": "2026-08-03",
+      "period_end": "2026-08-09",
+      "units_sold": 5,
+      "sales_amount_clp": 424950,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-blanco-44",
+      "period_start": "2026-08-10",
+      "period_end": "2026-08-16",
+      "units_sold": 6,
+      "sales_amount_clp": 509940,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-blanco-44",
+      "period_start": "2026-08-17",
+      "period_end": "2026-08-23",
+      "units_sold": 4,
+      "sales_amount_clp": 339960,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-blanco-44",
+      "period_start": "2026-08-24",
+      "period_end": "2026-08-30",
+      "units_sold": 5,
+      "sales_amount_clp": 424950,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-blanco-44",
+      "period_start": "2026-08-31",
+      "period_end": "2026-09-06",
+      "units_sold": 6,
+      "sales_amount_clp": 509940,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-blanco-44",
+      "period_start": "2026-09-07",
+      "period_end": "2026-09-13",
+      "units_sold": 5,
+      "sales_amount_clp": 424950,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-blanco-44",
+      "period_start": "2026-09-14",
+      "period_end": "2026-09-20",
+      "units_sold": 7,
+      "sales_amount_clp": 594930,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-blanco-44",
+      "period_start": "2026-09-21",
+      "period_end": "2026-09-27",
+      "units_sold": 5,
+      "sales_amount_clp": 424950,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-blanco-46",
+      "period_start": "2026-07-06",
+      "period_end": "2026-07-12",
+      "units_sold": 3,
+      "sales_amount_clp": 254970,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-blanco-46",
+      "period_start": "2026-07-13",
+      "period_end": "2026-07-19",
+      "units_sold": 2,
+      "sales_amount_clp": 169980,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-blanco-46",
+      "period_start": "2026-07-20",
+      "period_end": "2026-07-26",
+      "units_sold": 3,
+      "sales_amount_clp": 254970,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-blanco-46",
+      "period_start": "2026-07-27",
+      "period_end": "2026-08-02",
+      "units_sold": 2,
+      "sales_amount_clp": 169980,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-blanco-46",
+      "period_start": "2026-08-03",
+      "period_end": "2026-08-09",
+      "units_sold": 2,
+      "sales_amount_clp": 169980,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-blanco-46",
+      "period_start": "2026-08-10",
+      "period_end": "2026-08-16",
+      "units_sold": 3,
+      "sales_amount_clp": 254970,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-blanco-46",
+      "period_start": "2026-08-17",
+      "period_end": "2026-08-23",
+      "units_sold": 3,
+      "sales_amount_clp": 254970,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-blanco-46",
+      "period_start": "2026-08-24",
+      "period_end": "2026-08-30",
+      "units_sold": 3,
+      "sales_amount_clp": 254970,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-blanco-46",
+      "period_start": "2026-08-31",
+      "period_end": "2026-09-06",
+      "units_sold": 2,
+      "sales_amount_clp": 169980,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-blanco-46",
+      "period_start": "2026-09-07",
+      "period_end": "2026-09-13",
+      "units_sold": 3,
+      "sales_amount_clp": 254970,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-blanco-46",
+      "period_start": "2026-09-14",
+      "period_end": "2026-09-20",
+      "units_sold": 3,
+      "sales_amount_clp": 254970,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "volcan-blanco-46",
+      "period_start": "2026-09-21",
+      "period_end": "2026-09-27",
+      "units_sold": 3,
+      "sales_amount_clp": 254970,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "insignia-negro-38",
+      "period_start": "2026-07-06",
+      "period_end": "2026-07-12",
+      "units_sold": 2,
+      "sales_amount_clp": 119980,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "insignia-negro-38",
+      "period_start": "2026-07-13",
+      "period_end": "2026-07-19",
+      "units_sold": 2,
+      "sales_amount_clp": 119980,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "insignia-negro-38",
+      "period_start": "2026-07-20",
+      "period_end": "2026-07-26",
+      "units_sold": 3,
+      "sales_amount_clp": 179970,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "insignia-negro-38",
+      "period_start": "2026-07-27",
+      "period_end": "2026-08-02",
+      "units_sold": 2,
+      "sales_amount_clp": 119980,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "insignia-negro-38",
+      "period_start": "2026-08-03",
+      "period_end": "2026-08-09",
+      "units_sold": 2,
+      "sales_amount_clp": 119980,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "insignia-negro-38",
+      "period_start": "2026-08-10",
+      "period_end": "2026-08-16",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-negro-38",
+      "period_start": "2026-08-17",
+      "period_end": "2026-08-23",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-negro-38",
+      "period_start": "2026-08-24",
+      "period_end": "2026-08-30",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-negro-38",
+      "period_start": "2026-08-31",
+      "period_end": "2026-09-06",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-negro-38",
+      "period_start": "2026-09-07",
+      "period_end": "2026-09-13",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-negro-38",
+      "period_start": "2026-09-14",
+      "period_end": "2026-09-20",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-negro-38",
+      "period_start": "2026-09-21",
+      "period_end": "2026-09-27",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-negro-40",
+      "period_start": "2026-07-06",
+      "period_end": "2026-07-12",
+      "units_sold": 7,
+      "sales_amount_clp": 419930,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "insignia-negro-40",
+      "period_start": "2026-07-13",
+      "period_end": "2026-07-19",
+      "units_sold": 5,
+      "sales_amount_clp": 299950,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "insignia-negro-40",
+      "period_start": "2026-07-20",
+      "period_end": "2026-07-26",
+      "units_sold": 6,
+      "sales_amount_clp": 359940,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "insignia-negro-40",
+      "period_start": "2026-07-27",
+      "period_end": "2026-08-02",
+      "units_sold": 6,
+      "sales_amount_clp": 359940,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "insignia-negro-40",
+      "period_start": "2026-08-03",
+      "period_end": "2026-08-09",
+      "units_sold": 6,
+      "sales_amount_clp": 359940,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "insignia-negro-40",
+      "period_start": "2026-08-10",
+      "period_end": "2026-08-16",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-negro-40",
+      "period_start": "2026-08-17",
+      "period_end": "2026-08-23",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-negro-40",
+      "period_start": "2026-08-24",
+      "period_end": "2026-08-30",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-negro-40",
+      "period_start": "2026-08-31",
+      "period_end": "2026-09-06",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-negro-40",
+      "period_start": "2026-09-07",
+      "period_end": "2026-09-13",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-negro-40",
+      "period_start": "2026-09-14",
+      "period_end": "2026-09-20",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-negro-40",
+      "period_start": "2026-09-21",
+      "period_end": "2026-09-27",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-negro-42",
+      "period_start": "2026-07-06",
+      "period_end": "2026-07-12",
+      "units_sold": 6,
+      "sales_amount_clp": 359940,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "insignia-negro-42",
+      "period_start": "2026-07-13",
+      "period_end": "2026-07-19",
+      "units_sold": 8,
+      "sales_amount_clp": 479920,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "insignia-negro-42",
+      "period_start": "2026-07-20",
+      "period_end": "2026-07-26",
+      "units_sold": 7,
+      "sales_amount_clp": 419930,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "insignia-negro-42",
+      "period_start": "2026-07-27",
+      "period_end": "2026-08-02",
+      "units_sold": 7,
+      "sales_amount_clp": 419930,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "insignia-negro-42",
+      "period_start": "2026-08-03",
+      "period_end": "2026-08-09",
+      "units_sold": 5,
+      "sales_amount_clp": 299950,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "insignia-negro-42",
+      "period_start": "2026-08-10",
+      "period_end": "2026-08-16",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-negro-42",
+      "period_start": "2026-08-17",
+      "period_end": "2026-08-23",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-negro-42",
+      "period_start": "2026-08-24",
+      "period_end": "2026-08-30",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-negro-42",
+      "period_start": "2026-08-31",
+      "period_end": "2026-09-06",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-negro-42",
+      "period_start": "2026-09-07",
+      "period_end": "2026-09-13",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-negro-42",
+      "period_start": "2026-09-14",
+      "period_end": "2026-09-20",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-negro-42",
+      "period_start": "2026-09-21",
+      "period_end": "2026-09-27",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-negro-44",
+      "period_start": "2026-07-06",
+      "period_end": "2026-07-12",
+      "units_sold": 4,
+      "sales_amount_clp": 239960,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "insignia-negro-44",
+      "period_start": "2026-07-13",
+      "period_end": "2026-07-19",
+      "units_sold": 4,
+      "sales_amount_clp": 239960,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "insignia-negro-44",
+      "period_start": "2026-07-20",
+      "period_end": "2026-07-26",
+      "units_sold": 4,
+      "sales_amount_clp": 239960,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "insignia-negro-44",
+      "period_start": "2026-07-27",
+      "period_end": "2026-08-02",
+      "units_sold": 5,
+      "sales_amount_clp": 299950,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "insignia-negro-44",
+      "period_start": "2026-08-03",
+      "period_end": "2026-08-09",
+      "units_sold": 3,
+      "sales_amount_clp": 179970,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "insignia-negro-44",
+      "period_start": "2026-08-10",
+      "period_end": "2026-08-16",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-negro-44",
+      "period_start": "2026-08-17",
+      "period_end": "2026-08-23",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-negro-44",
+      "period_start": "2026-08-24",
+      "period_end": "2026-08-30",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-negro-44",
+      "period_start": "2026-08-31",
+      "period_end": "2026-09-06",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-negro-44",
+      "period_start": "2026-09-07",
+      "period_end": "2026-09-13",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-negro-44",
+      "period_start": "2026-09-14",
+      "period_end": "2026-09-20",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-negro-44",
+      "period_start": "2026-09-21",
+      "period_end": "2026-09-27",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-negro-46",
+      "period_start": "2026-07-06",
+      "period_end": "2026-07-12",
+      "units_sold": 2,
+      "sales_amount_clp": 119980,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "insignia-negro-46",
+      "period_start": "2026-07-13",
+      "period_end": "2026-07-19",
+      "units_sold": 3,
+      "sales_amount_clp": 179970,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "insignia-negro-46",
+      "period_start": "2026-07-20",
+      "period_end": "2026-07-26",
+      "units_sold": 2,
+      "sales_amount_clp": 119980,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "insignia-negro-46",
+      "period_start": "2026-07-27",
+      "period_end": "2026-08-02",
+      "units_sold": 3,
+      "sales_amount_clp": 179970,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "insignia-negro-46",
+      "period_start": "2026-08-03",
+      "period_end": "2026-08-09",
+      "units_sold": 2,
+      "sales_amount_clp": 119980,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "insignia-negro-46",
+      "period_start": "2026-08-10",
+      "period_end": "2026-08-16",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-negro-46",
+      "period_start": "2026-08-17",
+      "period_end": "2026-08-23",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-negro-46",
+      "period_start": "2026-08-24",
+      "period_end": "2026-08-30",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-negro-46",
+      "period_start": "2026-08-31",
+      "period_end": "2026-09-06",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-negro-46",
+      "period_start": "2026-09-07",
+      "period_end": "2026-09-13",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-negro-46",
+      "period_start": "2026-09-14",
+      "period_end": "2026-09-20",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-negro-46",
+      "period_start": "2026-09-21",
+      "period_end": "2026-09-27",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-blanco-38",
+      "period_start": "2026-07-06",
+      "period_end": "2026-07-12",
+      "units_sold": 2,
+      "sales_amount_clp": 119980,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "insignia-blanco-38",
+      "period_start": "2026-07-13",
+      "period_end": "2026-07-19",
+      "units_sold": 2,
+      "sales_amount_clp": 119980,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "insignia-blanco-38",
+      "period_start": "2026-07-20",
+      "period_end": "2026-07-26",
+      "units_sold": 2,
+      "sales_amount_clp": 119980,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "insignia-blanco-38",
+      "period_start": "2026-07-27",
+      "period_end": "2026-08-02",
+      "units_sold": 2,
+      "sales_amount_clp": 119980,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "insignia-blanco-38",
+      "period_start": "2026-08-03",
+      "period_end": "2026-08-09",
+      "units_sold": 2,
+      "sales_amount_clp": 119980,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "insignia-blanco-38",
+      "period_start": "2026-08-10",
+      "period_end": "2026-08-16",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-blanco-38",
+      "period_start": "2026-08-17",
+      "period_end": "2026-08-23",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-blanco-38",
+      "period_start": "2026-08-24",
+      "period_end": "2026-08-30",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-blanco-38",
+      "period_start": "2026-08-31",
+      "period_end": "2026-09-06",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-blanco-38",
+      "period_start": "2026-09-07",
+      "period_end": "2026-09-13",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-blanco-38",
+      "period_start": "2026-09-14",
+      "period_end": "2026-09-20",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-blanco-38",
+      "period_start": "2026-09-21",
+      "period_end": "2026-09-27",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-blanco-40",
+      "period_start": "2026-07-06",
+      "period_end": "2026-07-12",
+      "units_sold": 4,
+      "sales_amount_clp": 239960,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "insignia-blanco-40",
+      "period_start": "2026-07-13",
+      "period_end": "2026-07-19",
+      "units_sold": 4,
+      "sales_amount_clp": 239960,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "insignia-blanco-40",
+      "period_start": "2026-07-20",
+      "period_end": "2026-07-26",
+      "units_sold": 5,
+      "sales_amount_clp": 299950,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "insignia-blanco-40",
+      "period_start": "2026-07-27",
+      "period_end": "2026-08-02",
+      "units_sold": 4,
+      "sales_amount_clp": 239960,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "insignia-blanco-40",
+      "period_start": "2026-08-03",
+      "period_end": "2026-08-09",
+      "units_sold": 5,
+      "sales_amount_clp": 299950,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "insignia-blanco-40",
+      "period_start": "2026-08-10",
+      "period_end": "2026-08-16",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-blanco-40",
+      "period_start": "2026-08-17",
+      "period_end": "2026-08-23",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-blanco-40",
+      "period_start": "2026-08-24",
+      "period_end": "2026-08-30",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-blanco-40",
+      "period_start": "2026-08-31",
+      "period_end": "2026-09-06",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-blanco-40",
+      "period_start": "2026-09-07",
+      "period_end": "2026-09-13",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-blanco-40",
+      "period_start": "2026-09-14",
+      "period_end": "2026-09-20",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-blanco-40",
+      "period_start": "2026-09-21",
+      "period_end": "2026-09-27",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-blanco-42",
+      "period_start": "2026-07-06",
+      "period_end": "2026-07-12",
+      "units_sold": 6,
+      "sales_amount_clp": 359940,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "insignia-blanco-42",
+      "period_start": "2026-07-13",
+      "period_end": "2026-07-19",
+      "units_sold": 6,
+      "sales_amount_clp": 359940,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "insignia-blanco-42",
+      "period_start": "2026-07-20",
+      "period_end": "2026-07-26",
+      "units_sold": 5,
+      "sales_amount_clp": 299950,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "insignia-blanco-42",
+      "period_start": "2026-07-27",
+      "period_end": "2026-08-02",
+      "units_sold": 6,
+      "sales_amount_clp": 359940,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "insignia-blanco-42",
+      "period_start": "2026-08-03",
+      "period_end": "2026-08-09",
+      "units_sold": 6,
+      "sales_amount_clp": 359940,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "insignia-blanco-42",
+      "period_start": "2026-08-10",
+      "period_end": "2026-08-16",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-blanco-42",
+      "period_start": "2026-08-17",
+      "period_end": "2026-08-23",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-blanco-42",
+      "period_start": "2026-08-24",
+      "period_end": "2026-08-30",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-blanco-42",
+      "period_start": "2026-08-31",
+      "period_end": "2026-09-06",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-blanco-42",
+      "period_start": "2026-09-07",
+      "period_end": "2026-09-13",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-blanco-42",
+      "period_start": "2026-09-14",
+      "period_end": "2026-09-20",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-blanco-42",
+      "period_start": "2026-09-21",
+      "period_end": "2026-09-27",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-blanco-44",
+      "period_start": "2026-07-06",
+      "period_end": "2026-07-12",
+      "units_sold": 3,
+      "sales_amount_clp": 179970,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "insignia-blanco-44",
+      "period_start": "2026-07-13",
+      "period_end": "2026-07-19",
+      "units_sold": 4,
+      "sales_amount_clp": 239960,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "insignia-blanco-44",
+      "period_start": "2026-07-20",
+      "period_end": "2026-07-26",
+      "units_sold": 3,
+      "sales_amount_clp": 179970,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "insignia-blanco-44",
+      "period_start": "2026-07-27",
+      "period_end": "2026-08-02",
+      "units_sold": 3,
+      "sales_amount_clp": 179970,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "insignia-blanco-44",
+      "period_start": "2026-08-03",
+      "period_end": "2026-08-09",
+      "units_sold": 4,
+      "sales_amount_clp": 239960,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "insignia-blanco-44",
+      "period_start": "2026-08-10",
+      "period_end": "2026-08-16",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-blanco-44",
+      "period_start": "2026-08-17",
+      "period_end": "2026-08-23",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-blanco-44",
+      "period_start": "2026-08-24",
+      "period_end": "2026-08-30",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-blanco-44",
+      "period_start": "2026-08-31",
+      "period_end": "2026-09-06",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-blanco-44",
+      "period_start": "2026-09-07",
+      "period_end": "2026-09-13",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-blanco-44",
+      "period_start": "2026-09-14",
+      "period_end": "2026-09-20",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-blanco-44",
+      "period_start": "2026-09-21",
+      "period_end": "2026-09-27",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-blanco-46",
+      "period_start": "2026-07-06",
+      "period_end": "2026-07-12",
+      "units_sold": 2,
+      "sales_amount_clp": 119980,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "insignia-blanco-46",
+      "period_start": "2026-07-13",
+      "period_end": "2026-07-19",
+      "units_sold": 2,
+      "sales_amount_clp": 119980,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "insignia-blanco-46",
+      "period_start": "2026-07-20",
+      "period_end": "2026-07-26",
+      "units_sold": 1,
+      "sales_amount_clp": 59990,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "insignia-blanco-46",
+      "period_start": "2026-07-27",
+      "period_end": "2026-08-02",
+      "units_sold": 2,
+      "sales_amount_clp": 119980,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "insignia-blanco-46",
+      "period_start": "2026-08-03",
+      "period_end": "2026-08-09",
+      "units_sold": 2,
+      "sales_amount_clp": 119980,
+      "availability_status": "available"
+    },
+    {
+      "variant_id": "insignia-blanco-46",
+      "period_start": "2026-08-10",
+      "period_end": "2026-08-16",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-blanco-46",
+      "period_start": "2026-08-17",
+      "period_end": "2026-08-23",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-blanco-46",
+      "period_start": "2026-08-24",
+      "period_end": "2026-08-30",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-blanco-46",
+      "period_start": "2026-08-31",
+      "period_end": "2026-09-06",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-blanco-46",
+      "period_start": "2026-09-07",
+      "period_end": "2026-09-13",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-blanco-46",
+      "period_start": "2026-09-14",
+      "period_end": "2026-09-20",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    },
+    {
+      "variant_id": "insignia-blanco-46",
+      "period_start": "2026-09-21",
+      "period_end": "2026-09-27",
+      "units_sold": 0,
+      "sales_amount_clp": 0,
+      "availability_status": "no_availability"
+    }
+  ],
+  "forecasts": [
+    {
+      "variant_id": "aurora-negro-38",
+      "period_start": "2026-09-28",
+      "period_end": "2026-10-04",
+      "predicted_units": 6.9,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "aurora-negro-38",
+      "period_start": "2026-10-05",
+      "period_end": "2026-10-11",
+      "predicted_units": 7.4,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "aurora-negro-38",
+      "period_start": "2026-10-12",
+      "period_end": "2026-10-18",
+      "predicted_units": 6.2,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "aurora-negro-38",
+      "period_start": "2026-10-19",
+      "period_end": "2026-10-25",
+      "predicted_units": 7.3,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "aurora-negro-40",
+      "period_start": "2026-09-28",
+      "period_end": "2026-10-04",
+      "predicted_units": 19.5,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "aurora-negro-40",
+      "period_start": "2026-10-05",
+      "period_end": "2026-10-11",
+      "predicted_units": 17.9,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "aurora-negro-40",
+      "period_start": "2026-10-12",
+      "period_end": "2026-10-18",
+      "predicted_units": 17.9,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "aurora-negro-40",
+      "period_start": "2026-10-19",
+      "period_end": "2026-10-25",
+      "predicted_units": 19,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "aurora-negro-42",
+      "period_start": "2026-09-28",
+      "period_end": "2026-10-04",
+      "predicted_units": 15.6,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "aurora-negro-42",
+      "period_start": "2026-10-05",
+      "period_end": "2026-10-11",
+      "predicted_units": 16,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "aurora-negro-42",
+      "period_start": "2026-10-12",
+      "period_end": "2026-10-18",
+      "predicted_units": 15.2,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "aurora-negro-42",
+      "period_start": "2026-10-19",
+      "period_end": "2026-10-25",
+      "predicted_units": 15.8,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "aurora-negro-44",
+      "period_start": "2026-09-28",
+      "period_end": "2026-10-04",
+      "predicted_units": 12,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "aurora-negro-44",
+      "period_start": "2026-10-05",
+      "period_end": "2026-10-11",
+      "predicted_units": 12.2,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "aurora-negro-44",
+      "period_start": "2026-10-12",
+      "period_end": "2026-10-18",
+      "predicted_units": 12.4,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "aurora-negro-44",
+      "period_start": "2026-10-19",
+      "period_end": "2026-10-25",
+      "predicted_units": 11.4,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "aurora-negro-46",
+      "period_start": "2026-09-28",
+      "period_end": "2026-10-04",
+      "predicted_units": 6.2,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "aurora-negro-46",
+      "period_start": "2026-10-05",
+      "period_end": "2026-10-11",
+      "predicted_units": 5.6,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "aurora-negro-46",
+      "period_start": "2026-10-12",
+      "period_end": "2026-10-18",
+      "predicted_units": 5.5,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "aurora-negro-46",
+      "period_start": "2026-10-19",
+      "period_end": "2026-10-25",
+      "predicted_units": 6,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "aurora-blanco-38",
+      "period_start": "2026-09-28",
+      "period_end": "2026-10-04",
+      "predicted_units": 5.3,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "aurora-blanco-38",
+      "period_start": "2026-10-05",
+      "period_end": "2026-10-11",
+      "predicted_units": 5.8,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "aurora-blanco-38",
+      "period_start": "2026-10-12",
+      "period_end": "2026-10-18",
+      "predicted_units": 5.4,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "aurora-blanco-38",
+      "period_start": "2026-10-19",
+      "period_end": "2026-10-25",
+      "predicted_units": 6,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "aurora-blanco-40",
+      "period_start": "2026-09-28",
+      "period_end": "2026-10-04",
+      "predicted_units": 13.9,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "aurora-blanco-40",
+      "period_start": "2026-10-05",
+      "period_end": "2026-10-11",
+      "predicted_units": 13.4,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "aurora-blanco-40",
+      "period_start": "2026-10-12",
+      "period_end": "2026-10-18",
+      "predicted_units": 13.4,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "aurora-blanco-40",
+      "period_start": "2026-10-19",
+      "period_end": "2026-10-25",
+      "predicted_units": 13.6,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "aurora-blanco-42",
+      "period_start": "2026-09-28",
+      "period_end": "2026-10-04",
+      "predicted_units": 13.8,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "aurora-blanco-42",
+      "period_start": "2026-10-05",
+      "period_end": "2026-10-11",
+      "predicted_units": 14.7,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "aurora-blanco-42",
+      "period_start": "2026-10-12",
+      "period_end": "2026-10-18",
+      "predicted_units": 13.2,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "aurora-blanco-42",
+      "period_start": "2026-10-19",
+      "period_end": "2026-10-25",
+      "predicted_units": 12.2,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "aurora-blanco-44",
+      "period_start": "2026-09-28",
+      "period_end": "2026-10-04",
+      "predicted_units": 8.3,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "aurora-blanco-44",
+      "period_start": "2026-10-05",
+      "period_end": "2026-10-11",
+      "predicted_units": 9.2,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "aurora-blanco-44",
+      "period_start": "2026-10-12",
+      "period_end": "2026-10-18",
+      "predicted_units": 8.8,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "aurora-blanco-44",
+      "period_start": "2026-10-19",
+      "period_end": "2026-10-25",
+      "predicted_units": 7.7,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "aurora-blanco-46",
+      "period_start": "2026-09-28",
+      "period_end": "2026-10-04",
+      "predicted_units": 4.8,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "aurora-blanco-46",
+      "period_start": "2026-10-05",
+      "period_end": "2026-10-11",
+      "predicted_units": 4.9,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "aurora-blanco-46",
+      "period_start": "2026-10-12",
+      "period_end": "2026-10-18",
+      "predicted_units": 4.9,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "aurora-blanco-46",
+      "period_start": "2026-10-19",
+      "period_end": "2026-10-25",
+      "predicted_units": 5,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "cordoba-negro-38",
+      "period_start": "2026-09-28",
+      "period_end": "2026-10-04",
+      "predicted_units": 0,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "cordoba-negro-38",
+      "period_start": "2026-10-05",
+      "period_end": "2026-10-11",
+      "predicted_units": 0,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "cordoba-negro-38",
+      "period_start": "2026-10-12",
+      "period_end": "2026-10-18",
+      "predicted_units": 0,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "cordoba-negro-38",
+      "period_start": "2026-10-19",
+      "period_end": "2026-10-25",
+      "predicted_units": 0,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "cordoba-negro-40",
+      "period_start": "2026-09-28",
+      "period_end": "2026-10-04",
+      "predicted_units": 1,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "cordoba-negro-40",
+      "period_start": "2026-10-05",
+      "period_end": "2026-10-11",
+      "predicted_units": 1,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "cordoba-negro-40",
+      "period_start": "2026-10-12",
+      "period_end": "2026-10-18",
+      "predicted_units": 0.9,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "cordoba-negro-40",
+      "period_start": "2026-10-19",
+      "period_end": "2026-10-25",
+      "predicted_units": 1.1,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "cordoba-negro-42",
+      "period_start": "2026-09-28",
+      "period_end": "2026-10-04",
+      "predicted_units": 2.8,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "cordoba-negro-42",
+      "period_start": "2026-10-05",
+      "period_end": "2026-10-11",
+      "predicted_units": 2.9,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "cordoba-negro-42",
+      "period_start": "2026-10-12",
+      "period_end": "2026-10-18",
+      "predicted_units": 2.6,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "cordoba-negro-42",
+      "period_start": "2026-10-19",
+      "period_end": "2026-10-25",
+      "predicted_units": 2.7,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "cordoba-negro-44",
+      "period_start": "2026-09-28",
+      "period_end": "2026-10-04",
+      "predicted_units": 1.1,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "cordoba-negro-44",
+      "period_start": "2026-10-05",
+      "period_end": "2026-10-11",
+      "predicted_units": 1.3,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "cordoba-negro-44",
+      "period_start": "2026-10-12",
+      "period_end": "2026-10-18",
+      "predicted_units": 1.4,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "cordoba-negro-44",
+      "period_start": "2026-10-19",
+      "period_end": "2026-10-25",
+      "predicted_units": 1.2,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "cordoba-negro-46",
+      "period_start": "2026-09-28",
+      "period_end": "2026-10-04",
+      "predicted_units": 0.9,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "cordoba-negro-46",
+      "period_start": "2026-10-05",
+      "period_end": "2026-10-11",
+      "predicted_units": 1.1,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "cordoba-negro-46",
+      "period_start": "2026-10-12",
+      "period_end": "2026-10-18",
+      "predicted_units": 1,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "cordoba-negro-46",
+      "period_start": "2026-10-19",
+      "period_end": "2026-10-25",
+      "predicted_units": 1,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "cordoba-blanco-38",
+      "period_start": "2026-09-28",
+      "period_end": "2026-10-04",
+      "predicted_units": 0,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "cordoba-blanco-38",
+      "period_start": "2026-10-05",
+      "period_end": "2026-10-11",
+      "predicted_units": 0,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "cordoba-blanco-38",
+      "period_start": "2026-10-12",
+      "period_end": "2026-10-18",
+      "predicted_units": 0,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "cordoba-blanco-38",
+      "period_start": "2026-10-19",
+      "period_end": "2026-10-25",
+      "predicted_units": 0,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "cordoba-blanco-40",
+      "period_start": "2026-09-28",
+      "period_end": "2026-10-04",
+      "predicted_units": 0.9,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "cordoba-blanco-40",
+      "period_start": "2026-10-05",
+      "period_end": "2026-10-11",
+      "predicted_units": 0.9,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "cordoba-blanco-40",
+      "period_start": "2026-10-12",
+      "period_end": "2026-10-18",
+      "predicted_units": 1,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "cordoba-blanco-40",
+      "period_start": "2026-10-19",
+      "period_end": "2026-10-25",
+      "predicted_units": 0.9,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "cordoba-blanco-42",
+      "period_start": "2026-09-28",
+      "period_end": "2026-10-04",
+      "predicted_units": 1.7,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "cordoba-blanco-42",
+      "period_start": "2026-10-05",
+      "period_end": "2026-10-11",
+      "predicted_units": 1.9,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "cordoba-blanco-42",
+      "period_start": "2026-10-12",
+      "period_end": "2026-10-18",
+      "predicted_units": 1.7,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "cordoba-blanco-42",
+      "period_start": "2026-10-19",
+      "period_end": "2026-10-25",
+      "predicted_units": 1.7,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "cordoba-blanco-44",
+      "period_start": "2026-09-28",
+      "period_end": "2026-10-04",
+      "predicted_units": 1.4,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "cordoba-blanco-44",
+      "period_start": "2026-10-05",
+      "period_end": "2026-10-11",
+      "predicted_units": 1.3,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "cordoba-blanco-44",
+      "period_start": "2026-10-12",
+      "period_end": "2026-10-18",
+      "predicted_units": 1.4,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "cordoba-blanco-44",
+      "period_start": "2026-10-19",
+      "period_end": "2026-10-25",
+      "predicted_units": 1.3,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "cordoba-blanco-46",
+      "period_start": "2026-09-28",
+      "period_end": "2026-10-04",
+      "predicted_units": 1.1,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "cordoba-blanco-46",
+      "period_start": "2026-10-05",
+      "period_end": "2026-10-11",
+      "predicted_units": 1,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "cordoba-blanco-46",
+      "period_start": "2026-10-12",
+      "period_end": "2026-10-18",
+      "predicted_units": 1,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "cordoba-blanco-46",
+      "period_start": "2026-10-19",
+      "period_end": "2026-10-25",
+      "predicted_units": 1,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "volcan-negro-38",
+      "period_start": "2026-09-28",
+      "period_end": "2026-10-04",
+      "predicted_units": 3.9,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "volcan-negro-38",
+      "period_start": "2026-10-05",
+      "period_end": "2026-10-11",
+      "predicted_units": 4,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "volcan-negro-38",
+      "period_start": "2026-10-12",
+      "period_end": "2026-10-18",
+      "predicted_units": 4.1,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "volcan-negro-38",
+      "period_start": "2026-10-19",
+      "period_end": "2026-10-25",
+      "predicted_units": 4.3,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "volcan-negro-40",
+      "period_start": "2026-09-28",
+      "period_end": "2026-10-04",
+      "predicted_units": 7.3,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "volcan-negro-40",
+      "period_start": "2026-10-05",
+      "period_end": "2026-10-11",
+      "predicted_units": 6.5,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "volcan-negro-40",
+      "period_start": "2026-10-12",
+      "period_end": "2026-10-18",
+      "predicted_units": 6.6,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "volcan-negro-40",
+      "period_start": "2026-10-19",
+      "period_end": "2026-10-25",
+      "predicted_units": 7,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "volcan-negro-42",
+      "period_start": "2026-09-28",
+      "period_end": "2026-10-04",
+      "predicted_units": 9.1,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "volcan-negro-42",
+      "period_start": "2026-10-05",
+      "period_end": "2026-10-11",
+      "predicted_units": 9,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "volcan-negro-42",
+      "period_start": "2026-10-12",
+      "period_end": "2026-10-18",
+      "predicted_units": 10.8,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "volcan-negro-42",
+      "period_start": "2026-10-19",
+      "period_end": "2026-10-25",
+      "predicted_units": 9.1,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "volcan-negro-44",
+      "period_start": "2026-09-28",
+      "period_end": "2026-10-04",
+      "predicted_units": 7.4,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "volcan-negro-44",
+      "period_start": "2026-10-05",
+      "period_end": "2026-10-11",
+      "predicted_units": 7.3,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "volcan-negro-44",
+      "period_start": "2026-10-12",
+      "period_end": "2026-10-18",
+      "predicted_units": 6.6,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "volcan-negro-44",
+      "period_start": "2026-10-19",
+      "period_end": "2026-10-25",
+      "predicted_units": 7.3,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "volcan-negro-46",
+      "period_start": "2026-09-28",
+      "period_end": "2026-10-04",
+      "predicted_units": 2.5,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "volcan-negro-46",
+      "period_start": "2026-10-05",
+      "period_end": "2026-10-11",
+      "predicted_units": 2.5,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "volcan-negro-46",
+      "period_start": "2026-10-12",
+      "period_end": "2026-10-18",
+      "predicted_units": 2.8,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "volcan-negro-46",
+      "period_start": "2026-10-19",
+      "period_end": "2026-10-25",
+      "predicted_units": 2.7,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "volcan-blanco-38",
+      "period_start": "2026-09-28",
+      "period_end": "2026-10-04",
+      "predicted_units": 3.3,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "volcan-blanco-38",
+      "period_start": "2026-10-05",
+      "period_end": "2026-10-11",
+      "predicted_units": 3.2,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "volcan-blanco-38",
+      "period_start": "2026-10-12",
+      "period_end": "2026-10-18",
+      "predicted_units": 3,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "volcan-blanco-38",
+      "period_start": "2026-10-19",
+      "period_end": "2026-10-25",
+      "predicted_units": 3.5,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "volcan-blanco-40",
+      "period_start": "2026-09-28",
+      "period_end": "2026-10-04",
+      "predicted_units": 6.2,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "volcan-blanco-40",
+      "period_start": "2026-10-05",
+      "period_end": "2026-10-11",
+      "predicted_units": 5.7,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "volcan-blanco-40",
+      "period_start": "2026-10-12",
+      "period_end": "2026-10-18",
+      "predicted_units": 5.5,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "volcan-blanco-40",
+      "period_start": "2026-10-19",
+      "period_end": "2026-10-25",
+      "predicted_units": 5.4,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "volcan-blanco-42",
+      "period_start": "2026-09-28",
+      "period_end": "2026-10-04",
+      "predicted_units": 8,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "volcan-blanco-42",
+      "period_start": "2026-10-05",
+      "period_end": "2026-10-11",
+      "predicted_units": 7.8,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "volcan-blanco-42",
+      "period_start": "2026-10-12",
+      "period_end": "2026-10-18",
+      "predicted_units": 8.2,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "volcan-blanco-42",
+      "period_start": "2026-10-19",
+      "period_end": "2026-10-25",
+      "predicted_units": 7.7,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "volcan-blanco-44",
+      "period_start": "2026-09-28",
+      "period_end": "2026-10-04",
+      "predicted_units": 5.3,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "volcan-blanco-44",
+      "period_start": "2026-10-05",
+      "period_end": "2026-10-11",
+      "predicted_units": 6.1,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "volcan-blanco-44",
+      "period_start": "2026-10-12",
+      "period_end": "2026-10-18",
+      "predicted_units": 5.9,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "volcan-blanco-44",
+      "period_start": "2026-10-19",
+      "period_end": "2026-10-25",
+      "predicted_units": 5.8,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "volcan-blanco-46",
+      "period_start": "2026-09-28",
+      "period_end": "2026-10-04",
+      "predicted_units": 2.8,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "volcan-blanco-46",
+      "period_start": "2026-10-05",
+      "period_end": "2026-10-11",
+      "predicted_units": 2.8,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "volcan-blanco-46",
+      "period_start": "2026-10-12",
+      "period_end": "2026-10-18",
+      "predicted_units": 2.8,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "volcan-blanco-46",
+      "period_start": "2026-10-19",
+      "period_end": "2026-10-25",
+      "predicted_units": 2.8,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "insignia-negro-38",
+      "period_start": "2026-09-28",
+      "period_end": "2026-10-04",
+      "predicted_units": 2.1,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "insignia-negro-38",
+      "period_start": "2026-10-05",
+      "period_end": "2026-10-11",
+      "predicted_units": 2.4,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "insignia-negro-38",
+      "period_start": "2026-10-12",
+      "period_end": "2026-10-18",
+      "predicted_units": 2.1,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "insignia-negro-38",
+      "period_start": "2026-10-19",
+      "period_end": "2026-10-25",
+      "predicted_units": 2.2,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "insignia-negro-40",
+      "period_start": "2026-09-28",
+      "period_end": "2026-10-04",
+      "predicted_units": 5.5,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "insignia-negro-40",
+      "period_start": "2026-10-05",
+      "period_end": "2026-10-11",
+      "predicted_units": 5.3,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "insignia-negro-40",
+      "period_start": "2026-10-12",
+      "period_end": "2026-10-18",
+      "predicted_units": 6,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "insignia-negro-40",
+      "period_start": "2026-10-19",
+      "period_end": "2026-10-25",
+      "predicted_units": 6.3,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "insignia-negro-42",
+      "period_start": "2026-09-28",
+      "period_end": "2026-10-04",
+      "predicted_units": 7.2,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "insignia-negro-42",
+      "period_start": "2026-10-05",
+      "period_end": "2026-10-11",
+      "predicted_units": 6.4,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "insignia-negro-42",
+      "period_start": "2026-10-12",
+      "period_end": "2026-10-18",
+      "predicted_units": 6.3,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "insignia-negro-42",
+      "period_start": "2026-10-19",
+      "period_end": "2026-10-25",
+      "predicted_units": 6.7,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "insignia-negro-44",
+      "period_start": "2026-09-28",
+      "period_end": "2026-10-04",
+      "predicted_units": 4.1,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "insignia-negro-44",
+      "period_start": "2026-10-05",
+      "period_end": "2026-10-11",
+      "predicted_units": 4.2,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "insignia-negro-44",
+      "period_start": "2026-10-12",
+      "period_end": "2026-10-18",
+      "predicted_units": 4.3,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "insignia-negro-44",
+      "period_start": "2026-10-19",
+      "period_end": "2026-10-25",
+      "predicted_units": 4.4,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "insignia-negro-46",
+      "period_start": "2026-09-28",
+      "period_end": "2026-10-04",
+      "predicted_units": 2.5,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "insignia-negro-46",
+      "period_start": "2026-10-05",
+      "period_end": "2026-10-11",
+      "predicted_units": 2.3,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "insignia-negro-46",
+      "period_start": "2026-10-12",
+      "period_end": "2026-10-18",
+      "predicted_units": 2.3,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "insignia-negro-46",
+      "period_start": "2026-10-19",
+      "period_end": "2026-10-25",
+      "predicted_units": 2.6,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "insignia-blanco-38",
+      "period_start": "2026-09-28",
+      "period_end": "2026-10-04",
+      "predicted_units": 2.2,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "insignia-blanco-38",
+      "period_start": "2026-10-05",
+      "period_end": "2026-10-11",
+      "predicted_units": 2,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "insignia-blanco-38",
+      "period_start": "2026-10-12",
+      "period_end": "2026-10-18",
+      "predicted_units": 1.8,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "insignia-blanco-38",
+      "period_start": "2026-10-19",
+      "period_end": "2026-10-25",
+      "predicted_units": 1.8,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "insignia-blanco-40",
+      "period_start": "2026-09-28",
+      "period_end": "2026-10-04",
+      "predicted_units": 4.7,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "insignia-blanco-40",
+      "period_start": "2026-10-05",
+      "period_end": "2026-10-11",
+      "predicted_units": 4.2,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "insignia-blanco-40",
+      "period_start": "2026-10-12",
+      "period_end": "2026-10-18",
+      "predicted_units": 4.5,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "insignia-blanco-40",
+      "period_start": "2026-10-19",
+      "period_end": "2026-10-25",
+      "predicted_units": 4.7,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "insignia-blanco-42",
+      "period_start": "2026-09-28",
+      "period_end": "2026-10-04",
+      "predicted_units": 5.4,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "insignia-blanco-42",
+      "period_start": "2026-10-05",
+      "period_end": "2026-10-11",
+      "predicted_units": 5.5,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "insignia-blanco-42",
+      "period_start": "2026-10-12",
+      "period_end": "2026-10-18",
+      "predicted_units": 6.1,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "insignia-blanco-42",
+      "period_start": "2026-10-19",
+      "period_end": "2026-10-25",
+      "predicted_units": 6.2,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "insignia-blanco-44",
+      "period_start": "2026-09-28",
+      "period_end": "2026-10-04",
+      "predicted_units": 3.4,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "insignia-blanco-44",
+      "period_start": "2026-10-05",
+      "period_end": "2026-10-11",
+      "predicted_units": 3.7,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "insignia-blanco-44",
+      "period_start": "2026-10-12",
+      "period_end": "2026-10-18",
+      "predicted_units": 3.4,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "insignia-blanco-44",
+      "period_start": "2026-10-19",
+      "period_end": "2026-10-25",
+      "predicted_units": 3.8,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "insignia-blanco-46",
+      "period_start": "2026-09-28",
+      "period_end": "2026-10-04",
+      "predicted_units": 1.6,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "insignia-blanco-46",
+      "period_start": "2026-10-05",
+      "period_end": "2026-10-11",
+      "predicted_units": 1.7,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "insignia-blanco-46",
+      "period_start": "2026-10-12",
+      "period_end": "2026-10-18",
+      "predicted_units": 1.6,
+      "method": "fixture",
+      "model_version": null
+    },
+    {
+      "variant_id": "insignia-blanco-46",
+      "period_start": "2026-10-19",
+      "period_end": "2026-10-25",
+      "predicted_units": 1.9,
+      "method": "fixture",
+      "model_version": null
+    }
+  ],
+  "recommendations": [
+    {
+      "variant_id": "aurora-negro-38",
+      "action": "maintain",
+      "suggested_units": null,
+      "coverage_weeks": 3.9,
+      "risk": "balanced",
+      "reason": "Cobertura 3,9 semanas (stock 26, en camino 0) se encuentra entre los umbrales de stockout (2) y exceso (8). Demanda estimada 6,8 uds/semana (últimas 4 semanas con disponibilidad): no se requiere movimiento.",
+      "parameters": {
+        "lead_time_weeks": 2,
+        "review_period_weeks": 1,
+        "safety_stock_weeks": 0.5,
+        "coverage_period_weeks": 3,
+        "excess_threshold_weeks": 8,
+        "stockout_threshold_weeks": 2,
+        "demand_weeks_used": 4,
+        "units_in_transit": 0
+      }
+    },
+    {
+      "variant_id": "aurora-negro-40",
+      "action": "replenish",
+      "suggested_units": 59,
+      "coverage_weeks": 0.3,
+      "risk": "stockout",
+      "reason": "Cobertura 0,3 semanas (stock 6, en camino 0) es menor que el plazo del proveedor (2 semanas). Demanda estimada 18,3 uds/semana (últimas 4 semanas con disponibilidad): reponer 3 semanas de cobertura + stock de seguridad (0.5 semana).",
+      "parameters": {
+        "lead_time_weeks": 2,
+        "review_period_weeks": 1,
+        "safety_stock_weeks": 0.5,
+        "coverage_period_weeks": 3,
+        "excess_threshold_weeks": 8,
+        "stockout_threshold_weeks": 2,
+        "demand_weeks_used": 4,
+        "units_in_transit": 0
+      }
+    },
+    {
+      "variant_id": "aurora-negro-42",
+      "action": "replenish",
+      "suggested_units": 36,
+      "coverage_weeks": 0.5,
+      "risk": "stockout",
+      "reason": "Cobertura 0,5 semanas (stock 8, en camino 12) es menor que el plazo del proveedor (2 semanas). Demanda estimada 15,8 uds/semana (últimas 4 semanas con disponibilidad): reponer 3 semanas de cobertura + stock de seguridad (0.5 semana).",
+      "parameters": {
+        "lead_time_weeks": 2,
+        "review_period_weeks": 1,
+        "safety_stock_weeks": 0.5,
+        "coverage_period_weeks": 3,
+        "excess_threshold_weeks": 8,
+        "stockout_threshold_weeks": 2,
+        "demand_weeks_used": 4,
+        "units_in_transit": 12
+      }
+    },
+    {
+      "variant_id": "aurora-negro-44",
+      "action": "maintain",
+      "suggested_units": null,
+      "coverage_weeks": 3.5,
+      "risk": "balanced",
+      "reason": "Cobertura 3,5 semanas (stock 40, en camino 0) se encuentra entre los umbrales de stockout (2) y exceso (8). Demanda estimada 11,5 uds/semana (últimas 4 semanas con disponibilidad): no se requiere movimiento.",
+      "parameters": {
+        "lead_time_weeks": 2,
+        "review_period_weeks": 1,
+        "safety_stock_weeks": 0.5,
+        "coverage_period_weeks": 3,
+        "excess_threshold_weeks": 8,
+        "stockout_threshold_weeks": 2,
+        "demand_weeks_used": 4,
+        "units_in_transit": 0
+      }
+    },
+    {
+      "variant_id": "aurora-negro-46",
+      "action": "maintain",
+      "suggested_units": null,
+      "coverage_weeks": 3.1,
+      "risk": "balanced",
+      "reason": "Cobertura 3,1 semanas (stock 18, en camino 0) se encuentra entre los umbrales de stockout (2) y exceso (8). Demanda estimada 5,8 uds/semana (últimas 4 semanas con disponibilidad): no se requiere movimiento.",
+      "parameters": {
+        "lead_time_weeks": 2,
+        "review_period_weeks": 1,
+        "safety_stock_weeks": 0.5,
+        "coverage_period_weeks": 3,
+        "excess_threshold_weeks": 8,
+        "stockout_threshold_weeks": 2,
+        "demand_weeks_used": 4,
+        "units_in_transit": 0
+      }
+    },
+    {
+      "variant_id": "aurora-blanco-38",
+      "action": "maintain",
+      "suggested_units": null,
+      "coverage_weeks": 2.1,
+      "risk": "balanced",
+      "reason": "Cobertura 2,1 semanas (stock 12, en camino 0) se encuentra entre los umbrales de stockout (2) y exceso (8). Demanda estimada 5,8 uds/semana (últimas 4 semanas con disponibilidad): no se requiere movimiento.",
+      "parameters": {
+        "lead_time_weeks": 2,
+        "review_period_weeks": 1,
+        "safety_stock_weeks": 0.5,
+        "coverage_period_weeks": 3,
+        "excess_threshold_weeks": 8,
+        "stockout_threshold_weeks": 2,
+        "demand_weeks_used": 4,
+        "units_in_transit": 0
+      }
+    },
+    {
+      "variant_id": "aurora-blanco-40",
+      "action": "replenish",
+      "suggested_units": 43,
+      "coverage_weeks": 0.3,
+      "risk": "stockout",
+      "reason": "Cobertura 0,3 semanas (stock 4, en camino 0) es menor que el plazo del proveedor (2 semanas). Demanda estimada 13,3 uds/semana (últimas 4 semanas con disponibilidad): reponer 3 semanas de cobertura + stock de seguridad (0.5 semana).",
+      "parameters": {
+        "lead_time_weeks": 2,
+        "review_period_weeks": 1,
+        "safety_stock_weeks": 0.5,
+        "coverage_period_weeks": 3,
+        "excess_threshold_weeks": 8,
+        "stockout_threshold_weeks": 2,
+        "demand_weeks_used": 4,
+        "units_in_transit": 0
+      }
+    },
+    {
+      "variant_id": "aurora-blanco-42",
+      "action": "maintain",
+      "suggested_units": null,
+      "coverage_weeks": 3.3,
+      "risk": "balanced",
+      "reason": "Cobertura 3,3 semanas (stock 45, en camino 0) se encuentra entre los umbrales de stockout (2) y exceso (8). Demanda estimada 13,5 uds/semana (últimas 4 semanas con disponibilidad): no se requiere movimiento.",
+      "parameters": {
+        "lead_time_weeks": 2,
+        "review_period_weeks": 1,
+        "safety_stock_weeks": 0.5,
+        "coverage_period_weeks": 3,
+        "excess_threshold_weeks": 8,
+        "stockout_threshold_weeks": 2,
+        "demand_weeks_used": 4,
+        "units_in_transit": 0
+      }
+    },
+    {
+      "variant_id": "aurora-blanco-44",
+      "action": "defer_purchase",
+      "suggested_units": null,
+      "coverage_weeks": 8.2,
+      "risk": "excess",
+      "reason": "Cobertura 8,2 semanas (stock 70, en camino 0) supera el umbral de exceso de 8 semanas. Demanda estimada 8,5 uds/semana (últimas 4 semanas con disponibilidad): posponer compras hasta que la cobertura baje del umbral.",
+      "parameters": {
+        "lead_time_weeks": 2,
+        "review_period_weeks": 1,
+        "safety_stock_weeks": 0.5,
+        "coverage_period_weeks": 3,
+        "excess_threshold_weeks": 8,
+        "stockout_threshold_weeks": 2,
+        "demand_weeks_used": 4,
+        "units_in_transit": 0
+      }
+    },
+    {
+      "variant_id": "aurora-blanco-46",
+      "action": "maintain",
+      "suggested_units": null,
+      "coverage_weeks": 2.9,
+      "risk": "balanced",
+      "reason": "Cobertura 2,9 semanas (stock 14, en camino 0) se encuentra entre los umbrales de stockout (2) y exceso (8). Demanda estimada 4,8 uds/semana (últimas 4 semanas con disponibilidad): no se requiere movimiento.",
+      "parameters": {
+        "lead_time_weeks": 2,
+        "review_period_weeks": 1,
+        "safety_stock_weeks": 0.5,
+        "coverage_period_weeks": 3,
+        "excess_threshold_weeks": 8,
+        "stockout_threshold_weeks": 2,
+        "demand_weeks_used": 4,
+        "units_in_transit": 0
+      }
+    },
+    {
+      "variant_id": "cordoba-negro-38",
+      "action": "defer_purchase",
+      "suggested_units": null,
+      "coverage_weeks": null,
+      "risk": "excess",
+      "reason": "Sin ventas en 12 semanas con disponibilidad (stock 22, en camino 0). Cobertura no estimable por demanda cero: posponer compras y revisar rotación antes de reabastecer.",
+      "parameters": {
+        "lead_time_weeks": 2,
+        "review_period_weeks": 1,
+        "safety_stock_weeks": 0.5,
+        "coverage_period_weeks": 3,
+        "excess_threshold_weeks": 8,
+        "stockout_threshold_weeks": 2,
+        "demand_weeks_used": 12,
+        "units_in_transit": 0
+      }
+    },
+    {
+      "variant_id": "cordoba-negro-40",
+      "action": "defer_purchase",
+      "suggested_units": null,
+      "coverage_weeks": 55,
+      "risk": "excess",
+      "reason": "Cobertura 55 semanas (stock 55, en camino 0) supera el umbral de exceso de 8 semanas. Demanda estimada 1 uds/semana (últimas 4 semanas con disponibilidad): posponer compras hasta que la cobertura baje del umbral.",
+      "parameters": {
+        "lead_time_weeks": 2,
+        "review_period_weeks": 1,
+        "safety_stock_weeks": 0.5,
+        "coverage_period_weeks": 3,
+        "excess_threshold_weeks": 8,
+        "stockout_threshold_weeks": 2,
+        "demand_weeks_used": 4,
+        "units_in_transit": 0
+      }
+    },
+    {
+      "variant_id": "cordoba-negro-42",
+      "action": "defer_purchase",
+      "suggested_units": null,
+      "coverage_weeks": 25.5,
+      "risk": "excess",
+      "reason": "Cobertura 25,5 semanas (stock 70, en camino 0) supera el umbral de exceso de 8 semanas. Demanda estimada 2,8 uds/semana (últimas 4 semanas con disponibilidad): posponer compras hasta que la cobertura baje del umbral.",
+      "parameters": {
+        "lead_time_weeks": 2,
+        "review_period_weeks": 1,
+        "safety_stock_weeks": 0.5,
+        "coverage_period_weeks": 3,
+        "excess_threshold_weeks": 8,
+        "stockout_threshold_weeks": 2,
+        "demand_weeks_used": 4,
+        "units_in_transit": 0
+      }
+    },
+    {
+      "variant_id": "cordoba-negro-44",
+      "action": "defer_purchase",
+      "suggested_units": null,
+      "coverage_weeks": 48,
+      "risk": "excess",
+      "reason": "Cobertura 48 semanas (stock 60, en camino 0) supera el umbral de exceso de 8 semanas. Demanda estimada 1,3 uds/semana (últimas 4 semanas con disponibilidad): posponer compras hasta que la cobertura baje del umbral.",
+      "parameters": {
+        "lead_time_weeks": 2,
+        "review_period_weeks": 1,
+        "safety_stock_weeks": 0.5,
+        "coverage_period_weeks": 3,
+        "excess_threshold_weeks": 8,
+        "stockout_threshold_weeks": 2,
+        "demand_weeks_used": 4,
+        "units_in_transit": 0
+      }
+    },
+    {
+      "variant_id": "cordoba-negro-46",
+      "action": "defer_purchase",
+      "suggested_units": null,
+      "coverage_weeks": 35,
+      "risk": "excess",
+      "reason": "Cobertura 35 semanas (stock 35, en camino 0) supera el umbral de exceso de 8 semanas. Demanda estimada 1 uds/semana (últimas 4 semanas con disponibilidad): posponer compras hasta que la cobertura baje del umbral.",
+      "parameters": {
+        "lead_time_weeks": 2,
+        "review_period_weeks": 1,
+        "safety_stock_weeks": 0.5,
+        "coverage_period_weeks": 3,
+        "excess_threshold_weeks": 8,
+        "stockout_threshold_weeks": 2,
+        "demand_weeks_used": 4,
+        "units_in_transit": 0
+      }
+    },
+    {
+      "variant_id": "cordoba-blanco-38",
+      "action": "defer_purchase",
+      "suggested_units": null,
+      "coverage_weeks": null,
+      "risk": "excess",
+      "reason": "Sin ventas en 12 semanas con disponibilidad (stock 18, en camino 0). Cobertura no estimable por demanda cero: posponer compras y revisar rotación antes de reabastecer.",
+      "parameters": {
+        "lead_time_weeks": 2,
+        "review_period_weeks": 1,
+        "safety_stock_weeks": 0.5,
+        "coverage_period_weeks": 3,
+        "excess_threshold_weeks": 8,
+        "stockout_threshold_weeks": 2,
+        "demand_weeks_used": 12,
+        "units_in_transit": 0
+      }
+    },
+    {
+      "variant_id": "cordoba-blanco-40",
+      "action": "defer_purchase",
+      "suggested_units": null,
+      "coverage_weeks": 48,
+      "risk": "excess",
+      "reason": "Cobertura 48 semanas (stock 48, en camino 0) supera el umbral de exceso de 8 semanas. Demanda estimada 1 uds/semana (últimas 4 semanas con disponibilidad): posponer compras hasta que la cobertura baje del umbral.",
+      "parameters": {
+        "lead_time_weeks": 2,
+        "review_period_weeks": 1,
+        "safety_stock_weeks": 0.5,
+        "coverage_period_weeks": 3,
+        "excess_threshold_weeks": 8,
+        "stockout_threshold_weeks": 2,
+        "demand_weeks_used": 4,
+        "units_in_transit": 0
+      }
+    },
+    {
+      "variant_id": "cordoba-blanco-42",
+      "action": "defer_purchase",
+      "suggested_units": null,
+      "coverage_weeks": 35.4,
+      "risk": "excess",
+      "reason": "Cobertura 35,4 semanas (stock 62, en camino 0) supera el umbral de exceso de 8 semanas. Demanda estimada 1,8 uds/semana (últimas 4 semanas con disponibilidad): posponer compras hasta que la cobertura baje del umbral.",
+      "parameters": {
+        "lead_time_weeks": 2,
+        "review_period_weeks": 1,
+        "safety_stock_weeks": 0.5,
+        "coverage_period_weeks": 3,
+        "excess_threshold_weeks": 8,
+        "stockout_threshold_weeks": 2,
+        "demand_weeks_used": 4,
+        "units_in_transit": 0
+      }
+    },
+    {
+      "variant_id": "cordoba-blanco-44",
+      "action": "defer_purchase",
+      "suggested_units": null,
+      "coverage_weeks": 35.2,
+      "risk": "excess",
+      "reason": "Cobertura 35,2 semanas (stock 44, en camino 0) supera el umbral de exceso de 8 semanas. Demanda estimada 1,3 uds/semana (últimas 4 semanas con disponibilidad): posponer compras hasta que la cobertura baje del umbral.",
+      "parameters": {
+        "lead_time_weeks": 2,
+        "review_period_weeks": 1,
+        "safety_stock_weeks": 0.5,
+        "coverage_period_weeks": 3,
+        "excess_threshold_weeks": 8,
+        "stockout_threshold_weeks": 2,
+        "demand_weeks_used": 4,
+        "units_in_transit": 0
+      }
+    },
+    {
+      "variant_id": "cordoba-blanco-46",
+      "action": "defer_purchase",
+      "suggested_units": null,
+      "coverage_weeks": 28,
+      "risk": "excess",
+      "reason": "Cobertura 28 semanas (stock 28, en camino 0) supera el umbral de exceso de 8 semanas. Demanda estimada 1 uds/semana (últimas 4 semanas con disponibilidad): posponer compras hasta que la cobertura baje del umbral.",
+      "parameters": {
+        "lead_time_weeks": 2,
+        "review_period_weeks": 1,
+        "safety_stock_weeks": 0.5,
+        "coverage_period_weeks": 3,
+        "excess_threshold_weeks": 8,
+        "stockout_threshold_weeks": 2,
+        "demand_weeks_used": 4,
+        "units_in_transit": 0
+      }
+    },
+    {
+      "variant_id": "volcan-negro-38",
+      "action": "maintain",
+      "suggested_units": null,
+      "coverage_weeks": 2.8,
+      "risk": "balanced",
+      "reason": "Cobertura 2,8 semanas (stock 12, en camino 0) se encuentra entre los umbrales de stockout (2) y exceso (8). Demanda estimada 4,3 uds/semana (últimas 4 semanas con disponibilidad): no se requiere movimiento.",
+      "parameters": {
+        "lead_time_weeks": 2,
+        "review_period_weeks": 1,
+        "safety_stock_weeks": 0.5,
+        "coverage_period_weeks": 3,
+        "excess_threshold_weeks": 8,
+        "stockout_threshold_weeks": 2,
+        "demand_weeks_used": 4,
+        "units_in_transit": 0
+      }
+    },
+    {
+      "variant_id": "volcan-negro-40",
+      "action": "maintain",
+      "suggested_units": null,
+      "coverage_weeks": 3.1,
+      "risk": "balanced",
+      "reason": "Cobertura 3,1 semanas (stock 22, en camino 0) se encuentra entre los umbrales de stockout (2) y exceso (8). Demanda estimada 7 uds/semana (últimas 4 semanas con disponibilidad): no se requiere movimiento.",
+      "parameters": {
+        "lead_time_weeks": 2,
+        "review_period_weeks": 1,
+        "safety_stock_weeks": 0.5,
+        "coverage_period_weeks": 3,
+        "excess_threshold_weeks": 8,
+        "stockout_threshold_weeks": 2,
+        "demand_weeks_used": 4,
+        "units_in_transit": 0
+      }
+    },
+    {
+      "variant_id": "volcan-negro-42",
+      "action": "maintain",
+      "suggested_units": null,
+      "coverage_weeks": 3,
+      "risk": "balanced",
+      "reason": "Cobertura 3 semanas (stock 30, en camino 0) se encuentra entre los umbrales de stockout (2) y exceso (8). Demanda estimada 10 uds/semana (últimas 4 semanas con disponibilidad): no se requiere movimiento.",
+      "parameters": {
+        "lead_time_weeks": 2,
+        "review_period_weeks": 1,
+        "safety_stock_weeks": 0.5,
+        "coverage_period_weeks": 3,
+        "excess_threshold_weeks": 8,
+        "stockout_threshold_weeks": 2,
+        "demand_weeks_used": 4,
+        "units_in_transit": 0
+      }
+    },
+    {
+      "variant_id": "volcan-negro-44",
+      "action": "maintain",
+      "suggested_units": null,
+      "coverage_weeks": 2.7,
+      "risk": "balanced",
+      "reason": "Cobertura 2,7 semanas (stock 18, en camino 0) se encuentra entre los umbrales de stockout (2) y exceso (8). Demanda estimada 6,8 uds/semana (últimas 4 semanas con disponibilidad): no se requiere movimiento.",
+      "parameters": {
+        "lead_time_weeks": 2,
+        "review_period_weeks": 1,
+        "safety_stock_weeks": 0.5,
+        "coverage_period_weeks": 3,
+        "excess_threshold_weeks": 8,
+        "stockout_threshold_weeks": 2,
+        "demand_weeks_used": 4,
+        "units_in_transit": 0
+      }
+    },
+    {
+      "variant_id": "volcan-negro-46",
+      "action": "maintain",
+      "suggested_units": null,
+      "coverage_weeks": 3.6,
+      "risk": "balanced",
+      "reason": "Cobertura 3,6 semanas (stock 10, en camino 0) se encuentra entre los umbrales de stockout (2) y exceso (8). Demanda estimada 2,8 uds/semana (últimas 4 semanas con disponibilidad): no se requiere movimiento.",
+      "parameters": {
+        "lead_time_weeks": 2,
+        "review_period_weeks": 1,
+        "safety_stock_weeks": 0.5,
+        "coverage_period_weeks": 3,
+        "excess_threshold_weeks": 8,
+        "stockout_threshold_weeks": 2,
+        "demand_weeks_used": 4,
+        "units_in_transit": 0
+      }
+    },
+    {
+      "variant_id": "volcan-blanco-38",
+      "action": "maintain",
+      "suggested_units": null,
+      "coverage_weeks": 3.4,
+      "risk": "balanced",
+      "reason": "Cobertura 3,4 semanas (stock 11, en camino 0) se encuentra entre los umbrales de stockout (2) y exceso (8). Demanda estimada 3,3 uds/semana (últimas 4 semanas con disponibilidad): no se requiere movimiento.",
+      "parameters": {
+        "lead_time_weeks": 2,
+        "review_period_weeks": 1,
+        "safety_stock_weeks": 0.5,
+        "coverage_period_weeks": 3,
+        "excess_threshold_weeks": 8,
+        "stockout_threshold_weeks": 2,
+        "demand_weeks_used": 4,
+        "units_in_transit": 0
+      }
+    },
+    {
+      "variant_id": "volcan-blanco-40",
+      "action": "maintain",
+      "suggested_units": null,
+      "coverage_weeks": 3.5,
+      "risk": "balanced",
+      "reason": "Cobertura 3,5 semanas (stock 20, en camino 0) se encuentra entre los umbrales de stockout (2) y exceso (8). Demanda estimada 5,8 uds/semana (últimas 4 semanas con disponibilidad): no se requiere movimiento.",
+      "parameters": {
+        "lead_time_weeks": 2,
+        "review_period_weeks": 1,
+        "safety_stock_weeks": 0.5,
+        "coverage_period_weeks": 3,
+        "excess_threshold_weeks": 8,
+        "stockout_threshold_weeks": 2,
+        "demand_weeks_used": 4,
+        "units_in_transit": 0
+      }
+    },
+    {
+      "variant_id": "volcan-blanco-42",
+      "action": "maintain",
+      "suggested_units": null,
+      "coverage_weeks": 3.6,
+      "risk": "balanced",
+      "reason": "Cobertura 3,6 semanas (stock 27, en camino 0) se encuentra entre los umbrales de stockout (2) y exceso (8). Demanda estimada 7,5 uds/semana (últimas 4 semanas con disponibilidad): no se requiere movimiento.",
+      "parameters": {
+        "lead_time_weeks": 2,
+        "review_period_weeks": 1,
+        "safety_stock_weeks": 0.5,
+        "coverage_period_weeks": 3,
+        "excess_threshold_weeks": 8,
+        "stockout_threshold_weeks": 2,
+        "demand_weeks_used": 4,
+        "units_in_transit": 0
+      }
+    },
+    {
+      "variant_id": "volcan-blanco-44",
+      "action": "maintain",
+      "suggested_units": null,
+      "coverage_weeks": 2.8,
+      "risk": "balanced",
+      "reason": "Cobertura 2,8 semanas (stock 16, en camino 0) se encuentra entre los umbrales de stockout (2) y exceso (8). Demanda estimada 5,8 uds/semana (últimas 4 semanas con disponibilidad): no se requiere movimiento.",
+      "parameters": {
+        "lead_time_weeks": 2,
+        "review_period_weeks": 1,
+        "safety_stock_weeks": 0.5,
+        "coverage_period_weeks": 3,
+        "excess_threshold_weeks": 8,
+        "stockout_threshold_weeks": 2,
+        "demand_weeks_used": 4,
+        "units_in_transit": 0
+      }
+    },
+    {
+      "variant_id": "volcan-blanco-46",
+      "action": "maintain",
+      "suggested_units": null,
+      "coverage_weeks": 3.3,
+      "risk": "balanced",
+      "reason": "Cobertura 3,3 semanas (stock 9, en camino 0) se encuentra entre los umbrales de stockout (2) y exceso (8). Demanda estimada 2,8 uds/semana (últimas 4 semanas con disponibilidad): no se requiere movimiento.",
+      "parameters": {
+        "lead_time_weeks": 2,
+        "review_period_weeks": 1,
+        "safety_stock_weeks": 0.5,
+        "coverage_period_weeks": 3,
+        "excess_threshold_weeks": 8,
+        "stockout_threshold_weeks": 2,
+        "demand_weeks_used": 4,
+        "units_in_transit": 0
+      }
+    },
+    {
+      "variant_id": "insignia-negro-38",
+      "action": "review_data",
+      "suggested_units": null,
+      "coverage_weeks": null,
+      "risk": "insufficient_data",
+      "reason": "Solo 5 de 12 semanas con disponibilidad (sin abastecimiento desde la semana 6). Datos insuficientes para una recomendación categórica: revisar disponibilidad histórica.",
+      "parameters": {
+        "lead_time_weeks": 2,
+        "review_period_weeks": 1,
+        "safety_stock_weeks": 0.5,
+        "coverage_period_weeks": 3,
+        "excess_threshold_weeks": 8,
+        "stockout_threshold_weeks": 2,
+        "demand_weeks_used": 5,
+        "units_in_transit": 0
+      }
+    },
+    {
+      "variant_id": "insignia-negro-40",
+      "action": "review_data",
+      "suggested_units": null,
+      "coverage_weeks": null,
+      "risk": "insufficient_data",
+      "reason": "Solo 5 de 12 semanas con disponibilidad (sin abastecimiento desde la semana 6). Datos insuficientes para una recomendación categórica: revisar disponibilidad histórica.",
+      "parameters": {
+        "lead_time_weeks": 2,
+        "review_period_weeks": 1,
+        "safety_stock_weeks": 0.5,
+        "coverage_period_weeks": 3,
+        "excess_threshold_weeks": 8,
+        "stockout_threshold_weeks": 2,
+        "demand_weeks_used": 5,
+        "units_in_transit": 0
+      }
+    },
+    {
+      "variant_id": "insignia-negro-42",
+      "action": "review_data",
+      "suggested_units": null,
+      "coverage_weeks": null,
+      "risk": "insufficient_data",
+      "reason": "Solo 5 de 12 semanas con disponibilidad (sin abastecimiento desde la semana 6). Datos insuficientes para una recomendación categórica: revisar disponibilidad histórica.",
+      "parameters": {
+        "lead_time_weeks": 2,
+        "review_period_weeks": 1,
+        "safety_stock_weeks": 0.5,
+        "coverage_period_weeks": 3,
+        "excess_threshold_weeks": 8,
+        "stockout_threshold_weeks": 2,
+        "demand_weeks_used": 5,
+        "units_in_transit": 0
+      }
+    },
+    {
+      "variant_id": "insignia-negro-44",
+      "action": "review_data",
+      "suggested_units": null,
+      "coverage_weeks": null,
+      "risk": "insufficient_data",
+      "reason": "Solo 5 de 12 semanas con disponibilidad (sin abastecimiento desde la semana 6). Datos insuficientes para una recomendación categórica: revisar disponibilidad histórica.",
+      "parameters": {
+        "lead_time_weeks": 2,
+        "review_period_weeks": 1,
+        "safety_stock_weeks": 0.5,
+        "coverage_period_weeks": 3,
+        "excess_threshold_weeks": 8,
+        "stockout_threshold_weeks": 2,
+        "demand_weeks_used": 5,
+        "units_in_transit": 0
+      }
+    },
+    {
+      "variant_id": "insignia-negro-46",
+      "action": "review_data",
+      "suggested_units": null,
+      "coverage_weeks": null,
+      "risk": "insufficient_data",
+      "reason": "Solo 5 de 12 semanas con disponibilidad (sin abastecimiento desde la semana 6). Datos insuficientes para una recomendación categórica: revisar disponibilidad histórica.",
+      "parameters": {
+        "lead_time_weeks": 2,
+        "review_period_weeks": 1,
+        "safety_stock_weeks": 0.5,
+        "coverage_period_weeks": 3,
+        "excess_threshold_weeks": 8,
+        "stockout_threshold_weeks": 2,
+        "demand_weeks_used": 5,
+        "units_in_transit": 0
+      }
+    },
+    {
+      "variant_id": "insignia-blanco-38",
+      "action": "review_data",
+      "suggested_units": null,
+      "coverage_weeks": null,
+      "risk": "insufficient_data",
+      "reason": "Solo 5 de 12 semanas con disponibilidad (sin abastecimiento desde la semana 6). Datos insuficientes para una recomendación categórica: revisar disponibilidad histórica.",
+      "parameters": {
+        "lead_time_weeks": 2,
+        "review_period_weeks": 1,
+        "safety_stock_weeks": 0.5,
+        "coverage_period_weeks": 3,
+        "excess_threshold_weeks": 8,
+        "stockout_threshold_weeks": 2,
+        "demand_weeks_used": 5,
+        "units_in_transit": 0
+      }
+    },
+    {
+      "variant_id": "insignia-blanco-40",
+      "action": "review_data",
+      "suggested_units": null,
+      "coverage_weeks": null,
+      "risk": "insufficient_data",
+      "reason": "Solo 5 de 12 semanas con disponibilidad (sin abastecimiento desde la semana 6). Datos insuficientes para una recomendación categórica: revisar disponibilidad histórica.",
+      "parameters": {
+        "lead_time_weeks": 2,
+        "review_period_weeks": 1,
+        "safety_stock_weeks": 0.5,
+        "coverage_period_weeks": 3,
+        "excess_threshold_weeks": 8,
+        "stockout_threshold_weeks": 2,
+        "demand_weeks_used": 5,
+        "units_in_transit": 0
+      }
+    },
+    {
+      "variant_id": "insignia-blanco-42",
+      "action": "review_data",
+      "suggested_units": null,
+      "coverage_weeks": null,
+      "risk": "insufficient_data",
+      "reason": "Solo 5 de 12 semanas con disponibilidad (sin abastecimiento desde la semana 6). Datos insuficientes para una recomendación categórica: revisar disponibilidad histórica.",
+      "parameters": {
+        "lead_time_weeks": 2,
+        "review_period_weeks": 1,
+        "safety_stock_weeks": 0.5,
+        "coverage_period_weeks": 3,
+        "excess_threshold_weeks": 8,
+        "stockout_threshold_weeks": 2,
+        "demand_weeks_used": 5,
+        "units_in_transit": 0
+      }
+    },
+    {
+      "variant_id": "insignia-blanco-44",
+      "action": "review_data",
+      "suggested_units": null,
+      "coverage_weeks": null,
+      "risk": "insufficient_data",
+      "reason": "Solo 5 de 12 semanas con disponibilidad (sin abastecimiento desde la semana 6). Datos insuficientes para una recomendación categórica: revisar disponibilidad histórica.",
+      "parameters": {
+        "lead_time_weeks": 2,
+        "review_period_weeks": 1,
+        "safety_stock_weeks": 0.5,
+        "coverage_period_weeks": 3,
+        "excess_threshold_weeks": 8,
+        "stockout_threshold_weeks": 2,
+        "demand_weeks_used": 5,
+        "units_in_transit": 0
+      }
+    },
+    {
+      "variant_id": "insignia-blanco-46",
+      "action": "review_data",
+      "suggested_units": null,
+      "coverage_weeks": null,
+      "risk": "insufficient_data",
+      "reason": "Solo 5 de 12 semanas con disponibilidad (sin abastecimiento desde la semana 6). Datos insuficientes para una recomendación categórica: revisar disponibilidad histórica.",
+      "parameters": {
+        "lead_time_weeks": 2,
+        "review_period_weeks": 1,
+        "safety_stock_weeks": 0.5,
+        "coverage_period_weeks": 3,
+        "excess_threshold_weeks": 8,
+        "stockout_threshold_weeks": 2,
+        "demand_weeks_used": 5,
+        "units_in_transit": 0
+      }
+    }
+  ]
+}
