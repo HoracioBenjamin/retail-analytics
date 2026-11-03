@@ -131,6 +131,22 @@ SELECT para ese rol. Al validar permisos, probar SIEMPRE con datos reales
 
 ## 3. ⚠️ Distinción importante: SQL Editor ≠ permisos reales de la app
 
+### Claves públicas modernas y diagnóstico HTTP
+
+Las claves `sb_publishable_…` se envían solo en `apikey`, nunca como JWT en
+`Authorization: Bearer`. El repositorio conserva el Bearer únicamente para las
+claves anon JWT antiguas. Este acceso analítico no envía sesiones de Authentication;
+asignar `app_metadata.role=admin` a esas cuentas no cambia el rol de esta consulta.
+
+Un HTTP 401 sin código PostgreSQL `42501` se informa como error de autenticación
+de la conexión (`SERVICE_UNAVAILABLE`): revisar URL y clave del backend antes de
+cambiar SQL. Un HTTP 401 con `42501`, o un HTTP 403, indica acceso rechazado
+(`PERMISSION_DENIED`): revisar los grants SELECT y las políticas aplicables.
+No todos los HTTP 401 demuestran un bloqueo RLS. No se imprimen claves ni cuerpos
+de errores del proveedor para diagnosticar estas respuestas.
+
+Referencia: [claves API de Supabase](https://supabase.com/docs/guides/getting-started/api-keys).
+
 El **SQL Editor de Supabase ejecuta con el rol `postgres` (dueño)**, que pasa por
 encima de RLS. Si una consulta funciona ahí, **NO demuestra** que la aplicación
 pueda ejecutarla: la app usa la **clave anon** y PostgREST solo devuelve lo que

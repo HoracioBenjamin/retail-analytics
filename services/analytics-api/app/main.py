@@ -84,7 +84,7 @@ def create_app() -> FastAPI:
 
     @app.exception_handler(SupabasePermissionError)
     async def supabase_permissions(request: Request, exc: SupabasePermissionError) -> JSONResponse:
-        # RLS bloqueó la lectura con la clave pública: NO se omiten políticas.
+        # Permisos SELECT/RLS denegados; no confundir con claves inválidas.
         return JSONResponse(
             status_code=403,
             content={"error": {"code": "PERMISSION_DENIED", "message": str(exc)}},

@@ -10,7 +10,7 @@ Diseño:
   (producto/talla/fecha/cantidad/monto) se leen paginadas y los KPIs se
   agregan en Python (ver docs/CONSULTAS_SUPABASE.md).
 - Nunca se consultan columnas con datos personales.
-- Errores tipados: conexión (red/DNS), permisos (401/403), esquema.
+- Errores tipados: conexión/autenticación, permisos y esquema.
 - El contenido de los KEY/URL nunca se registra ni devuelve en mensajes.
 """
 
@@ -43,18 +43,47 @@ class SupabaseRestRepository:
     # ── HTTP interno ────────────────────────────────────────────────────────
 
     def _client(self) -> httpx.Client:
+        key = self._settings.supabase_publishable_key.strip()
         headers = {
-            "apikey": self._settings.supabase_publishable_key,
-            "Authorization": f"Bearer {self._settings.supabase_publishable_key}",
+            "apikey": key,
             "Accept": "application/json",
             # conteo exacto en el Content-Range (diagnóstico sin exponer filas)
             "Prefer": "count=exact",
         }
+        # sb_publishable_* no es un JWT: usarlo como Bearer produce Invalid JWT.
+        # Conservar compatibilidad con las claves anon JWT antiguas.
+        if key.startswith("eyJ") and key.count(".") == 2:
+            headers["Authorization"] = f"Bearer {key}"
         return httpx.Client(
             base_url=self._base,
             headers=headers,
             timeout=httpx.Timeout(30.0),
             transport=self._transport,
+        )
+
+    @staticmethod
+    def _check_access(response: httpx.Response, path: str) -> None:
+        if response.status_code not in (401, 403):
+            return
+        try:
+            body = response.json()
+        except ValueError:
+            body = None
+        code = body.get("code") if isinstance(body, dict) else None
+        # PostgREST también devuelve 401 a anon cuando PostgreSQL deniega SELECT.
+        # Distinguir ese caso de una clave inválida sin exponer el cuerpo recibido.
+        if response.status_code == 401 and code != "42501":
+            raise SupabaseConnectionError(
+                "Supabase rechazó la autenticación de la API (HTTP 401). "
+                "Revise SUPABASE_URL y SUPABASE_PUBLISHABLE_KEY en el .env del backend. "
+                "Una clave sb_publishable_ debe enviarse en apikey, no como Bearer. "
+                "Este error no confirma un bloqueo de RLS."
+            )
+        raise SupabasePermissionError(
+            f"Supabase denegó la lectura de '{path}' (HTTP {response.status_code}). "
+            "Revise los permisos SELECT y las políticas aplicables al rol anon "
+            "(docs/CONSULTAS_SUPABASE.md §3). Esta consulta no usa una sesión "
+            "de Authentication: asignar admin a esas cuentas no cambia este acceso."
         )
 
     def _fetch_all(self, path: str, params: dict[str, Any], max_rows: int) -> list[dict]:
@@ -77,12 +106,7 @@ class SupabaseRestRepository:
                         "No se pudo conectar con Supabase REST (verify red/URL en "
                         ".env: SUPABASE_URL)."
                     ) from exc
-                if response.status_code in (401, 403):
-                    raise SupabasePermissionError(
-                        f"RLS/permisos rechazaron la lectura de '{path}' con la clave "
-                        f"pública (HTTP {response.status_code}). Revise las políticas de "
-                        f"SELECT para el rol anon (docs/CONSULTAS_SUPABASE.md §3)."
-                    )
+                self._check_access(response, path)
                 if response.status_code == 404:
                     raise SupabaseConnectionError(
                         f"El recurso '{path}' no existe en el esquema accesible "
@@ -215,12 +239,7 @@ class SupabaseRestRepository:
                     raise SupabaseConnectionError(
                         "No se pudo conectar con Supabase REST (verificar red/URL)."
                     ) from exc
-                if response.status_code in (401, 403):
-                    raise SupabasePermissionError(
-                        f"RLS/permisos rechazaron el conteo de '{path}' con la clave "
-                        f"pública (HTTP {response.status_code}). "
-                        "Ver docs/CONSULTAS_SUPABASE.md §3."
-                    )
+                self._check_access(response, path)
                 if response.status_code not in (200, 206):  # 206 = rango con conteo
                     raise SupabaseConnectionError(
                         f"HTTP {response.status_code} al contar '{path}'."

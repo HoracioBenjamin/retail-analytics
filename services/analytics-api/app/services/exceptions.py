@@ -25,7 +25,7 @@ class SupabaseConnectionError(RuntimeError):
 
 
 class SupabasePermissionError(RuntimeError):
-    """RLS bloquea la lectura con la clave pública → 403 PERMISSION_DENIED.
+    """SELECT/RLS deniegan la lectura pública → 403 PERMISSION_DENIED.
 
     Nunca se desactivan políticas ni se usan credenciales privilegiadas:
     hay que revisar las políticas de SELECT para el rol anon.

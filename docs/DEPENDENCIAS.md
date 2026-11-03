@@ -656,3 +656,21 @@ cd services/analytics-api
 - [ ] Al apagar la API aparece un error claro sin cambiar silenciosamente de
       modo (Paso 7).
 - [x] Ninguna ruta afirma modelo entrenado, conexión real o autenticación.
+
+
+## Corrección de autenticación REST de Supabase — 2026-11-03
+
+- `supabase_rest.py`: las claves modernas `sb_publishable_` se envían en
+  `apikey`, sin Bearer inválido; las claves anon JWT antiguas conservan su
+  encabezado Authorization. No se modificaron credenciales ni SQL.
+- Un 401 de credenciales se informa como fallo de conexión/autenticación
+  (`SERVICE_UNAVAILABLE`). El código PostgreSQL 42501, incluso con HTTP 401,
+  se distingue como rechazo de SELECT (`PERMISSION_DENIED`), igual que HTTP 403.
+- Diagnóstico común para lecturas y conteos; no reproduce cuerpos de errores
+  ni claves del proveedor en esos mensajes. Documentado en CONSULTAS_SUPABASE §3.
+- Verificación: `pytest tests/test_supabase_auth_headers.py tests/test_connected.py
+  -q -k 'not router_connected_endpoints'`: **24 passed, 1 deselected**.
+  Ruff de los archivos Python modificados y la nueva prueba: **All checks passed**.
+- La prueba de router con TestClient quedó detenida en este entorno y se
+  interrumpió; no se declara validada. La comprobación real de Supabase falló
+  con ConnectError, por lo que falta reiniciar FastAPI y verificar en Windows.
