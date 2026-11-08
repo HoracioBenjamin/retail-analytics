@@ -88,7 +88,7 @@ export function RecommendationsPage(): React.JSX.Element {
           title="Recomendaciones"
           description={
             conectado
-              ? 'Estimaciones conservadoras con baseline Croston-SBA. Se requieren 28 días de historial y el plazo real del proveedor para clasificar faltantes; sin esos datos, la acción es revisar.'
+              ? 'Estimaciones prudentes basadas en las ventas registradas. Para anticipar faltantes se necesita suficiente historial y conocer el plazo del proveedor; si faltan esos datos, se recomienda revisar.'
               : 'Prioridades calculadas por la regla ilustrativa del plan (9.3) sobre el dataset de demostración. No es un motor de decisión definitivo.'
           }
         />
@@ -184,7 +184,9 @@ export function RecommendationsPage(): React.JSX.Element {
                         </Badge>
                       </TableCell>
                       <TableCell className="text-right text-xs">
-                        {r.suggested_units === null ? '—' : `${fmtNum(r.suggested_units)} uds`}
+                        {r.suggested_units === null
+                          ? '—'
+                          : `${fmtNum(r.suggested_units)} ${r.suggested_units === 1 ? 'unidad' : 'unidades'}`}
                       </TableCell>
                       <TableCell className="text-right text-xs">
                         {fmtCoverage(r.coverage_weeks)}

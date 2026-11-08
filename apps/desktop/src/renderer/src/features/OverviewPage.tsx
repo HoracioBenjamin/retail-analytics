@@ -21,7 +21,7 @@ import {
   useRecommendations,
   useVariantRows
 } from '@/hooks/api'
-import { fmtCLP, fmtCoverage, fmtNum, rangeLabel, weekLabel } from '@/lib/format'
+import { fmtCLP, fmtCoverage, fmtNum, weekLabel } from '@/lib/format'
 import { PERIOD_LABELS, buildDateRange, type Periodo } from './periodRange'
 
 /**
@@ -55,6 +55,9 @@ export function OverviewPage(): React.JSX.Element {
   const variantRows = useVariantRows()
   const recs = useRecommendations({})
   const availability = useFiltersAvailability()
+  const selectedModel = params.get('modelo')
+  const selectedModelName =
+    availability.data?.models.find((model) => model === selectedModel) ?? selectedModel
 
   const rows = useMemo(() => variantRows.data ?? [], [variantRows.data])
   const stockoutRows = useMemo(
@@ -108,12 +111,19 @@ export function OverviewPage(): React.JSX.Element {
     <>
       <div className="space-y-6">
         <PageHeader
-          title="Resumen de ventas e inventario"
-          description={
-            status.data?.metadata.historical_range
-              ? `Historial ${rangeLabel(status.data.metadata.historical_range.start, status.data.metadata.historical_range.end)}`
-              : 'Historial pendiente del dataset'
+          title={
+            selectedModelName ? `Resumen · ${selectedModelName}` : 'Resumen de ventas e inventario'
           }
+          description={[
+            selectedModelName ? `Zapatilla: ${selectedModelName}` : 'Todas las zapatillas',
+            params.get('color') ? `Color: ${params.get('color')}` : null,
+            params.get('talla') ? `Talla: ${params.get('talla')}` : null,
+            overview.data?.period_start && overview.data.period_end
+              ? `Fechas de venta: ${overview.data.period_start} al ${overview.data.period_end}`
+              : `Período: ${PERIOD_LABELS[periodo]}`
+          ]
+            .filter(Boolean)
+            .join(' · ')}
         />
 
         <FilterBar>
@@ -193,7 +203,7 @@ export function OverviewPage(): React.JSX.Element {
                 title="Riesgo de agotamiento"
                 description={
                   conectado
-                    ? 'Croston-SBA estima la demanda; hacen falta 28 días y el plazo real del proveedor para clasificar faltantes.'
+                    ? 'La demanda se estima con las ventas registradas. Para anticipar faltantes con mayor precisión se necesita suficiente historial y conocer el plazo del proveedor.'
                     : 'Cobertura menor que el plazo del proveedor.'
                 }
                 rows={stockoutRows}
@@ -217,12 +227,12 @@ export function OverviewPage(): React.JSX.Element {
                 className="lg:col-span-2"
                 title={
                   conectado
-                    ? 'Ventas históricas y baseline de demanda'
+                    ? 'Ventas registradas y demanda estimada'
                     : 'Ventas históricas y pronóstico de ejemplo'
                 }
                 description={
                   conectado
-                    ? 'La línea discontinua es una estimación Croston-SBA de cuatro semanas; no tiene precisión validada.'
+                    ? 'La línea discontinua muestra una estimación para las próximas 4 semanas; su precisión aún no se ha validado.'
                     : 'La línea discontinua es un valor de ejemplo, no una predicción de modelo.'
                 }
               >
@@ -242,7 +252,7 @@ export function OverviewPage(): React.JSX.Element {
                     items={topDemanda.map((r) => ({
                       id: r.variant_id,
                       label: `${r.model} · ${r.color} · T${r.size}`,
-                      value: `${fmtNum(r.units_sold_period)} uds`
+                      value: `${fmtNum(r.units_sold_period)} ${r.units_sold_period === 1 ? 'unidad' : 'unidades'}`
                     }))}
                     onSelect={setSelectedVariantId}
                     emptyTitle="Sin ventas en el período"
@@ -297,7 +307,7 @@ export function OverviewPage(): React.JSX.Element {
                             <StatusBadge risk={r.risk} />
                             <span className="text-xs text-muted-foreground">
                               {r.suggested_units !== null
-                                ? `Sugerido: ${fmtNum(r.suggested_units)} uds`
+                                ? `Sugerido: ${fmtNum(r.suggested_units)} ${r.suggested_units === 1 ? 'unidad' : 'unidades'}`
                                 : fmtCoverage(r.coverage_weeks)}
                             </span>
                           </div>
@@ -358,7 +368,9 @@ function RiskPanel({
                     {r.model} · {r.color} · T{r.size}
                   </p>
                   <p className="text-xs text-muted-foreground">
-                    Stock {fmtNum(r.stock_on_hand)} uds · {fmtCoverage(r.coverage_weeks)}
+                    Inventario: {fmtNum(r.stock_on_hand)}{' '}
+                    {r.stock_on_hand === 1 ? 'unidad' : 'unidades'} ·{' '}
+                    {fmtCoverage(r.coverage_weeks)}
                   </p>
                 </div>
                 <div className="shrink-0 flex flex-col items-end gap-0.5">
@@ -370,7 +382,7 @@ function RiskPanel({
                     }
                   >
                     {r.risk === 'stockout'
-                      ? `Reponer ${r.suggested_units !== null ? fmtNum(r.suggested_units) : '—'} uds`
+                      ? `Reponer ${r.suggested_units !== null ? fmtNum(r.suggested_units) : '—'} ${r.suggested_units === 1 ? 'unidad' : 'unidades'}`
                       : 'Posponer compras'}
                   </span>
                 </div>

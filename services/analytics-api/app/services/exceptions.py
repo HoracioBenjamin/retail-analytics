@@ -4,7 +4,7 @@ Mapeo a HTTP (sección 9.4 del plan + etapa C):
 - NotFoundVariantError        → 404 { code: 'NOT_FOUND' }
 - BusinessValidationError      → 422 { code: 'VALIDATION_ERROR' }
 - SupabaseConnectionError      → 503 { code: 'SERVICE_UNAVAILABLE' }
-- SupabasePermissionError      → 403 { code: 'PERMISSION_DENIED' }
+- SupabasePermissionError     → 403 { code: 'PERMISSION_DENIED' } (HTTP 401/403 upstream)
 - ProviderUnavailableError     → 503 { code: 'SERVICE_UNAVAILABLE' }
 """
 
@@ -25,10 +25,11 @@ class SupabaseConnectionError(RuntimeError):
 
 
 class SupabasePermissionError(RuntimeError):
-    """SELECT/RLS deniegan la lectura pública → 403 PERMISSION_DENIED.
+    """Supabase denegó permisos de lectura → 403 PERMISSION_DENIED.
 
-    Nunca se desactivan políticas ni se usan credenciales privilegiadas:
-    hay que revisar las políticas de SELECT para el rol anon.
+    Con una clave pública se deben revisar los permisos SELECT y las políticas
+    RLS del rol aplicable. La autenticación inválida se clasifica como error de
+    conexión y no como bloqueo de RLS.
     """
 
 

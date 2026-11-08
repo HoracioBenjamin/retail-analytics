@@ -8,9 +8,10 @@ import { ForecastsPage } from '@/features/ForecastsPage'
 import { RecommendationsPage } from '@/features/RecommendationsPage'
 import { DataStatusPage } from '@/features/DataStatusPage'
 import { SettingsPage } from '@/features/SettingsPage'
+import { ReportsPage } from '@/features/ReportsPage'
 
 /**
- * App completa de la Entrega A (plan, sección 8): HashRouter con las 6
+ * App de escritorio: HashRouter con las pantallas funcionales del producto
  * pantallas, shell de diseño del Paso 4 y navegación persistida.
  */
 function RoutedApp(): React.JSX.Element {
@@ -31,6 +32,7 @@ function RoutedApp(): React.JSX.Element {
         <Route path="/variants" element={<VariantsPage />} />
         <Route path="/forecasts" element={<ForecastsPage />} />
         <Route path="/recommendations" element={<RecommendationsPage />} />
+        <Route path="/reports" element={<ReportsPage />} />
         <Route path="/data-status" element={<DataStatusPage />} />
         <Route path="/settings" element={<SettingsPage />} />
         <Route path="*" element={<Navigate to="/overview" replace />} />

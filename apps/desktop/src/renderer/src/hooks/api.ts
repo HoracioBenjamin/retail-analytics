@@ -73,11 +73,15 @@ export function useOverview(filters: Partial<Filters>): UseQueryResult<OverviewR
  * Filas completas de variantes (page_size 200 = total en demo): la tabla
  * realiza búsqueda/orden/paginación local sobre los mismos datos canónicos.
  */
-export function useVariantRows(): UseQueryResult<VariantList['data']> {
+export function useVariantRows(
+  filters: Partial<Filters> = noFilters
+): UseQueryResult<VariantList['data']> {
   return useQuery({
-    queryKey: qk.variants(noFilters),
+    queryKey: qk.variants(filters),
     queryFn: () =>
-      callOk(analyticsApi.listVariants({ page: 1, page_size: 200 })).then((r) => r.data)
+      callOk(analyticsApi.listVariants({ ...filters, page: 1, page_size: 200 } as Filters)).then(
+        (r) => r.data
+      )
   })
 }
 

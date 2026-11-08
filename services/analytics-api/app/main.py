@@ -35,13 +35,21 @@ def create_app() -> FastAPI:
     # Punto 5 del Paso 6: modos no implementados abortan de forma clara.
     settings = validate_settings_or_fail()
 
-    description = (
-        "API analítica conectada a Supabase mediante REST, solo lectura y respetando RLS. "
-        "No incluye un modelo predictivo entrenado."
-        if settings.app_mode == "connected"
-        else "API demo que sirve el fixture canónico fixtures/demo-v1.json. "
-        "Sin credenciales ni modelo predictivo entrenado."
-    )
+    if settings.app_mode == "connected":
+        access_description = (
+            "La Secret Key configurada omite RLS; mantén este backend en localhost."
+            if settings.supabase_uses_secret_key
+            else "La clave publicable respeta las políticas RLS."
+        )
+        description = (
+            "API analítica conectada a Supabase mediante REST, solo lectura. "
+            f"{access_description} No incluye un modelo predictivo entrenado."
+        )
+    else:
+        description = (
+            "API demo que sirve el fixture canónico fixtures/demo-v1.json. "
+            "Sin credenciales ni modelo predictivo entrenado."
+        )
     app = FastAPI(
         title="Zapatillas Duoc Analytics API",
         version="0.1.0",

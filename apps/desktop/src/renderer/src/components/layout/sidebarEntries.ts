@@ -1,4 +1,12 @@
-import { Boxes, ChartLine, ClipboardList, Database, LayoutDashboard, Settings } from 'lucide-react'
+import {
+  Boxes,
+  ChartLine,
+  ChartPie,
+  ClipboardList,
+  Database,
+  LayoutDashboard,
+  Settings
+} from 'lucide-react'
 import type { SidebarEntry } from './SidebarItem'
 
 /**
@@ -15,6 +23,7 @@ export const SIDEBAR_ENTRIES: SidebarEntry[] = [
     path: '/recommendations',
     icon: ClipboardList
   },
+  { id: 'reports', label: 'Métricas y reportes', path: '/reports', icon: ChartPie },
   { id: 'data-status', label: 'Estado de datos', path: '/data-status', icon: Database },
   { id: 'settings', label: 'Ajustes', path: '/settings', icon: Settings }
 ]

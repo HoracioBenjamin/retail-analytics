@@ -79,6 +79,7 @@ def make_repo(handler) -> SupabaseRestRepository:
         app_mode="connected",
         supabase_url="https://proyecto-demo.supabase.co",
         supabase_publishable_key="clave-publica-de-prueba",
+        supabase_secret_key="",
     )
     return SupabaseRestRepository(settings, transport=httpx.MockTransport(handler))
 
@@ -122,8 +123,62 @@ def test_403_rls_mapea_a_permisos() -> None:
     repo = make_repo(
         lambda request: httpx.Response(403, json={"message": "RLS bloqueado"})
     )
-    with pytest.raises(SupabasePermissionError):
+    with pytest.raises(SupabasePermissionError, match="HTTP 403"):
         repo.productos()
+
+
+def test_401_identifica_error_de_autenticacion() -> None:
+    repo = make_repo(
+        lambda request: httpx.Response(401, json={"message": "Invalid API key"})
+    )
+    with pytest.raises(SupabaseConnectionError, match="no confirma un bloqueo de RLS"):
+        repo.productos()
+
+
+def test_publishable_key_se_envia_como_apikey_sin_bearer() -> None:
+    def handler(request: httpx.Request) -> httpx.Response:
+        assert request.headers["apikey"] == "clave-publica-de-prueba"
+        assert "authorization" not in request.headers
+        return httpx.Response(200, json=[])
+
+    make_repo(handler).productos()
+
+
+def test_secret_key_se_prioriza_y_se_envia_sin_bearer() -> None:
+    settings = Settings(
+        app_mode="connected",
+        supabase_url="https://proyecto-demo.supabase.co",
+        supabase_publishable_key="clave-publica-de-prueba",
+        supabase_secret_key="sb_secret_de_prueba",
+    )
+    settings.validate()
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        assert request.headers["apikey"] == "sb_secret_de_prueba"
+        assert "authorization" not in request.headers
+        return httpx.Response(200, json=[])
+
+    SupabaseRestRepository(settings, transport=httpx.MockTransport(handler)).productos()
+
+
+def test_connected_acepta_secret_key_sin_publishable_key() -> None:
+    settings = Settings(
+        app_mode="connected",
+        supabase_url="https://proyecto-demo.supabase.co",
+        supabase_secret_key="sb_secret_de_prueba",
+    )
+    settings.validate()
+
+
+def test_secret_key_no_se_permite_en_produccion() -> None:
+    settings = Settings(
+        app_env="production",
+        app_mode="connected",
+        supabase_url="https://proyecto-demo.supabase.co",
+        supabase_secret_key="sb_secret_de_prueba",
+    )
+    with pytest.raises(RuntimeError, match="solo está permitida con APP_ENV=development"):
+        settings.validate()
 
 
 def test_error_red_mapea_a_conexion() -> None:
@@ -302,6 +357,7 @@ def test_router_connected_endpoints(monkeypatch) -> None:
         app_mode="connected",
         supabase_url="https://proyecto-demo.supabase.co",
         supabase_publishable_key="clave-publica-de-prueba",
+        supabase_secret_key="",
     )
     monkeypatch.setattr(config_module, "get_settings", lambda: settings)
     import app.api.v1.router as router_module

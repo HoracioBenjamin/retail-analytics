@@ -313,7 +313,9 @@ function VariantRowView({
       <TableCell className="text-right text-xs">{fmtNum(row.stock_on_hand)}</TableCell>
       <TableCell className="text-right text-xs">{fmtNum(row.units_sold_period)}</TableCell>
       <TableCell className="text-right text-xs">
-        {row.forecast_units_total === null ? '—' : `${fmtNum(row.forecast_units_total)} uds`}
+        {row.forecast_units_total === null
+          ? '—'
+          : `${fmtNum(row.forecast_units_total)} ${row.forecast_units_total === 1 ? 'unidad' : 'unidades'}`}
       </TableCell>
       <TableCell className="text-right text-xs">{fmtCoverage(row.coverage_weeks)}</TableCell>
       <TableCell>

@@ -72,8 +72,8 @@ export function ForecastsPage(): React.JSX.Element {
           title="Pronósticos"
           description={
             conectado
-              ? 'Baseline Croston-SBA para demanda intermitente, calculado con ventas conectadas. Es una estimación estadística, no un modelo ML entrenado ni validado.'
-              : "Valores futuros de ejemplo del dataset (method 'fixture', model_version null). No hay modelo entrenado en esta base."
+              ? 'Estimación estadística de la demanda basada en ventas registradas. Es orientativa y aún no se ha validado su precisión.'
+              : 'Estimaciones de ejemplo incluidas en los datos de demostración; no son predicciones calculadas con ventas reales.'
           }
         />
 
@@ -81,7 +81,7 @@ export function ForecastsPage(): React.JSX.Element {
           title="Proyección por variante"
           description={
             status.data?.metadata.forecast_method === 'baseline'
-              ? 'Historial real + 4 semanas de estimación Croston-SBA. Sin precisión validada.'
+              ? 'Ventas registradas + estimación para las próximas 4 semanas. Aún no se ha validado su precisión.'
               : status.data?.metadata.forecast_method === null
                 ? status.data?.metadata.historical_range
                   ? `Historial real de ventas (modo conectado) · sin proyección: modelo predictivo pendiente`
@@ -172,7 +172,7 @@ export function ForecastsPage(): React.JSX.Element {
                         <Line
                           type="monotone"
                           dataKey="historico"
-                          name="Ventas históricas (uds)"
+                          name="Ventas históricas (unidades)"
                           stroke="var(--foreground)"
                           strokeWidth={2}
                           dot={false}
@@ -182,7 +182,9 @@ export function ForecastsPage(): React.JSX.Element {
                           type="monotone"
                           dataKey="pronostico"
                           name={
-                            conectado ? 'Baseline Croston-SBA (uds)' : 'Pronóstico de ejemplo (uds)'
+                            conectado
+                              ? 'Demanda estimada (unidades)'
+                              : 'Pronóstico de ejemplo (unidades)'
                           }
                           stroke="var(--brand)"
                           strokeWidth={2}
@@ -204,8 +206,8 @@ export function ForecastsPage(): React.JSX.Element {
                       {selectedRow.forecast_units_total === null
                         ? 'sin proyección disponible'
                         : conectado
-                          ? `estimación Croston-SBA: ${selectedRow.forecast_units_total} uds en 4 semanas`
-                          : `total ilustrativo del horizonte: ${selectedRow.forecast_units_total} uds (4 semanas)`}
+                          ? `estimación: ${selectedRow.forecast_units_total} unidades en 4 semanas`
+                          : `total ilustrativo del horizonte: ${selectedRow.forecast_units_total} unidades (4 semanas)`}
                       {conectado
                         ? '. Baseline sin métricas de precisión validadas.'
                         : '. Valor de ejemplo del dataset demo, no predicción de un modelo.'}

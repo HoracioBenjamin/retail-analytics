@@ -34,7 +34,7 @@ export function AppSidebar({
       </div>
       <nav id="retail-navigation" className="one-sidebar-nav">
         {!collapsed && <p className="one-nav-label">ANÁLISIS COMERCIAL</p>}
-        {SIDEBAR_ENTRIES.slice(0, 4).map((entry) => (
+        {SIDEBAR_ENTRIES.slice(0, 5).map((entry) => (
           <SidebarItem
             key={entry.id}
             entry={entry}
@@ -45,7 +45,7 @@ export function AppSidebar({
         ))}
         <div className="one-nav-separator" />
         {!collapsed && <p className="one-nav-label">ESPACIO DE TRABAJO</p>}
-        {SIDEBAR_ENTRIES.slice(4).map((entry) => (
+        {SIDEBAR_ENTRIES.slice(5).map((entry) => (
           <SidebarItem
             key={entry.id}
             entry={entry}

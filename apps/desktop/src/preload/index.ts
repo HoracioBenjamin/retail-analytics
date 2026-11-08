@@ -1,5 +1,6 @@
 import { contextBridge, ipcRenderer } from 'electron'
 import type { AnalyticsApi } from '../shared/contracts'
+import type { ReportExportApi } from '../shared/report-export'
 
 /**
  * Preload tipado y limitado (plan, Paso 3):
@@ -18,13 +19,19 @@ const api: AnalyticsApi = {
   getDataStatus: (forceRefresh) => ipcRenderer.invoke('analytics:getDataStatus', forceRefresh)
 }
 
+const reportApi: ReportExportApi = {
+  saveCurrentReportAsPdf: () => ipcRenderer.invoke('reports:saveCurrentAsPdf')
+}
+
 if (process.contextIsolated) {
   try {
     contextBridge.exposeInMainWorld('analyticsApi', api)
+    contextBridge.exposeInMainWorld('reportExportApi', reportApi)
   } catch (error) {
     console.error(error)
   }
 } else {
   // Sandbox/modo sin aislamiento: asignación directa con cast explícito.
   ;(window as unknown as { analyticsApi: AnalyticsApi }).analyticsApi = api
+  ;(window as unknown as { reportExportApi: ReportExportApi }).reportExportApi = reportApi
 }

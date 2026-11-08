@@ -1,9 +1,8 @@
 """Lectura de solo lectura contra la API REST de Supabase (PostgREST).
 
-Etapa C: la app JAMÁS escribe en la base. Las consultas usan la clave
-pública (anon/publishable) → las políticas RLS existentes gobiernan qué
-se puede leer; si RLS bloquea, el error se reporta (PERMISSION_DENIED)
-sin intentar credenciales privilegiadas.
+Etapa C: la app JAMÁS escribe en la base. Por defecto usa la clave pública
+(anon/publishable), que respeta RLS. En desarrollo local se puede configurar
+una Secret Key para omitir RLS; nunca debe salir de este backend.
 
 Diseño:
 - PostgREST no expone GROUP BY con agregados Multiples: las filas mínimas
@@ -29,7 +28,7 @@ PAGE = 1000  # tamaño de página PostgREST (rango 0-999)
 
 
 class SupabaseRestRepository:
-    """Fachada de lectura de Supabase mediante la API REST con clave pública."""
+    """Fachada de solo lectura de Supabase mediante la API REST."""
 
     def __init__(
         self,
@@ -43,7 +42,7 @@ class SupabaseRestRepository:
     # ── HTTP interno ────────────────────────────────────────────────────────
 
     def _client(self) -> httpx.Client:
-        key = self._settings.supabase_publishable_key.strip()
+        key = self._settings.supabase_api_key.strip()
         headers = {
             "apikey": key,
             "Accept": "application/json",
@@ -75,8 +74,9 @@ class SupabaseRestRepository:
         if response.status_code == 401 and code != "42501":
             raise SupabaseConnectionError(
                 "Supabase rechazó la autenticación de la API (HTTP 401). "
-                "Revise SUPABASE_URL y SUPABASE_PUBLISHABLE_KEY en el .env del backend. "
-                "Una clave sb_publishable_ debe enviarse en apikey, no como Bearer. "
+                "Revise SUPABASE_URL y la clave SUPABASE_* configurada en el .env "
+                "del backend. Las claves sb_publishable_ y sb_secret_ deben enviarse "
+                "en apikey, no como Bearer. "
                 "Este error no confirma un bloqueo de RLS."
             )
         raise SupabasePermissionError(

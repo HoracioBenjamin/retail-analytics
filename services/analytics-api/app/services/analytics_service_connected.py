@@ -302,12 +302,13 @@ class AnalyticsServiceConnected:
     def health_payload(self) -> dict:
         from app.core.config import get_settings
 
+        settings = get_settings()
         return {
             "ok": True,
             "service": "zapatillas-duoc-analytics-api",
             "mode": "connected",
-            "app_env": get_settings().app_env,
-            "upstream": "supabase-rest (clave pública, solo SELECT, RLS)",
+            "app_env": settings.app_env,
+            "upstream": "supabase-rest (solo SELECT)",
             "dataset_available": bool(self.variants),
             "conteos": self.snapshot.conteos,
         }
@@ -321,6 +322,15 @@ class AnalyticsServiceConnected:
         )
 
     def _metadata(self) -> DataMetadata:
+        from app.core.config import get_settings
+
+        access_limitation = (
+            "Conexión en vivo a Supabase, SOLO lectura. La Secret Key configurada "
+            "omite RLS; mantener este backend privado y local."
+            if get_settings().supabase_uses_secret_key
+            else "Conexión en vivo a Supabase, SOLO lectura, con clave pública anon: "
+            "las políticas RLS existentes definen lo accesible."
+        )
         return DataMetadata(
             data_source="supabase",
             data_mode="connected",
@@ -335,10 +345,7 @@ class AnalyticsServiceConnected:
             ),
             forecast_method="baseline" if self.forecast_start else None,
             limitations=[
-                (
-                    "Conexión en vivo a Supabase, SOLO lectura, con clave pública "
-                    "anon: las políticas RLS existentes definen lo accesible."
-                ),
+                access_limitation,
                 (
                     "Venta confirmada = pedidos.estado 'exitoso'. Montos = "
                     "cantidad × precio_unitario (CLP)."

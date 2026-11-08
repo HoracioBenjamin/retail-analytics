@@ -6,6 +6,7 @@ import { resolveDataMode, API_BASE_URL } from './config/settings'
 import { DemoLocalProvider } from './services/demo-local'
 import { ApiHttpProvider } from './services/api-http-provider'
 import { registerAnalyticsIpc } from './ipc/bridge'
+import { registerReportExportIpc } from './ipc/report-export'
 
 let mainWindow: BrowserWindow | null = null
 
@@ -82,6 +83,7 @@ app.whenReady().then(() => {
 
   try {
     bootServices()
+    registerReportExportIpc(() => mainWindow)
   } catch (error) {
     console.error('[main] Falló el arranque de servicios:', error)
     app.quit()
