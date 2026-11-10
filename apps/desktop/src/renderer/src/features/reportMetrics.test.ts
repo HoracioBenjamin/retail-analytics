@@ -1,6 +1,11 @@
 import { describe, expect, it } from 'vitest'
 import type { VariantRow } from '@shared/schemas'
-import { calculateForecastExposure, calculateSizeSales } from './reportMetrics'
+import {
+  calculateForecastExposure,
+  calculateModelBreakdown,
+  calculateSizeSales,
+  calculateStockRotation
+} from './reportMetrics'
 
 function makeRow(overrides: Partial<VariantRow> & Pick<VariantRow, 'variant_id'>): VariantRow {
   return {
@@ -97,5 +102,64 @@ describe('calculateSizeSales', () => {
 
     expect(tied.bestSellingSizes).toEqual(['38', '40'])
     expect(empty.bestSellingSizes).toEqual([])
+  })
+})
+
+describe('calculateStockRotation', () => {
+  it('computes the sold share of sold and stock units for the filter', () => {
+    const summary = calculateStockRotation([
+      makeRow({ variant_id: 'p1-40' }),
+      makeRow({
+        variant_id: 'p1-41',
+        units_sold_period: 1,
+        stock_on_hand: 3,
+        sales_amount_clp_period: 20_000
+      })
+    ])
+
+    expect(summary.soldUnits).toBe(5)
+    expect(summary.stockUnits).toBe(8)
+    expect(summary.soldShare).toBeCloseTo(5 / 13)
+  })
+
+  it('returns null share when there are no units to show', () => {
+    const summary = calculateStockRotation([
+      makeRow({ variant_id: 'p1-40', units_sold_period: 0, stock_on_hand: 0 })
+    ])
+
+    expect(summary.soldUnits).toBe(0)
+    expect(summary.stockUnits).toBe(0)
+    expect(summary.soldShare).toBeNull()
+  })
+})
+
+describe('calculateModelBreakdown', () => {
+  it('aggregates confirmed sales by model sorted by revenue', () => {
+    const breakdown = calculateModelBreakdown([
+      makeRow({ variant_id: 'p1-40', model: 'Aurora' }),
+      makeRow({
+        variant_id: 'p2-40',
+        model: 'Nimbus',
+        sales_amount_clp_period: 150_000
+      }),
+      makeRow({ variant_id: 'p1-41', model: 'Aurora', sales_amount_clp_period: 40_000 })
+    ])
+
+    expect(breakdown).toEqual([
+      { label: 'Nimbus', revenueClp: 150_000 },
+      { label: 'Aurora', revenueClp: 120_000 }
+    ])
+  })
+
+  it('reports zero-revenue models instead of hiding them', () => {
+    const breakdown = calculateModelBreakdown([
+      makeRow({ variant_id: 'p1-40', model: 'Aurora', units_sold_period: 0 }),
+      makeRow({ variant_id: 'p2-40', model: 'Nimbus', units_sold_period: 0 })
+    ])
+
+    expect(breakdown).toEqual([
+      { label: 'Aurora', revenueClp: 0 },
+      { label: 'Nimbus', revenueClp: 0 }
+    ])
   })
 })

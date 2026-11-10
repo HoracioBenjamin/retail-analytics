@@ -13,7 +13,16 @@ import {
   XAxis,
   YAxis
 } from 'recharts'
-import { AlertTriangle, Boxes, Download, PackageOpen, ShoppingBag, Wallet } from 'lucide-react'
+import {
+  AlertTriangle,
+  Boxes,
+  CheckCircle2,
+  Download,
+  PackageOpen,
+  ShoppingBag,
+  Wallet,
+  XCircle
+} from 'lucide-react'
 import type { Filters, RiskLevel, VariantRow } from '@shared/schemas'
 import { PageHeader } from '@/components/layout/PageHeader'
 import { SectionCard } from '@/components/shared/SectionCard'
@@ -23,13 +32,7 @@ import { ErrorState } from '@/components/shared/ErrorState'
 import { LoadingState } from '@/components/shared/LoadingState'
 import { FilterBar } from '@/components/shared/FilterBar'
 import { Button } from '@/components/ui/button'
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue
-} from '@/components/ui/select'
+import { SearchableSelect } from '@/components/shared/SearchableSelect'
 import { useSearchParams } from 'react-router-dom'
 import { analyticsApi, callOk } from '@/services/analytics'
 import {
@@ -42,8 +45,15 @@ import {
   useVariantRows
 } from '@/hooks/api'
 import { fmtCLP, fmtNum } from '@/lib/format'
+import { cn } from '@/lib/utils'
 import { buildDateRange, buildWeeklyTrendRanges, PERIOD_LABELS, type Periodo } from './periodRange'
-import { calculateForecastExposure, calculateSizeSales } from './reportMetrics'
+import {
+  calculateForecastExposure,
+  calculateModelBreakdown,
+  calculateSizeSales,
+  calculateStockRotation
+} from './reportMetrics'
+import { ReportDonut, type ReportDonutSlice } from './ReportDonut'
 
 const RISK_LABELS: Record<RiskLevel, string> = {
   stockout: 'Riesgo de faltante',
@@ -58,6 +68,16 @@ const RISK_COLORS: Record<RiskLevel, string> = {
   balanced: 'var(--chart-2)',
   insufficient_data: 'var(--muted-foreground)'
 }
+
+/** Paleta de donuts (Top 5 + resto con color neutro de estado). */
+const DONUT_PALETTE = [
+  'var(--chart-1)',
+  'var(--chart-2)',
+  'var(--chart-3)',
+  'var(--chart-4)',
+  'var(--chart-5)'
+]
+const DONUT_OTHERS_COLOR = 'var(--status-insufficient)'
 
 const VALID_PERIODS: Periodo[] = ['all', '12', '8', '4']
 
@@ -87,18 +107,14 @@ function SelectFilter({
   onChange: (value: string) => void
 }): React.JSX.Element {
   return (
-    <Select value={value} onValueChange={onChange}>
-      <SelectTrigger className="h-9 min-w-36 text-xs" aria-label={label}>
-        <SelectValue placeholder={label} />
-      </SelectTrigger>
-      <SelectContent>
-        {options.map((option) => (
-          <SelectItem key={option.value} value={option.value} className="text-xs">
-            {option.label}
-          </SelectItem>
-        ))}
-      </SelectContent>
-    </Select>
+    <SearchableSelect
+      value={value}
+      onValueChange={onChange}
+      label={label}
+      placeholder={label}
+      className="min-w-36"
+      options={options}
+    />
   )
 }
 
@@ -127,6 +143,7 @@ export function ReportsPage(): React.JSX.Element {
   const [params, setParams] = useSearchParams()
   const [exporting, setExporting] = useState(false)
   const [exportMessage, setExportMessage] = useState<string | null>(null)
+  const [exportStatus, setExportStatus] = useState<'ok' | 'error' | 'canceled' | null>(null)
   const periodo = parsePeriod(params.get('periodo'))
 
   const status = useDataStatus()
@@ -180,6 +197,64 @@ export function ReportsPage(): React.JSX.Element {
   const { topVariants, riskDistribution } = useMemo(() => aggregateByVariant(rows), [rows])
   const sizeSales = useMemo(() => calculateSizeSales(sizeRows), [sizeRows])
   const exposure = useMemo(() => calculateForecastExposure(rows), [rows])
+  const rotation = useMemo(() => calculateStockRotation(rows), [rows])
+  const modelBreakdown = useMemo(() => calculateModelBreakdown(rows), [rows])
+  const riskSlices = useMemo<ReportDonutSlice[]>(
+    () =>
+      riskDistribution
+        .filter((slice) => slice.variants > 0)
+        .map((slice) => ({
+          label: slice.label,
+          value: slice.variants,
+          color: RISK_COLORS[slice.risk]
+        })),
+    [riskDistribution]
+  )
+  const rotationSlices = useMemo<ReportDonutSlice[]>(
+    () =>
+      rotation.soldUnits + rotation.stockUnits > 0
+        ? [
+            { label: 'Unidades vendidas', value: rotation.soldUnits, color: 'var(--chart-2)' },
+            { label: 'Stock actual', value: rotation.stockUnits, color: 'var(--chart-4)' }
+          ]
+        : [],
+    [rotation]
+  )
+  const salesSlices = useMemo<ReportDonutSlice[]>(() => {
+    // Con zapatilla seleccionada: ventas por talla (todas las tallas del modelo);
+    // sin filtro: top 5 zapatillas por ventas + resto agregado (honesto: nada oculto).
+    if (selectedModel) {
+      const ranked = [...sizeSales.rows]
+        .filter((row) => row.salesClp > 0)
+        .sort((a, b) => b.salesClp - a.salesClp)
+      const slices = ranked.slice(0, 5).map((row, index) => ({
+        label: `T${row.size}`,
+        value: row.salesClp,
+        color: DONUT_PALETTE[index % DONUT_PALETTE.length]
+      }))
+      const othersClp = ranked.slice(5).reduce((sum, row) => sum + row.salesClp, 0)
+      if (othersClp > 0) {
+        slices.push({ label: 'Otras tallas', value: othersClp, color: DONUT_OTHERS_COLOR })
+      }
+      return slices
+    }
+    const slices = modelBreakdown.slice(0, 5).map((row, index) => ({
+      label: row.label,
+      value: row.revenueClp,
+      color: DONUT_PALETTE[index % DONUT_PALETTE.length]
+    }))
+    const othersClp = modelBreakdown.slice(5).reduce((sum, row) => sum + row.revenueClp, 0)
+    if (othersClp > 0) {
+      slices.push({ label: 'Otras zapatillas', value: othersClp, color: DONUT_OTHERS_COLOR })
+    }
+    return slices
+  }, [modelBreakdown, selectedModel, sizeSales.rows])
+  const salesSlicesTotal = useMemo(() => {
+    if (selectedModel) {
+      return sizeSales.rows.reduce((sum, row) => sum + row.salesClp, 0)
+    }
+    return modelBreakdown.reduce((sum, row) => sum + row.revenueClp, 0)
+  }, [modelBreakdown, selectedModel, sizeSales.rows])
   const trendData = trendRanges.map((range, index) => ({
     label: range.label,
     revenue: trendQueries[index]?.data?.sales_amount_clp ?? 0,
@@ -216,18 +291,26 @@ export function ReportsPage(): React.JSX.Element {
     else next.set(key, value)
     setParams(next, { replace: true })
     setExportMessage(null)
+    setExportStatus(null)
   }
   const exportPdf = async (): Promise<void> => {
     setExporting(true)
     setExportMessage(null)
+    setExportStatus(null)
     try {
       const result = await window.reportExportApi.saveCurrentReportAsPdf()
       if (!result.ok) {
+        setExportStatus('error')
         setExportMessage(result.error)
-      } else if (!result.canceled) {
+      } else if (result.canceled) {
+        setExportStatus('canceled')
+        setExportMessage('Guardado cancelado: no se generó el PDF.')
+      } else {
+        setExportStatus('ok')
         setExportMessage(`Reporte guardado: ${result.fileName}`)
       }
     } catch (error) {
+      setExportStatus('error')
       setExportMessage(error instanceof Error ? error.message : 'No se pudo generar el PDF.')
     } finally {
       setExporting(false)
@@ -253,7 +336,7 @@ export function ReportsPage(): React.JSX.Element {
           </p>
         </div>
         <span className="report-source-badge">
-          {connected ? 'Datos conectados' : 'Datos de demostración'}
+          {connected ? 'Datos conectados' : 'Datos locales'}
         </span>
       </div>
 
@@ -337,7 +420,18 @@ export function ReportsPage(): React.JSX.Element {
       </div>
 
       {exportMessage && (
-        <p className="report-no-print text-xs text-muted-foreground" role="status">
+        <p
+          className={cn(
+            'report-no-print flex items-center gap-1.5 text-xs font-medium',
+            exportStatus === 'ok' && 'text-[var(--status-balanced)]',
+            exportStatus === 'error' && 'text-destructive',
+            exportStatus === 'canceled' && 'text-muted-foreground',
+            !exportStatus && 'text-muted-foreground'
+          )}
+          role="status"
+        >
+          {exportStatus === 'ok' && <CheckCircle2 className="size-3.5" aria-hidden="true" />}
+          {exportStatus === 'error' && <XCircle className="size-3.5" aria-hidden="true" />}
           {exportMessage}
         </p>
       )}
@@ -367,6 +461,49 @@ export function ReportsPage(): React.JSX.Element {
         />
       ) : (
         <>
+          <section aria-label="Panorama visual del período" className="space-y-3">
+            <h2 className="report-section-heading">Panorama visual · {reportPeriod}</h2>
+            <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+              <ReportDonut
+                title="Salud del inventario"
+                description="Variantes del filtro actual por nivel de riesgo."
+                slices={riskSlices}
+                centerValue={fmtNum(rows.length, 0)}
+                centerLabel="variantes en el filtro"
+                formatSliceValue={(value) => fmtNum(value, 0)}
+                hint="Clasificación informativa del sistema; no garantiza disponibilidad ni predice ventas."
+              />
+              <ReportDonut
+                title="Ventas vs inventario actual"
+                description="Unidades vendidas en el período frente al stock presente."
+                slices={rotationSlices}
+                centerValue={
+                  rotation.soldShare === null ? '—' : `${Math.round(rotation.soldShare * 100)}%`
+                }
+                centerLabel="vendido del total de unidades"
+                formatSliceValue={(value) => `${fmtNum(value, 0)} u`}
+                hint="Proporción descriptiva del filtro; no es una tasa de rotación anualizada."
+              />
+              <ReportDonut
+                title={
+                  selectedModelName
+                    ? `Ventas por talla · ${selectedModelName}`
+                    : 'Ventas por zapatilla'
+                }
+                description={
+                  selectedModelName
+                    ? 'Ventas (CLP) por talla del modelo en el período.'
+                    : 'Top 5 zapatillas por ventas del período; el resto va agrupado.'
+                }
+                slices={salesSlices}
+                centerValue={fmtCLP(salesSlicesTotal)}
+                centerLabel="ventas del período"
+                formatSliceValue={(value) => fmtCLP(value)}
+                hint="Ventas confirmadas: cantidad × precio unitario. No incluye costos, margen ni utilidad."
+              />
+            </div>
+          </section>
+
           <section aria-label="Indicadores clave" className="space-y-3">
             <h2 className="report-section-heading">
               Indicadores clave · {selectedModelName ?? 'todas las zapatillas'} · {reportPeriod}
@@ -479,6 +616,7 @@ export function ReportsPage(): React.JSX.Element {
                             formatter={(value) => [`${fmtNum(Number(value))} unidades`, 'Ventas']}
                           />
                           <Bar
+                            isAnimationActive={false}
                             dataKey="unitsSold"
                             name="Unidades vendidas"
                             fill="var(--chart-1)"
@@ -537,7 +675,7 @@ export function ReportsPage(): React.JSX.Element {
             )}
           </section>
 
-          <div className="grid gap-4 xl:grid-cols-2">
+          <div className="grid gap-4 xl:grid-cols-2 report-grid-one">
             <SectionCard
               title="Tendencia de ventas"
               description="Ventas semanales del período. El filtro “Todo el histórico” muestra las últimas 12 semanas."
@@ -580,6 +718,7 @@ export function ReportsPage(): React.JSX.Element {
                       />
                       <Legend />
                       <Line
+                        isAnimationActive={false}
                         yAxisId="revenue"
                         type="monotone"
                         dataKey="revenue"
@@ -589,6 +728,7 @@ export function ReportsPage(): React.JSX.Element {
                         dot={false}
                       />
                       <Line
+                        isAnimationActive={false}
                         yAxisId="units"
                         type="monotone"
                         dataKey="units"
@@ -618,7 +758,12 @@ export function ReportsPage(): React.JSX.Element {
                     <XAxis type="number" allowDecimals={false} tick={{ fontSize: 10 }} />
                     <YAxis type="category" dataKey="label" width={135} tick={{ fontSize: 9 }} />
                     <Tooltip />
-                    <Bar dataKey="variants" name="Variantes" radius={[4, 4, 0, 0]}>
+                    <Bar
+                      isAnimationActive={false}
+                      dataKey="variants"
+                      name="Variantes"
+                      radius={[4, 4, 0, 0]}
+                    >
                       {riskDistribution.map((item) => (
                         <Cell key={item.risk} fill={RISK_COLORS[item.risk]} />
                       ))}
@@ -666,6 +811,7 @@ export function ReportsPage(): React.JSX.Element {
                       }
                     />
                     <Bar
+                      isAnimationActive={false}
                       dataKey="estimatedRevenueClp"
                       name="Ventas brutas expuestas"
                       fill="var(--destructive)"
@@ -688,7 +834,7 @@ export function ReportsPage(): React.JSX.Element {
                 description="No hay ingresos registrados para las variantes filtradas."
               />
             ) : (
-              <div className="grid gap-6 lg:grid-cols-2">
+              <div className="grid gap-6 lg:grid-cols-2 report-grid-one">
                 <div>
                   <h3 className="mb-2 text-xs font-medium text-muted-foreground">
                     Por ventas (CLP)
@@ -709,6 +855,7 @@ export function ReportsPage(): React.JSX.Element {
                         <YAxis type="category" dataKey="label" width={160} tick={{ fontSize: 9 }} />
                         <Tooltip />
                         <Bar
+                          isAnimationActive={false}
                           dataKey="revenue"
                           name="Ventas (CLP)"
                           fill="var(--chart-1)"
@@ -734,6 +881,7 @@ export function ReportsPage(): React.JSX.Element {
                         <YAxis type="category" dataKey="label" width={160} tick={{ fontSize: 9 }} />
                         <Tooltip />
                         <Bar
+                          isAnimationActive={false}
                           dataKey="units"
                           name="Unidades"
                           fill="var(--chart-2)"
@@ -753,8 +901,7 @@ export function ReportsPage(): React.JSX.Element {
           >
             <ul className="report-limitations">
               <li>
-                Fuente: {connected ? 'Supabase conectado' : 'datos de demostración'} ·{' '}
-                {reportPeriod}.
+                Fuente: {connected ? 'Supabase conectado' : 'dataset local'} · {reportPeriod}.
               </li>
               <li>
                 Las ventas usan pedidos confirmados y el importe suma cantidad × precio unitario; no

@@ -10,6 +10,12 @@ import { StatusBadge } from './StatusBadge'
 import { HistoryForecastChart } from './HistoryForecastChart'
 import { useDatasetMetadata, useVariantDetail } from '@/hooks/api'
 import { fmtCLP, fmtCoverage, fmtNum, longDate } from '@/lib/format'
+import {
+  isMissingSupplierLeadTime,
+  recommendationActionLabel,
+  recommendationQuantityLabel,
+  recommendationReasonLabel
+} from '@/lib/recommendationPresentation'
 
 /**
  * Detalle lateral de variante (plan, sección 8: "una variante seleccionada
@@ -63,7 +69,17 @@ export function VariantDetailSheet({
                     <span className="font-mono">{data.variant.sku}</span>
                   </SheetDescription>
                 </div>
-                {data.recommendation && <StatusBadge risk={data.recommendation.risk} />}
+                {data.recommendation && (
+                  <StatusBadge
+                    risk={data.recommendation.risk}
+                    label={
+                      isMissingSupplierLeadTime(data.recommendation)
+                        ? 'Reposición por evaluar'
+                        : undefined
+                    }
+                    className="whitespace-normal"
+                  />
+                )}
               </div>
             </SheetHeader>
 
@@ -98,8 +114,14 @@ export function VariantDetailSheet({
                     <Info className="size-3.5" aria-hidden="true" />
                     Razón de la recomendación
                   </div>
+                  <p className="text-sm font-medium">
+                    {recommendationActionLabel(data.recommendation)}
+                  </p>
+                  <p className="text-xs text-muted-foreground">
+                    {recommendationQuantityLabel(data.recommendation)}
+                  </p>
                   <p className="text-xs leading-relaxed text-foreground">
-                    {data.recommendation.reason}
+                    {recommendationReasonLabel(data.recommendation)}
                   </p>
                   {data.recommendation.parameters && (
                     <p className="font-mono text-[10px] leading-relaxed text-muted-foreground">
@@ -124,7 +146,7 @@ export function VariantDetailSheet({
                 <p className="text-xs font-medium text-muted-foreground">
                   {conectado
                     ? 'Ventas históricas y baseline Croston-SBA de cuatro semanas'
-                    : 'Ventas históricas de 12 semanas y pronóstico de ejemplo'}
+                    : 'Ventas históricas de 12 semanas y proyección local'}
                 </p>
                 <HistoryForecastChart
                   history={data.sales_history}
@@ -139,8 +161,8 @@ export function VariantDetailSheet({
               <p className="text-[10px] text-muted-foreground">
                 {data.sales_history.at(-1) && (
                   <>
-                    Fuente: {conectado ? 'Supabase' : 'dataset de demostración'} · cierre del
-                    histórico: {longDate(data.sales_history.at(-1)!.period_end)}.
+                    Fuente: {conectado ? 'Supabase' : 'dataset local'} · cierre del histórico:{' '}
+                    {longDate(data.sales_history.at(-1)!.period_end)}.
                     {conectado
                       ? ' El baseline Croston-SBA es estadístico y no tiene precisión validada.'
                       : ' Los valores futuros son ilustrativos (method «fixture», model_version null).'}

@@ -53,7 +53,7 @@ export function HistoryForecastChart({
   const forecastLabel =
     sortedForecast[0]?.method === 'baseline'
       ? 'Baseline Croston-SBA (estimación semanal)'
-      : 'Pronóstico de ejemplo (fixture, sin modelo)'
+      : 'Proyección local (fixture, sin modelo)'
 
   return (
     <div className={heightClass} data-testid="history-forecast-chart">

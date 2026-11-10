@@ -674,3 +674,215 @@ cd services/analytics-api
 - La prueba de router con TestClient quedó detenida en este entorno y se
   interrumpió; no se declara validada. La comprobación real de Supabase falló
   con ConnectError, por lo que falta reiniciar FastAPI y verificar en Windows.
+
+## Panorama donut + PDF fiel del módulo de Reportes — 2026-11-09
+
+- `ReportsPage.tsx`: nueva sección "Panorama visual" con 3 donuts
+  (riesgo del inventario, ventas vs stock actual, ventas por zapatilla/talla)
+  usando recharts `PieChart` sin dependencias nuevas. Datos de
+  `reportMetrics.ts`: helpers `calculateStockRotation` y
+  `calculateModelBreakdown` con pruebas en `reportMetrics.test.ts`.
+- `tokens.css`: paleta `--chart-1..5` definida también en pantalla (hacía
+  falta para cualquier gráfico fuera de impresión; claros y oscuros).
+- `report-export.ts`: el PDF ahora captura la imagen real del módulo. Antes
+  de `printToPDF`, el main activa `report-export-mode` en el renderer
+  (~900 ms): el ancho del contenido pasa al área impresa real de A4
+  (~703px), recharts re-mide, y recién entonces se genera el PDF.
+- `globals.css`: estilos `.report-donut*`, bloque `report-export-mode` y
+  tamaños donut en `@media print`.
+- Verificado: `typecheck:node` y `typecheck:web` sin errores (WSL, solo tsc).
+  Pendiente en Windows: `npm run test` (vitest) y prueba visual de
+  `npm run dev` + export PDF.
+
+### Follow-up visual del reporte (2026-11-09, parte 2)
+
+- Leyenda de los donuts: los valores (CLP) se cortaban porque el grid
+  `.report-donut-legend` no dejaba encoger los ítems (`minmax(0, 1fr)` +
+  `min-width: 0` y valor con `whitespace-nowrap`).
+- Tooltip de donuts estilizado con tokens del tema (fondo card, borde,
+  sombra); ya no aparece un cartel sin formato sobre el anillo.
+- Notificación nativa de Windows (`Notification` de Electron, main) cuando
+  el PDF se guarda: título "Reporte guardado" + nombre del archivo; requiere
+  appUserModelId (ya fijado). Solo se dispara tras escribir el archivo.
+- Mensaje en el módulo con estado: éxito verde con icono, cancelado gris,
+  error rojo con icono.
+- Verificado: prettier + eslint limpio; typecheck node y web sin errores.
+  Pendiente en Windows: prueba visual de leyenda/tooltip y del toast.
+
+### PDF fiel: inconsistencias de impreso (2026-11-09, parte 3)
+
+- Síntoma: en el PDF los donuts/barras salían pequeños y descentrados y
+  las tarjetas KPI se cortaban entre páginas.
+- Causa: las media queries de impresión se evalúan con el ancho de la
+  hoja A4 (~794px), mientras la pre-visualización de exportación usaba el
+  ancho de la VENTANA (breakpoint xl → 3 columnas). Los SVG quedaban
+  medidos para otra grilla (offset del anillo) y los margen de
+  printToPDF (0.4in) no calzaban con @page (12mm).
+- Fix: printToPDF usa márgenes 12mm (área ≈703px idéntica al modo
+  export); grillas forzadas a la MISMA composición en ambos contextos
+  (`@media print` y `.report-export-mode`): 2 columnas general y
+  1 columna (`report-grid-one`) para las parejas de gráficos grandes;
+  `break-inside: avoid` también en `.one-kpi-card`; leyenda sin truncar
+  en ambos contextos (nombre completo puede ocupar varias líneas).
+- Verificado: prettier + eslint limpio; tsc node/web sin errores.
+  Pendiente: regenerar el PDF en Windows y comparar páginas 1–2.
+
+### Retiro de la palabra "ejemplo/demostración" del UI (2026-11-09, parte 4)
+
+- Reemplazo de textos visible en AppHeader, HistoryForecastChart,
+  VariantDetailSheet, DataStatusPage, ForecastsPage, OverviewPage,
+  RecommendationsPage, SettingsPage, VariantsPage y ReportsPage:
+  "datos de demostración" → "datos/dataset local" y "pronóstico de
+  ejemplo" → "proyección local". La honestidad se conserva: los textos
+  mantienen la aclaración de que no hay modelo validado ni precisión
+  confirmada en modo local.
+- Los comentarios de código conservan el racconto técnico original.
+- Verificado: eslint limpio; tsc web sin errores; sin coincidencias de
+  "ejemplo/demostración" en strings visibles del renderer.
+
+### Búsqueda y desplazamiento de filtros — 2026-11-09
+
+- Nuevo componente compartido `SearchableSelect`: búsqueda sin distinguir
+  mayúsculas ni acentos, lista con altura limitada y scrollbar, estado sin
+  resultados y navegación con teclado/ratón. Usa Popover de Radix ya instalado.
+- Aplicado a todos los selectores de Resumen, Variantes, Pronósticos,
+  Recomendaciones y Reportes, conservando sus valores y acciones de filtrado.
+- Paginación automática de 50 opciones; la búsqueda recorre el catálogo
+  completo y conserva la selección. Reabrir reinicia la búsqueda y muestra
+  la página de la opción seleccionada.
+- Verificado en Windows: typecheck node/web, ESLint de los archivos cambiados,
+  3 pruebas de interacción con Vitest/jsdom y compilación electron-vite.
+- Pendiente: comprobación visual en la ventana de Electron del usuario.
+- Los documentos maestros citados en AGENTS.md no están en la carpeta madre
+  actual ni en la ruta histórica indicada; cambio limitado a filtros del UI.
+
+### Lectura de recomendaciones — 2026-11-09
+
+- Presentación compartida en `recommendationPresentation.ts`: «No comprar por
+  ahora», «0 unidades sugeridas» y «Compra por evaluar» cuando la cantidad es
+  desconocida. No se cambian acciones, cantidades ni reglas del backend.
+- El bloqueo específico del plazo se muestra como «Falta plazo del proveedor»
+  y «Reposición por evaluar», con explicación legible sin variables técnicas.
+  Se distingue de los casos con historia insuficiente.
+- Recomendaciones incorpora stock actual junto a compra sugerida y cobertura;
+  la explicación completa queda visible. Resumen muestra hasta tres casos
+  bloqueados con menor cobertura y un enlace a las revisiones, además de las
+  acciones prioritarias. El detalle lateral usa los mismos textos.
+- «Exceso / baja rotación» pasa a «Exceso de inventario» para no equiparar
+  cobertura alta con pocas ventas. Se conserva el alcance académico indicado
+  por el usuario, sin pedir ni inventar plazos reales para esta mejora visual.
+- Comprobado: typecheck node/web y ESLint de los archivos cambiados sin errores.
+  Pendiente la revisión visual de la ventana de Electron.
+
+### PDF: donuts desplazados y superpuestos — 2026-11-09
+
+- Se revisó `Snipaste_2026-11-09_21-48-37.png`: los valores centrales
+  aparecían a la derecha de los anillos y el tercer donut invadía su leyenda.
+- `ReportDonut.tsx` usa ahora SVG vectorial con un viewBox fijo y centrado,
+  independiente de ResizeObserver, conservando porciones, colores, valores
+  y leyendas. Cada porción tiene un título nativo para consultar su valor.
+- `.report-donut` no se comprime dentro de la tarjeta flex.
+- La exportación activa el medio de impresión de Chromium antes de medir;
+  espera fuentes y tamaños estables de los otros gráficos en lugar de 900 ms
+  fijos. Respeta el tamaño CSS de A4 y restaura el medio y los estilos tanto
+  al guardar/cancelar como al fallar. Sin animaciones en los gráficos del reporte.
+- Tres pruebas IPC verifican la secuencia, cancelación, fallo de impresión y
+  fallo de medición, incluida la restauración; todas pasaron.
+- TypeScript node/web, ESLint de los archivos cambiados y compilación
+  electron-vite correctos en Windows.
+- Se intentó una exportación visual aislada, pero Windows bloqueó el inicio
+  de Electron por ACL de su instalación y Edge tampoco pudo iniciarse para
+  la prueba. No se cambiaron ACL ni las preferencias de sandbox de la app.
+  No se generó un PDF de verificación: queda pendiente abrir una nueva
+  exportación desde la ventana del usuario, tras reiniciar la aplicación.
+
+### Corrección del fallo de generación tras el ajuste PDF — 2026-11-09
+
+- Se retiró la emulación mediante debugger/CDP añadida en el paso anterior;
+  la exportación ya no necesita adjuntar un depurador a la ventana.
+  Se mantiene el ancho de preparación A4 y el donut SVG independiente.
+- La espera usa medidas renderizadas del SVG, no conversiones numéricas de
+  atributos que pueden ser porcentuales, e ignora contenedores ocultos.
+- Los errores distinguen preparación, impresión y guardado. Ya no atribuyen
+  todos los fallos a permisos. Fallar la notificación tampoco convierte un
+  archivo ya guardado en un supuesto fallo de exportación.
+- Verificado: 5 pruebas (incluida ejecución del script de medición con SVG
+  porcentual y contenedor oculto), ESLint y build completo con typecheck.
+- La comprobación visual con Electron sigue pendiente por las restricciones
+  de ejecución descritas arriba. Reiniciar la app carga el handler actualizado.
+
+### Paginador en Recomendaciones (2026-11-09, parte 5)
+
+- Tabla "Prioridades por variante" paginada con el patrón de Variantes:
+  máx. 10 filas por página, pie con "Página X de Y · N recomendaciones"
+  y botones Anterior/Siguiente; `current` amarrado al rango válido al
+  cambiar el filtro de estado.
+- Filas más compactas (padding px/py menor, explicación con line-clamp-2,
+  nombres y IDs truncados) para reducir scroll dentro de la tarjeta;
+  espaciado vertical de la página de 24px a 16px.
+- Verificado: eslint limpio; tsc web sin errores. Pendiente: prueba visual
+  en Windows (10 filas ~ sin scroll en 1440×900).
+
+### Búsqueda fuera de la barra de filtros (2026-11-09, parte 6)
+
+- VariantsPage: el campo "Buscar id, modelo, SKU…" salió de la FilterBar y
+  es una fila propia arriba de los filtros (max-w-md, etiqueta aria).
+  La FilterBar queda solo con los selects de modelo/color/talla/riesgo.
+- Revisión de las demás páginas: ninguna otra tiene búsqueda externa
+  dentro de FilterBar; los SearchableSelect de Resumen/Variantes mantienen
+  la búsqueda DENTRO del menú desplegable (comportamiento correcto).
+- Verificado: eslint limpio; tsc web sin errores.
+
+### Búsqueda compartida dentro de la FilterBar (2026-11-09, parte 7)
+
+- Se revierte el cambio anterior y se estandariza el patrón pedido: la
+  búsqueda vive como PRIMER elemento de la FilterBar.
+- Componente compartido `SearchInput` (ícono + Input) y helper
+  `textMatches` en lib/search.ts.
+- Páginas con búsqueda en la FilterBar:
+  - Variantes (id/modelo/SKU, como siempre) → filtra la tabla.
+  - Recomendaciones (nuevo) → filtra la tabla por variante/explicación.
+  - Resumen (nuevo) → filtra los paneles de riesgo, rankings y candidatas
+    del gráfico; los KPIs siguen respondiendo a los selects (agregados
+    del servicio).
+  - Métricas y Reportes: SIN búsqueda (decisión acordada: el contenido
+    son KPIs/agregados server-side; una búsqueda de texto los dejaría
+    inconsistentes con los gráficos detallados).
+- Verificado: eslint limpio; tsc web sin errores.
+
+### Ajustes finos del panel de recomendaciones (2026-11-09, parte 8)
+
+- Acción/Estado: badges en una sola línea (`whitespace-nowrap`); columnas
+  re-balancedadas (Acción w-44, Stock w-20, Compra w-36, Cobertura w-20,
+  Estado w-40) para eliminar el aspecto compactado y el scroll horizontal.
+- Explicación: acotada a 2 líneas (`line-clamp-2`), texto completo
+  disponible al pasar el mouse (title); columna flexible con min-width.
+- Verificado: eslint limpio; tsc web sin errores. Pendiente: prueba visual.
+
+### Exportación: condición de espera incompatible con Recharts — 2026-11-09
+
+- La preparación compara ahora la estabilidad de los gráficos reales
+  (`.recharts-wrapper`) y exige que el SVG tenga dimensiones positivas,
+  sin exigir igualdad con su contenedor responsive. Recharts usa nodos
+  internos de tamaño cero con overflow visible; esa igualdad podía impedir
+  la descarga aun con los gráficos ya dibujados.
+- Nueva regresión ejecuta el script de preparación con tamaños distintos
+  y verifica que se llega a `printToPDF` y se escribe el archivo.
+- 6 pruebas IPC, ESLint y build completo con typecheck correctos.
+- Solo debe reiniciarse Electron para cargar el handler; este cambio no
+  requiere reiniciar FastAPI. La revisión visual continúa pendiente por
+  las restricciones de ejecución de ventanas descritas anteriormente.
+
+### Evitar el cambio visible del aplicativo al exportar — 2026-11-09
+
+- Captura revisada: `Snipaste_2026-11-09_22-16-34.png`. Era la misma ventana
+  adoptando el diseño de impresión antes del diálogo de guardado.
+- Se conserva la vista actual con una captura temporal superpuesta y el
+  estado «Preparando PDF…» mientras se mide e imprime. No se crean ventanas.
+- La cubierta se excluye con `@media print`; los gráficos y la composición
+  del PDF que el usuario confirmó correctos se conservan.
+- Se restauran foco y desplazamiento antes de Guardar como y ante errores;
+  la captura se retira y sus referencias se liberan al salir de la preparación.
+- 7 pruebas IPC/DOM pasaron, incluida conservación de la vista y restauración
+  del foco y scroll. Revisión visual de Electron pendiente por las restricciones
+  de ejecución ya registradas. Solo se requiere reiniciar el frontend.

@@ -38,7 +38,7 @@ export function DataStatusPage(): React.JSX.Element {
                   label="Origen"
                   value={
                     status.data.metadata.data_source === 'demo'
-                      ? 'Dataset de demostración local (fixtures/demo-v1.json)'
+                      ? 'Dataset local (fixtures/demo-v1.json)'
                       : status.data.metadata.data_source
                   }
                 />
@@ -107,7 +107,7 @@ export function DataStatusPage(): React.JSX.Element {
                   text={
                     status.data.metadata.data_mode === 'connected'
                       ? 'FastAPI conectado a Supabase en modo de solo lectura; las políticas RLS se respetan.'
-                      : 'Proveedor de demostración con contratos IPC validados (sobre { ok, data|error }).'
+                      : 'Proveedor local con contratos IPC validados (sobre { ok, data|error }).'
                   }
                 />
                 <CapabilityItem

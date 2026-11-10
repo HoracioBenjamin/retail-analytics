@@ -40,7 +40,7 @@ export function AppHeader({
       ? 'Consultando origen…'
       : connected
         ? 'Datos conectados · solo lectura'
-        : 'Espacio de demostración'
+        : 'Datos locales · solo lectura'
 
   return (
     <header className="one-topbar">

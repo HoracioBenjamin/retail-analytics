@@ -67,6 +67,42 @@ export function calculateSizeSales(rows: VariantRow[]): SizeSalesSummary {
   }
 }
 
+export interface StockRotationSummary {
+  /** Unidades vendidas confirmadas en el período (suma de todas las variantes). */
+  soldUnits: number
+  /** Unidades presentes en inventario ahora (stock actual de las mismas variantes). */
+  stockUnits: number
+  /** Fracción 0..1 vendida respecto al total (vendidas + stock). null si no hay unidades. */
+  soldShare: number | null
+}
+
+export function calculateStockRotation(rows: VariantRow[]): StockRotationSummary {
+  const soldUnits = rows.reduce((total, row) => total + row.units_sold_period, 0)
+  const stockUnits = rows.reduce((total, row) => total + row.stock_on_hand, 0)
+  const denominator = soldUnits + stockUnits
+  return {
+    soldUnits,
+    stockUnits,
+    soldShare: denominator > 0 ? soldUnits / denominator : null
+  }
+}
+
+export interface SalesBreakdownRow {
+  label: string
+  revenueClp: number
+}
+
+/** Ventas confirmadas por modelo (sin límite; la pantalla separa Top 5 + resto). */
+export function calculateModelBreakdown(rows: VariantRow[]): SalesBreakdownRow[] {
+  const byModel = new Map<string, number>()
+  for (const row of rows) {
+    byModel.set(row.model, (byModel.get(row.model) ?? 0) + row.sales_amount_clp_period)
+  }
+  return [...byModel.entries()]
+    .map(([label, revenueClp]) => ({ label, revenueClp }))
+    .sort((a, b) => b.revenueClp - a.revenueClp)
+}
+
 export function calculateForecastExposure(rows: VariantRow[]): ExposureSummary {
   const exposureRows = rows.flatMap((row) => {
     if (row.forecast_units_total === null || row.forecast_units_total <= row.stock_on_hand) {

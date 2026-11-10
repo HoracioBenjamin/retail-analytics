@@ -15,13 +15,7 @@ import { SectionCard } from '@/components/shared/SectionCard'
 import { EmptyState } from '@/components/shared/EmptyState'
 import { ErrorState } from '@/components/shared/ErrorState'
 import { LoadingState } from '@/components/shared/LoadingState'
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue
-} from '@/components/ui/select'
+import { SearchableSelect } from '@/components/shared/SearchableSelect'
 import { useDataStatus, useDatasetMetadata, useForecastSeries, useVariantRows } from '@/hooks/api'
 import { weekLabel } from '@/lib/format'
 
@@ -73,7 +67,7 @@ export function ForecastsPage(): React.JSX.Element {
           description={
             conectado
               ? 'Estimación estadística de la demanda basada en ventas registradas. Es orientativa y aún no se ha validado su precisión.'
-              : 'Estimaciones de ejemplo incluidas en los datos de demostración; no son predicciones calculadas con ventas reales.'
+              : 'Estimaciones locales incluidas en el dataset local; no son predicciones calculadas con ventas reales.'
           }
         />
 
@@ -88,7 +82,7 @@ export function ForecastsPage(): React.JSX.Element {
                   : 'Esperando el estado de datos'
                 : status.data?.metadata.historical_range
                   ? `Histórico de 12 semanas + 4 semanas futuras ilustrativas`
-                  : 'Esperando el dataset de demostración'
+                  : 'Esperando el estado de datos'
           }
         >
           {rows.isPending ? (
@@ -105,21 +99,17 @@ export function ForecastsPage(): React.JSX.Element {
             />
           ) : (
             <div className="space-y-4">
-              <Select value={selectedId ?? ''} onValueChange={(v) => setChosen(v)}>
-                <SelectTrigger
-                  className="h-9 w-full max-w-md text-xs"
-                  aria-label="Selecciona la variante"
-                >
-                  <SelectValue placeholder="Selecciona una variante" />
-                </SelectTrigger>
-                <SelectContent className="max-h-72">
-                  {(rows.data ?? []).map((r) => (
-                    <SelectItem key={r.variant_id} value={r.variant_id} className="text-xs">
-                      {r.model} · {r.color} · T{r.size} — {r.variant_id}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+              <SearchableSelect
+                value={selectedId ?? ''}
+                onValueChange={setChosen}
+                label="Selecciona la variante"
+                placeholder="Selecciona una variante"
+                className="w-full max-w-md"
+                options={(rows.data ?? []).map((r) => ({
+                  value: r.variant_id,
+                  label: `${r.model} · ${r.color} · T${r.size} — ${r.variant_id}`
+                }))}
+              />
 
               {series.isPending ? (
                 <LoadingState rows={2} />
@@ -184,7 +174,7 @@ export function ForecastsPage(): React.JSX.Element {
                           name={
                             conectado
                               ? 'Demanda estimada (unidades)'
-                              : 'Pronóstico de ejemplo (unidades)'
+                              : 'Proyección local (unidades)'
                           }
                           stroke="var(--brand)"
                           strokeWidth={2}
@@ -210,7 +200,7 @@ export function ForecastsPage(): React.JSX.Element {
                           : `total ilustrativo del horizonte: ${selectedRow.forecast_units_total} unidades (4 semanas)`}
                       {conectado
                         ? '. Baseline sin métricas de precisión validadas.'
-                        : '. Valor de ejemplo del dataset demo, no predicción de un modelo.'}
+                        : '. Valor del dataset local, no predicción de un modelo.'}
                     </p>
                   )}
                 </>

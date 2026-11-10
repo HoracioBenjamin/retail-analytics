@@ -9,6 +9,7 @@ import { EmptyState } from '@/components/shared/EmptyState'
 import { ErrorState } from '@/components/shared/ErrorState'
 import { LoadingState } from '@/components/shared/LoadingState'
 import { FilterBar } from '@/components/shared/FilterBar'
+import { SearchInput } from '@/components/shared/SearchInput'
 import { StatusBadge } from '@/components/shared/StatusBadge'
 import { HistoryForecastChart } from '@/components/shared/HistoryForecastChart'
 import { VariantDetailSheet } from '@/components/shared/VariantDetailSheet'
@@ -22,7 +23,15 @@ import {
   useVariantRows
 } from '@/hooks/api'
 import { fmtCLP, fmtCoverage, fmtNum, weekLabel } from '@/lib/format'
+import { textMatches } from '@/lib/search'
 import { PERIOD_LABELS, buildDateRange, type Periodo } from './periodRange'
+import {
+  isMissingSupplierLeadTime,
+  recommendationActionLabel,
+  recommendationQuantityLabel,
+  recommendationReasonLabel
+} from '@/lib/recommendationPresentation'
+import { Link } from 'react-router-dom'
 
 /**
  * Pantalla Resumen (plan, sección 8 "/overview"): filtros compartidos,
@@ -60,34 +69,52 @@ export function OverviewPage(): React.JSX.Element {
     availability.data?.models.find((model) => model === selectedModel) ?? selectedModel
 
   const rows = useMemo(() => variantRows.data ?? [], [variantRows.data])
+  // Búsqueda de la FilterBar: restringe las LISTAS y candidatas del gráfico
+  // (paneles de riesgo, rankings, selector del gráfico). Los KPIs siguen
+  // respondiendo a los selects: son agregados del servicio, no de la vista.
+  const [search, setSearch] = useState('')
+  const rowsFiltered = useMemo(
+    () =>
+      search.trim()
+        ? rows.filter((r) => textMatches(search, r.variant_id, r.model, r.color, r.size))
+        : rows,
+    [rows, search]
+  )
   const stockoutRows = useMemo(
     () =>
-      rows
+      rowsFiltered
         .filter((r) => r.risk === 'stockout')
         .sort((a, b) => (a.coverage_weeks ?? 99) - (b.coverage_weeks ?? 99)),
-    [rows]
+    [rowsFiltered]
   )
   const excessRows = useMemo(
     () =>
-      rows
+      rowsFiltered
         .filter((r) => r.risk === 'excess')
         .sort((a, b) => (b.coverage_weeks ?? 0) - (a.coverage_weeks ?? 0)),
-    [rows]
+    [rowsFiltered]
   )
   const topDemanda = useMemo(
-    () => [...rows].sort((a, b) => b.units_sold_period - a.units_sold_period).slice(0, 5),
-    [rows]
+    () => [...rowsFiltered].sort((a, b) => b.units_sold_period - a.units_sold_period).slice(0, 5),
+    [rowsFiltered]
   )
   const topAcumulacion = useMemo(
     () =>
-      [...rows]
+      [...rowsFiltered]
         .filter((r) => r.action === 'defer_purchase')
         .sort((a, b) => (b.coverage_weeks ?? 0) - (a.coverage_weeks ?? 0))
         .slice(0, 5),
-    [rows]
+    [rowsFiltered]
   )
   const topRecommendations = useMemo(
     () => (recs.data ?? []).filter((r) => r.action !== 'maintain').slice(0, 5),
+    [recs.data]
+  )
+  const blockedRecommendations = useMemo(
+    () =>
+      (recs.data ?? [])
+        .filter(isMissingSupplierLeadTime)
+        .sort((a, b) => (a.coverage_weeks ?? Infinity) - (b.coverage_weeks ?? Infinity)),
     [recs.data]
   )
 
@@ -95,8 +122,8 @@ export function OverviewPage(): React.JSX.Element {
   const chartVariantId =
     selectedVariantId ??
     stockoutRows.at(0)?.variant_id ??
-    rows.find((row) => row.forecast_units_total !== null)?.variant_id ??
-    rows.at(0)?.variant_id ??
+    rowsFiltered.find((row) => row.forecast_units_total !== null)?.variant_id ??
+    rowsFiltered.at(0)?.variant_id ??
     null
 
   const applyParam = (key: string, value: string): void => {
@@ -127,6 +154,13 @@ export function OverviewPage(): React.JSX.Element {
         />
 
         <FilterBar>
+          <SearchInput
+            value={search}
+            onChange={setSearch}
+            placeholder="Buscar en listas (modelo, color, talla)…"
+            ariaLabel="Buscar en las listas del resumen"
+            className="w-64"
+          />
           <PeriodSelect value={periodo} onChange={(v) => applyParam('periodo', v)} />
           <ModelSelect
             availability={availability.data}
@@ -212,7 +246,7 @@ export function OverviewPage(): React.JSX.Element {
                 onSelect={setSelectedVariantId}
               />
               <RiskPanel
-                title="Exceso / baja rotación"
+                title="Exceso de inventario"
                 description="Cobertura sobre el umbral de exceso (8 semanas)."
                 rows={excessRows}
                 emptyTitle="Sin variantes en exceso"
@@ -228,18 +262,18 @@ export function OverviewPage(): React.JSX.Element {
                 title={
                   conectado
                     ? 'Ventas registradas y demanda estimada'
-                    : 'Ventas históricas y pronóstico de ejemplo'
+                    : 'Ventas históricas y proyección local'
                 }
                 description={
                   conectado
                     ? 'La línea discontinua muestra una estimación para las próximas 4 semanas; su precisión aún no se ha validado.'
-                    : 'La línea discontinua es un valor de ejemplo, no una predicción de modelo.'
+                    : 'La línea discontinua es un valor local del dataset, no una predicción de modelo.'
                 }
               >
                 <VariantChartBlock
                   chartVariantId={chartVariantId}
                   onSelectVariant={setSelectedVariantId}
-                  rows={rows}
+                  rows={rowsFiltered}
                 />
               </SectionCard>
 
@@ -278,8 +312,46 @@ export function OverviewPage(): React.JSX.Element {
             {/* Recomendaciones prioritarias */}
             <SectionCard
               title="Recomendaciones prioritarias"
-              description="Primeras 5 por severidad: falta → exceso → revisión (el resto en la pantalla Recomendaciones)."
+              description="Hasta 5 acciones del catálogo: reponer → no comprar por ahora → revisar datos. La demanda y la cobertura se evalúan por separado."
             >
+              {blockedRecommendations.length > 0 && (
+                <div className="mb-3 space-y-2 rounded-lg border bg-muted/40 p-3 text-xs">
+                  <p className="font-medium">
+                    Falta plazo del proveedor · {blockedRecommendations.length} variantes por
+                    evaluar
+                  </p>
+                  <p className="text-muted-foreground">
+                    La cobertura indica cuánto podría durar el stock. Sin el plazo de entrega, aún
+                    no se determina si conviene comprar más.
+                  </p>
+                  <ul className="space-y-1.5">
+                    {blockedRecommendations.slice(0, 3).map((r) => {
+                      const row = rows.find((x) => x.variant_id === r.variant_id)
+                      return (
+                        <li key={r.variant_id}>
+                          <button
+                            type="button"
+                            className="w-full text-left hover:underline"
+                            onClick={() => setSelectedVariantId(r.variant_id)}
+                          >
+                            {row ? `${row.model} · ${row.color} · T${row.size}` : r.variant_id}
+                            <span className="block text-muted-foreground">
+                              Stock: {row ? `${fmtNum(row.stock_on_hand)} uds` : 'No disponible'} ·
+                              Cobertura estimada: {fmtCoverage(r.coverage_weeks)}
+                            </span>
+                          </button>
+                        </li>
+                      )
+                    })}
+                  </ul>
+                  <Link
+                    className="inline-block underline underline-offset-2"
+                    to="/recommendations?riesgo=insufficient_data"
+                  >
+                    Ver casos pendientes en Recomendaciones
+                  </Link>
+                </div>
+              )}
               {topRecommendations.length === 0 ? (
                 <EmptyState
                   title="Sin recomendaciones activas"
@@ -292,7 +364,7 @@ export function OverviewPage(): React.JSX.Element {
                     return (
                       <li key={r.variant_id}>
                         <button
-                          className="flex w-full items-start justify-between gap-4 py-3 text-left hover:bg-muted/40"
+                          className="flex w-full flex-col items-start justify-between gap-3 py-3 text-left hover:bg-muted/40 sm:flex-row"
                           onClick={() => setSelectedVariantId(r.variant_id)}
                         >
                           <div className="min-w-0">
@@ -300,15 +372,25 @@ export function OverviewPage(): React.JSX.Element {
                               {row ? `${row.model} · ${row.color} · T${row.size}` : r.variant_id}
                             </p>
                             <p className="mt-0.5 line-clamp-2 text-xs text-muted-foreground">
-                              {r.reason}
+                              {recommendationReasonLabel(r)}
+                            </p>
+                            <p className="mt-1 text-xs text-muted-foreground">
+                              Stock: {row ? `${fmtNum(row.stock_on_hand)} uds` : 'No disponible'} ·
+                              Cobertura estimada: {fmtCoverage(r.coverage_weeks)}
                             </p>
                           </div>
-                          <div className="flex shrink-0 flex-col items-end gap-1">
-                            <StatusBadge risk={r.risk} />
+                          <div className="flex shrink-0 flex-col items-start gap-1 sm:items-end">
+                            <StatusBadge
+                              risk={r.risk}
+                              label={
+                                isMissingSupplierLeadTime(r) ? 'Reposición por evaluar' : undefined
+                              }
+                            />
+                            <span className="text-xs font-medium">
+                              {recommendationActionLabel(r)}
+                            </span>
                             <span className="text-xs text-muted-foreground">
-                              {r.suggested_units !== null
-                                ? `Sugerido: ${fmtNum(r.suggested_units)} ${r.suggested_units === 1 ? 'unidad' : 'unidades'}`
-                                : fmtCoverage(r.coverage_weeks)}
+                              {recommendationQuantityLabel(r)}
                             </span>
                           </div>
                         </button>
@@ -383,7 +465,7 @@ function RiskPanel({
                   >
                     {r.risk === 'stockout'
                       ? `Reponer ${r.suggested_units !== null ? fmtNum(r.suggested_units) : '—'} ${r.suggested_units === 1 ? 'unidad' : 'unidades'}`
-                      : 'Posponer compras'}
+                      : 'No comprar por ahora · 0 unidades sugeridas'}
                   </span>
                 </div>
               </button>
@@ -481,13 +563,7 @@ function VariantChartBlock({
 
 /* ── Selects de filtro compartidos con valores reales del fixture ── */
 
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue
-} from '@/components/ui/select'
+import { SearchableSelect } from '@/components/shared/SearchableSelect'
 import type { FilterAvailability } from '@shared/contracts'
 
 function PeriodSelect({
@@ -498,18 +574,16 @@ function PeriodSelect({
   onChange: (v: string) => void
 }): React.JSX.Element {
   return (
-    <Select value={value} onValueChange={onChange}>
-      <SelectTrigger className="h-9 w-56 text-xs">
-        <SelectValue />
-      </SelectTrigger>
-      <SelectContent>
-        {(Object.keys(PERIOD_LABELS) as Periodo[]).map((p) => (
-          <SelectItem key={p} value={p} className="text-xs">
-            {PERIOD_LABELS[p]}
-          </SelectItem>
-        ))}
-      </SelectContent>
-    </Select>
+    <SearchableSelect
+      value={value}
+      onValueChange={onChange}
+      label="Período"
+      className="w-56"
+      options={(Object.keys(PERIOD_LABELS) as Periodo[]).map((p) => ({
+        value: p,
+        label: PERIOD_LABELS[p]
+      }))}
+    />
   )
 }
 
@@ -523,21 +597,16 @@ function ModelSelect({
   onChange: (v: string) => void
 }): React.JSX.Element {
   return (
-    <Select value={value || 'all'} onValueChange={onChange}>
-      <SelectTrigger className="h-9 w-44 text-xs">
-        <SelectValue placeholder="Todos los modelos" />
-      </SelectTrigger>
-      <SelectContent>
-        <SelectItem value="all" className="text-xs">
-          Todos los modelos
-        </SelectItem>
-        {(availability?.models ?? []).map((m) => (
-          <SelectItem key={m} value={m} className="text-xs">
-            {m}
-          </SelectItem>
-        ))}
-      </SelectContent>
-    </Select>
+    <SearchableSelect
+      value={value || 'all'}
+      onValueChange={onChange}
+      label="Modelos"
+      className="w-44"
+      options={[
+        { value: 'all', label: 'Todos los modelos' },
+        ...(availability?.models ?? []).map((m) => ({ value: m, label: m }))
+      ]}
+    />
   )
 }
 
@@ -551,21 +620,16 @@ function ColorSelect({
   onChange: (v: string) => void
 }): React.JSX.Element {
   return (
-    <Select value={value || 'all'} onValueChange={onChange}>
-      <SelectTrigger className="w-40 text-xs">
-        <SelectValue placeholder="Todos los colores" />
-      </SelectTrigger>
-      <SelectContent>
-        <SelectItem value="all" className="text-xs">
-          Todos los colores
-        </SelectItem>
-        {(availability?.colors ?? []).map((c) => (
-          <SelectItem key={c} value={c} className="text-xs">
-            {c}
-          </SelectItem>
-        ))}
-      </SelectContent>
-    </Select>
+    <SearchableSelect
+      value={value || 'all'}
+      onValueChange={onChange}
+      label="Colores"
+      className="w-40"
+      options={[
+        { value: 'all', label: 'Todos los colores' },
+        ...(availability?.colors ?? []).map((c) => ({ value: c, label: c }))
+      ]}
+    />
   )
 }
 
@@ -579,21 +643,16 @@ function SizeSelect({
   onChange: (v: string) => void
 }): React.JSX.Element {
   return (
-    <Select value={value || 'all'} onValueChange={onChange}>
-      <SelectTrigger className="w-40 text-xs">
-        <SelectValue placeholder="Todas las tallas" />
-      </SelectTrigger>
-      <SelectContent>
-        <SelectItem value="all" className="text-xs">
-          Todas las tallas
-        </SelectItem>
-        {(availability?.sizes ?? []).map((sz) => (
-          <SelectItem key={sz} value={sz} className="text-xs">
-            Talla {sz}
-          </SelectItem>
-        ))}
-      </SelectContent>
-    </Select>
+    <SearchableSelect
+      value={value || 'all'}
+      onValueChange={onChange}
+      label="Tallas"
+      className="w-40"
+      options={[
+        { value: 'all', label: 'Todas las tallas' },
+        ...(availability?.sizes ?? []).map((sz) => ({ value: sz, label: 'Talla ' + sz }))
+      ]}
+    />
   )
 }
 
@@ -609,22 +668,15 @@ function VariantSelect({
   label: string
 }): React.JSX.Element {
   return (
-    <Select value={value} onValueChange={onChange}>
-      <SelectTrigger className="h-9 w-full max-w-md text-xs" aria-label={label}>
-        <SelectValue>
-          {(() => {
-            const r = rows.find((x) => x.variant_id === value)
-            return r ? `${r.model} · ${r.color} · T${r.size} — ${r.variant_id}` : value
-          })()}
-        </SelectValue>
-      </SelectTrigger>
-      <SelectContent className="max-h-72">
-        {rows.map((r) => (
-          <SelectItem key={r.variant_id} value={r.variant_id} className="text-xs">
-            {r.model} · {r.color} · T{r.size} — {r.variant_id}
-          </SelectItem>
-        ))}
-      </SelectContent>
-    </Select>
+    <SearchableSelect
+      value={value}
+      onValueChange={onChange}
+      label={label}
+      className="w-full max-w-md"
+      options={rows.map((r) => ({
+        value: r.variant_id,
+        label: `${r.model} · ${r.color} · T${r.size} — ${r.variant_id}`
+      }))}
+    />
   )
 }

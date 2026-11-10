@@ -1,17 +1,10 @@
 import { useMemo, useState } from 'react'
-import { ArrowDown, ArrowUp, ArrowUpDown, Search } from 'lucide-react'
+import { ArrowDown, ArrowUp, ArrowUpDown } from 'lucide-react'
 import { useSearchParams } from 'react-router-dom'
 import type { VariantRow } from '@shared/schemas'
 import { PageHeader } from '@/components/layout/PageHeader'
 import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue
-} from '@/components/ui/select'
+import { SearchableSelect } from '@/components/shared/SearchableSelect'
 import {
   Table,
   TableBody,
@@ -25,6 +18,7 @@ import { EmptyState } from '@/components/shared/EmptyState'
 import { ErrorState } from '@/components/shared/ErrorState'
 import { LoadingState } from '@/components/shared/LoadingState'
 import { FilterBar } from '@/components/shared/FilterBar'
+import { SearchInput } from '@/components/shared/SearchInput'
 import { StatusBadge } from '@/components/shared/StatusBadge'
 import { VariantDetailSheet } from '@/components/shared/VariantDetailSheet'
 import { useDatasetMetadata, useFiltersAvailability, useVariantRows } from '@/hooks/api'
@@ -51,7 +45,7 @@ const COLUMNS: Array<{ key: SortKey; label: string; numeric?: boolean }> = [
   { key: 'model', label: 'Modelo · Color · Talla' },
   { key: 'stock_on_hand', label: 'Stock', numeric: true },
   { key: 'units_sold_period', label: 'Ventas del período', numeric: true },
-  { key: 'forecast_units_total', label: 'Pronóstico ejemplo', numeric: true },
+  { key: 'forecast_units_total', label: 'Pronóstico', numeric: true },
   { key: 'coverage_weeks', label: 'Cobertura', numeric: true }
 ]
 
@@ -131,7 +125,7 @@ export function VariantsPage(): React.JSX.Element {
           description={
             conectado
               ? 'Variante = modelo + color + talla. Datos en vivo de Supabase, solo lectura.'
-              : 'Variante = modelo + color + talla. Los datos provienen del dataset de demostración.'
+              : 'Variante = modelo + color + talla. Los datos provienen del dataset local.'
           }
         />
 
@@ -142,21 +136,16 @@ export function VariantsPage(): React.JSX.Element {
             setPage(1)
           }}
         >
-          <span className="relative">
-            <Search
-              className="pointer-events-none absolute left-2.5 top-1/2 size-3.5 -translate-y-1/2 text-muted-foreground"
-              aria-hidden="true"
-            />
-            <Input
-              value={search}
-              onChange={(e) => {
-                setSearch(e.target.value)
-                setPage(1)
-              }}
-              placeholder="Buscar id, modelo, SKU…"
-              className="h-9 w-64 pl-8 text-xs"
-            />
-          </span>
+          <SearchInput
+            value={search}
+            onChange={(value) => {
+              setSearch(value)
+              setPage(1)
+            }}
+            placeholder="Buscar id, modelo, SKU…"
+            ariaLabel="Buscar variante por id, modelo o SKU"
+            className="w-64"
+          />
           <ValueSelect
             placeholder="Todos los modelos"
             allLabel="Todos los modelos"
@@ -345,20 +334,16 @@ function ValueSelect({
   prefix?: string
 }): React.JSX.Element {
   return (
-    <Select value={value || 'all'} onValueChange={onChange}>
-      <SelectTrigger className={cn('h-9 text-xs', className)}>
-        <SelectValue placeholder={placeholder} />
-      </SelectTrigger>
-      <SelectContent>
-        <SelectItem value="all" className="text-xs">
-          {allLabel}
-        </SelectItem>
-        {values.map((v) => (
-          <SelectItem key={v} value={v} className="text-xs">
-            {labels?.[v] ?? `${prefix}${v}`}
-          </SelectItem>
-        ))}
-      </SelectContent>
-    </Select>
+    <SearchableSelect
+      value={value || 'all'}
+      onValueChange={onChange}
+      label={placeholder}
+      placeholder={placeholder}
+      className={cn('text-xs', className)}
+      options={[
+        { value: 'all', label: allLabel },
+        ...values.map((v) => ({ value: v, label: labels?.[v] ?? prefix + v }))
+      ]}
+    />
   )
 }

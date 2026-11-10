@@ -45,6 +45,15 @@
   --surface-sidebar-text-active: #ffffff;
   --surface-sidebar-hover: rgba(255, 255, 255, 0.06);
 
+  /* ── Paleta de gráficos (recharts: barra/línea/torta) ──
+     Identidad del proyecto: rojo de marca primero; complementarios para
+     series múltiples. Antes solo existían dentro de @media print del reporte. */
+  --chart-1: #ef1b24;
+  --chart-2: #2563eb;
+  --chart-3: #d97706;
+  --chart-4: #16a34a;
+  --chart-5: #7c3aed;
+
   /* ── Estados de riesgo (plan 7.1: siempre con texto + icono) ── */
   --status-stockout: #dc2626;
   --status-excess: #d97706;
@@ -83,6 +92,13 @@
   --brand-strong: #ff7160;
   --brand-soft: rgba(255, 68, 51, 0.12);
   --brand-soft-strong: rgba(255, 68, 51, 0.2);
+
+  /* Paleta de gráficos: mismos valores en oscuro (legibles sobre #202028) */
+  --chart-1: #ff5a63;
+  --chart-2: #60a5fa;
+  --chart-3: #fbbf24;
+  --chart-4: #4ade80;
+  --chart-5: #a78bfa;
 
   /* Estados de riego: tintes más luminosos en oscuro */
   --status-stockout: #f87171;

@@ -102,7 +102,7 @@ export function SettingsPage(): React.JSX.Element {
               </li>
               <li>
                 Si la API no puede conectarse o RLS deniega acceso, la aplicación muestra el error;
-                no cambia silenciosamente a datos de demostración.
+                no cambia silenciosamente a datos locales.
               </li>
             </ul>
           </SectionCard>

@@ -22,7 +22,7 @@ export const STATUS_META: Record<
     bg: 'bg-status-stockout/10'
   },
   excess: {
-    label: 'Exceso / baja rotación',
+    label: 'Exceso de inventario',
     icon: ArrowDownRight,
     text: 'text-status-excess',
     bg: 'bg-status-excess/10'

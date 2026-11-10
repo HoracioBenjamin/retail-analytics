@@ -88,6 +88,39 @@
   display: none;
 }
 
+/* Conservar la vista del usuario mientras se mide la composición del PDF. */
+.report-export-cover {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483647;
+  overflow: hidden;
+  background: var(--background);
+  cursor: progress;
+  outline: none;
+}
+
+.report-export-cover > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: fill;
+  pointer-events: none;
+}
+
+.report-export-cover-status {
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 16px;
+  background: var(--popover);
+  color: var(--popover-foreground);
+  box-shadow: var(--shadow-card);
+  font-size: 13px;
+}
+
 .report-source-badge {
   align-self: flex-start;
   border: 1px solid var(--border);
@@ -102,6 +135,113 @@
   font-size: 13px;
   font-weight: 600;
   color: var(--muted-foreground);
+}
+
+/* ── Panorama visual: donuts del reporte ── */
+.report-donut {
+  width: 100%;
+  height: 230px;
+  flex-shrink: 0;
+}
+
+.report-donut-center {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  pointer-events: none;
+}
+
+.report-donut-legend {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 6px;
+  margin-top: 12px;
+  font-size: 11px;
+  color: var(--muted-foreground);
+}
+
+.report-donut-legend li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.4;
+  min-width: 0;
+}
+
+/* Modo de exportación (report-export-mode, activado por el proceso main):
+   la ventana adopta el ancho impreso real de A4 (210mm − 2×12mm ≈ 703px)
+   para que ResponsiveContainer/recharts re-midan y re-rendericen cada
+   gráfico ANTES del printToPDF (los donuts usan SVG con viewBox fijo).
+   Se oculta el chrome de navegación
+   y se esperan los mismos tamaños que aplica @media print. */
+.report-export-mode .one-topbar,
+.report-export-mode .one-sidebar,
+.report-export-mode .one-context-bar {
+  display: none !important;
+}
+
+.report-export-mode .one-app-shell {
+  height: auto !important;
+  overflow: visible !important;
+}
+
+.report-export-mode .one-main {
+  position: static !important;
+  inset: auto !important;
+  height: auto !important;
+  overflow: visible !important;
+  padding: 0 !important;
+}
+
+.report-export-mode .one-content {
+  width: 703px !important;
+  max-width: 703px !important;
+  margin: 0 auto !important;
+}
+
+/* Igualar la grilla a la de impresión (la hoja A4 evalúa los breakpoints
+   con su propio ancho): mismos tamaños de SVG al re-medir los gráficos. */
+.report-export-mode .report-page .grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
+
+.report-export-mode .report-page .report-grid-one {
+  grid-template-columns: minmax(0, 1fr) !important;
+}
+
+/* Igual que en la impresión: leyenda sin truncar (cambia la altura de las
+   tarjetas y por tanto la paginación; debe coincidir). */
+.report-export-mode .report-page .report-donut-legend-label {
+  white-space: normal !important;
+  text-overflow: unset !important;
+  overflow-wrap: anywhere;
+}
+
+.report-export-mode .report-no-print,
+.report-export-mode .report-page .one-page-header {
+  display: none !important;
+}
+
+.report-export-mode .report-chart {
+  height: 215px !important;
+}
+
+.report-export-mode .report-chart-wide {
+  height: 250px !important;
+}
+
+.report-export-mode .report-donut {
+  height: 200px !important;
+}
+
+html.report-export-mode,
+html.report-export-mode body {
+  background: white !important;
 }
 
 .report-chart {
@@ -148,6 +288,7 @@
   .one-topbar,
   .one-sidebar,
   .one-context-bar,
+  .report-export-cover,
   .report-no-print {
     display: none !important;
   }
@@ -180,6 +321,8 @@
     --chart-1: #ef1b24;
     --chart-2: #2563eb;
     --chart-3: #d97706;
+    --chart-4: #16a34a;
+    --chart-5: #7c3aed;
   }
 
   .report-page .one-page-header {
@@ -212,14 +355,37 @@
   }
 
   .report-page [data-slot='card'],
-  .report-page .one-section-card {
+  .report-page .one-section-card,
+  .report-page .one-kpi-card {
     break-inside: avoid;
     box-shadow: none !important;
     background: white !important;
   }
 
-  .report-page .one-section-card {
+  .report-page .one-section-card,
+  .report-page .one-kpi-card {
     overflow: visible !important;
+  }
+
+  /* Las media queries de la IMPRESIÓN se evalúan con el ancho de la hoja
+     A4 (no el de la ventana): forzar aquí la MISMA grilla que en el modo
+     de exportación para que pre-visualización e impresión coincidan
+     (mismo ancho de SVG → donuts y barras centrados y completos). */
+  .report-page .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  /* Grillas marcadas como de una columna (parejas de gráficos grandes). */
+  .report-page .report-grid-one {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  /* En el PDF no se truncar: el nombre completo de cada porción puede
+     ocupar más de una línea (la leyenda es la única etiqueta impresa). */
+  .report-page .report-donut-legend-label {
+    white-space: normal !important;
+    text-overflow: unset !important;
+    overflow-wrap: anywhere;
   }
 
   .report-page [data-slot='card-content'][hidden] {
@@ -236,6 +402,22 @@
 
   .report-chart-wide {
     height: 250px !important;
+  }
+
+  .report-donut {
+    height: 200px !important;
+  }
+
+  .report-donut-legend {
+    break-inside: avoid;
+  }
+
+  .report-donut-legend li {
+    color: #52525b !important;
+  }
+
+  .report-donut-legend li > span.tabular-nums {
+    color: #18181b !important;
   }
 
   .report-limitations li {
